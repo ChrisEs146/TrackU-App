@@ -1,6 +1,5 @@
 import "./nav.css";
-const nav = () => {
-  return <div></div>;
+import logo from "../../images/logo.png";
 };
 
 export default nav;
