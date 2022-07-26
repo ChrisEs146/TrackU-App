@@ -1,0 +1,41 @@
+/* Navigation styles */
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: inherit;
+  width: 100%;
+  margin-bottom: clamp(3rem, 5.5vw, 9rem);
+}
+
+.navigation__logo img {
+  height: 5rem;
+  width: 5rem;
+}
+
+.navigation__btn {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgb(236, 236, 236);
+  height: fit-content;
+  width: fit-content;
+  padding: 1rem 1.5em;
+  border: none;
+  background-color: rgb(98, 89, 223);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.navigation__btn:hover {
+  background-color: rgba(76, 55, 153, 0.719);
+}
+
+@media (min-width: 920px) {
+  .navigation__btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.6rem;
+  }
+}
