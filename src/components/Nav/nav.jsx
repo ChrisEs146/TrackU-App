@@ -1,6 +1,6 @@
 import "./nav.css";
 import logo from "../../images/logo.png";
-const Nav = () => {
+import "./nav.css";
   return (
     <nav className="navigation">
       <div className="navigation__logo">
