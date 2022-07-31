@@ -3,9 +3,14 @@ import Homepage from "./pages/homepage/Homepage";
 import Form from "./pages/form/Form";
 const App = () => {
   return (
-    <div className="app">
-      <Homepage />
-    </div>
+    <main className="app">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/signIn" element={<Form />} />
+        </Routes>
+      </BrowserRouter>
+    </main>
   );
 };
 
