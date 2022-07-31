@@ -3,6 +3,7 @@ import hero from "../../images/hero.svg";
 import { useNavigate } from "react-router-dom";
 import "./homepage.css";
 const Homepage = () => {
+  const user = null;
   return (
     <header className="homepage">
       <Nav />
