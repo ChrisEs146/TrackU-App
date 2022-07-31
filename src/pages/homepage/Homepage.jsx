@@ -2,6 +2,7 @@ import Nav from "../../components/Nav/nav";
 import hero from "../../images/hero.svg";
 import { useNavigate } from "react-router-dom";
 import "./homepage.css";
+
 const Homepage = () => {
   const navigate = useNavigate();
   const user = null;
@@ -15,7 +16,11 @@ const Homepage = () => {
             <span>TrackU</span> gives you an environment where you can create, manage and keep your
             personal projects updated until completion. Makes your managing process easier.
           </p>
-          <button className="homepage__btn">Start Now</button>
+          {!user && (
+            <button className="homepage__btn" onClick={() => navigate("/signIn")}>
+              Start Now
+            </button>
+          )}
         </div>
         <div className="homepage__image-container">
           <img
