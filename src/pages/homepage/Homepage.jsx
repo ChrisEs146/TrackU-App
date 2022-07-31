@@ -7,7 +7,7 @@ const Homepage = () => {
   const user = null;
   return (
     <header className="homepage">
-      <Nav />
+      <Nav user={user} />
       <div className="homepage__hero-container">
         <div className="homepage__information">
           <h1 className="homepage__title">Keep track of your projects</h1>
