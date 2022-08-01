@@ -97,18 +97,23 @@ const Form = () => {
             ))
           ) : (
             <>
-              <Input name="fullName" label="Full Name" type="text" handleChange={handleChange} />
-            </>
-          )}
-          <Input name="email" label="Email Address" type="email" handleChange={handleChange} />
-          <Input name="password" label="Password" type="password" handleChange={handleChange} />
-          {isSignUp && (
-            <>
               <Input
-                name="confirmPassword"
-                label="Confirm Password"
-                type="password"
+                name="email"
+                type="email"
+                id="email"
+                label="Email Adress"
                 handleChange={handleChange}
+                placeholder="Email"
+                value={values.email}
+              />
+              <Input
+                name="password"
+                type="password"
+                id="password"
+                label="Password"
+                handleChange={handleChange}
+                placeholder="Password"
+                value={values.password}
               />
             </>
           )}
