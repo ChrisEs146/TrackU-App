@@ -57,6 +57,13 @@ const Form = () => {
     },
   ];
 
+  /**
+   * Handles input changes in the registration form
+   * @param {*} e target element
+   */
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
   return (
     <section className="registration">
       <div className="registration__container">
