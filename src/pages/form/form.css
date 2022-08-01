@@ -43,3 +43,15 @@
 .registration__btn:hover {
   background-color: rgba(76, 55, 153, 0.719);
 }
+
+.registration__switch {
+  border: none;
+  border-bottom: 2px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+  transition: border 0.3s;
+}
+
+.registration__switch:hover {
+  border-bottom: 2px solid rgb(98, 89, 223);
+}
