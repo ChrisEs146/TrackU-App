@@ -115,6 +115,9 @@ const Form = () => {
           <button className="registration__btn" type="submit">
             {isSignUp ? "Sign Up" : "Sign In"}
           </button>
+          <button className="registration__switch" onClick={handleSwitch}>
+            {isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}
+          </button>
         </form>
       </div>
     </section>
