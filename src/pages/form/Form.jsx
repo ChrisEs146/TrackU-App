@@ -64,6 +64,14 @@ const Form = () => {
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
+  /**
+   * Handles the submission of the registration form
+   * @param {*} e target element
+   */
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <section className="registration">
       <div className="registration__container">
