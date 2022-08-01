@@ -12,7 +12,7 @@ const Input = (props) => {
   return (
     <div className="input__container">
       <label htmlFor={name}>{label}</label>
-      <input type={type} name={name} id={name} required onChange={handleChange} />
+      <span>{errorMsg}</span>
     </div>
   );
 };
