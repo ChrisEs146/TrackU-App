@@ -23,3 +23,7 @@
   color: red;
   display: none;
 }
+
+.input__container input:invalid[focused="true"] {
+  border: 1px solid red;
+}
