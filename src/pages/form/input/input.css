@@ -17,3 +17,9 @@
   height: 4rem;
   padding-left: 1rem;
 }
+
+.input__container span {
+  font-size: 1.3rem;
+  color: red;
+  display: none;
+}
