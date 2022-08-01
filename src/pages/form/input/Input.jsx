@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./input.css";
 const Input = ({ name, type, label, handleChange }) => {
   return (
