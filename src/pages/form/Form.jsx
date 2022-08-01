@@ -5,6 +5,10 @@ import Input from "./input/Input";
 
 const Form = () => {
   const navigate = useNavigate();
+
+  // State to switch between forms
+  const [isSignUp, setIsSignUp] = useState(false);
+
   // Form's values
   const [values, setValues] = useState({
     fullName: "",
