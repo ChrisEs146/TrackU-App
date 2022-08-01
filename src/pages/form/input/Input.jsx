@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./input.css";
-const Input = ({ name, type, label, handleChange }) => {
+
+const Input = (props) => {
+  const { name, label, errorMsg, type, handleChange, value, placeholder, pattern } = props;
   return (
     <div className="input__container">
       <label htmlFor={name}>{label}</label>
