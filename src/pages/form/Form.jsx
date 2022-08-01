@@ -4,9 +4,13 @@ import "./form.css";
 import Input from "./input/Input";
 
 const Form = () => {
-  const isSignUp = false;
-  const handleChange = () => {};
-  const handleSubmit = () => {};
+  // Form's values
+  const [values, setValues] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   return (
     <section className="registration">
