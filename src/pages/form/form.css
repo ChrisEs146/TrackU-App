@@ -13,7 +13,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 30rem;
+  width: clamp(30rem, 50%, 42rem);
   height: fit-content;
   background-color: rgb(238, 238, 238);
   padding: 2rem;
