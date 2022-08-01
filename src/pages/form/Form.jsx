@@ -86,7 +86,16 @@ const Form = () => {
       <div className="registration__container">
         <h2 className="registration__title">{isSignUp ? "Sign Up" : "Sign In"}</h2>
         <form className="registration__form" onSubmit={handleSubmit}>
-          {isSignUp && (
+          {isSignUp ? (
+            inputs.map((input) => (
+              <Input
+                key={input.id}
+                value={values[input.name]}
+                handleChange={handleChange}
+                {...input}
+              />
+            ))
+          ) : (
             <>
               <Input name="fullName" label="Full Name" type="text" handleChange={handleChange} />
             </>
