@@ -17,6 +17,46 @@ const Form = () => {
     confirmPassword: "",
   });
 
+  const inputs = [
+    {
+      id: 1,
+      name: "fullName",
+      type: "text",
+      label: "Full Name",
+      errorMsg:
+        "Name should be at least 4 characters long and shouldn't include any special character!",
+      placeholder: "Full Name",
+      pattern: "^[A-Za-z0-9 ]{4,}$",
+    },
+    {
+      id: 2,
+      name: "email",
+      type: "email",
+      label: "Email Address",
+      errorMsg: "It must be a valid email!",
+      placeholder: "Email",
+    },
+    {
+      id: 3,
+      name: "password",
+      type: "password",
+      label: "Password",
+      errorMsg:
+        "Password should be 8 - 20 characters. It must include at least 1 letter, 1 number and 1 special character!",
+      placeholder: "Password",
+      pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+    },
+    {
+      id: 4,
+      name: "confirmPassword",
+      type: "password",
+      label: "Confirm Password",
+      errorMsg: "Passwords don't match",
+      placeholder: "Confirm Password",
+      pattern: values.password,
+    },
+  ];
+
   return (
     <section className="registration">
       <div className="registration__container">
