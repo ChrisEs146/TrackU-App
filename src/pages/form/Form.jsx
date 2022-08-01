@@ -72,6 +72,15 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  /**
+   * Handles the switch between the sign in form
+   * and sign up form
+   */
+  const handleSwitch = () => {
+    setIsSignUp((prevState) => !prevState);
+  };
+
   return (
     <section className="registration">
       <div className="registration__container">
