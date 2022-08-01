@@ -4,6 +4,7 @@ import "./form.css";
 import Input from "./input/Input";
 
 const Form = () => {
+  const navigate = useNavigate();
   // Form's values
   const [values, setValues] = useState({
     fullName: "",
