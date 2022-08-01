@@ -24,6 +24,9 @@
   display: none;
 }
 
+.input__container input:invalid[focused="true"] ~ span {
+  display: block;
+}
 .input__container input:invalid[focused="true"] {
   border: 1px solid red;
 }
