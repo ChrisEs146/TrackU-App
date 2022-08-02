@@ -33,6 +33,14 @@
   background-color: rgba(76, 55, 153, 0.719);
 }
 
+.navigation__avatar-container {
+  width: 4rem;
+  height: 4rem;
+  background-color: red;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 @media (min-width: 920px) {
   .navigation__btn {
     padding: 1rem 2.5rem;
