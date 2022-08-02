@@ -9,7 +9,7 @@ const Nav = ({ user }) => {
         <img src={logo} alt="TrackU logo" title="TrackU" />
       </div>
       {!user ? (
-        <button className="navigation__btn" onClick={() => navigate("/signIn")}>
+        <button className="navigation__btn" onClick={() => navigate("/registration")}>
           Sign In
         </button>
       ) : (
