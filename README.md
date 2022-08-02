@@ -1,3 +1,3 @@
-# react-project-management-app
+## TrackU - (FrontEnd)
 
-A personal project management application using MongoDB, Express, React and Node js
+TrackU is a project management application. This repository contains the app's client side code.
