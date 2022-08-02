@@ -17,7 +17,7 @@ const Homepage = () => {
             personal projects updated until completion. Makes your managing process easier.
           </p>
           {!user && (
-            <button className="homepage__btn" onClick={() => navigate("/signIn")}>
+            <button className="homepage__btn" onClick={() => navigate("/registration")}>
               Start Now
             </button>
           )}
