@@ -10,7 +10,7 @@ const Form = () => {
   const [isSignUp, setIsSignUp] = useState(false);
 
   // Form's values
-  const [values, setValues] = useState({
+  const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
@@ -53,7 +53,7 @@ const Form = () => {
       label: "Confirm Password",
       errorMsg: "Passwords don't match",
       placeholder: "Confirm Password",
-      pattern: values.password,
+      pattern: formData.password,
     },
   ];
 
@@ -62,7 +62,7 @@ const Form = () => {
    * @param {*} e target element
    */
   const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   /**
@@ -90,7 +90,7 @@ const Form = () => {
             inputs.map((input) => (
               <Input
                 key={input.id}
-                value={values[input.name]}
+                value={formData[input.name]}
                 handleChange={handleChange}
                 {...input}
               />
@@ -104,7 +104,7 @@ const Form = () => {
                 label="Email Adress"
                 handleChange={handleChange}
                 placeholder="Email"
-                value={values.email}
+                value={formData.email}
               />
               <Input
                 name="password"
@@ -113,7 +113,7 @@ const Form = () => {
                 label="Password"
                 handleChange={handleChange}
                 placeholder="Password"
-                value={values.password}
+                value={formData.password}
               />
             </>
           )}
