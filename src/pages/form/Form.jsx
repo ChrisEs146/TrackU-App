@@ -86,7 +86,7 @@ const Form = () => {
     if (!isSignUp && userData) {
       navigate("/dashboard");
     }
-  }, [navigate, userData, success, isSignUp, error]);
+  }, [navigate, userData, success, isSignUp, error, initialFormState]);
 
   /**
    * Handles input changes in the registration form
