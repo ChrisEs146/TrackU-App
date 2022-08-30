@@ -15,9 +15,12 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    logOut: (state, action) => {
-      localStorage.clear();
-      return { ...state, userData: null, loading: false };
+    logOut: (state) => {
+      localStorage.removeItem("userToken");
+      state.loading = false;
+      state.error = null;
+      state.userData = null;
+      state.userToken = null;
     },
   },
   extraReducers: {
