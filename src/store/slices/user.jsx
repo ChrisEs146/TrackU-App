@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { signInUser, signUpUser, getUserInfo } from "../actions/userActions";
 
+// Extracting user token from local storage
 const userToken = localStorage.getItem("userToken") ? localStorage.getItem("userToken") : null;
 
+// Default slice state
 const initialState = {
   userData: null,
   userToken,
