@@ -138,7 +138,7 @@ const Form = () => {
                 name="email"
                 type="email"
                 id="email"
-                label="Email Adress"
+                label="Email Address"
                 handleChange={handleChange}
                 placeholder="Email"
                 value={formData.email}
