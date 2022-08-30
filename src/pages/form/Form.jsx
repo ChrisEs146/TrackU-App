@@ -117,7 +117,7 @@ const Form = () => {
               />
             </>
           )}
-          <button className="registration__btn" type="submit">
+          <button className="registration__btn" type="submit" disabled={loading}>
             {isSignUp ? "Sign Up" : "Sign In"}
           </button>
           <button className="registration__switch" onClick={handleSwitch}>
