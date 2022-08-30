@@ -3,8 +3,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo } from "../../store/actions/userActions";
 import logo from "../../images/logo.png";
-import { useSelector } from "react-redux";
 import "./nav.css";
+
+/**
+ * Navigation component that shows the sign in button or
+ * the user profile in case the user exists.
+ * @returns Navigation Component
+ */
 const Nav = () => {
   const { userData, userToken } = useSelector((state) => state.user);
   const dispatch = useDispatch();
