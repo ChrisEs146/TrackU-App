@@ -2,6 +2,11 @@ import hero from "../../images/hero.svg";
 import { NavLink } from "react-router-dom";
 import "./homepage.css";
 
+/**
+ * Homepage allows users to sign in or sign up to have
+ * access to TrakU dashboard.
+ * @returns Homepage Component
+ */
 const Homepage = () => {
   return (
     <header className="homepage">
