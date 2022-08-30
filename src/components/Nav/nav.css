@@ -7,7 +7,6 @@
   padding: 1rem 2rem;
   background-color: inherit;
   width: 100%;
-  margin-bottom: clamp(3rem, 5.5vw, 9rem);
 }
 
 .navigation__logo img {
