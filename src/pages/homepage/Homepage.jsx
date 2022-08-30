@@ -1,14 +1,10 @@
-import Nav from "../../components/Nav/nav";
 import hero from "../../images/hero.svg";
 import { NavLink } from "react-router-dom";
 import "./homepage.css";
 
 const Homepage = () => {
-  const navigate = useNavigate();
-  const user = null;
   return (
     <header className="homepage">
-      <Nav user={user} />
       <div className="homepage__hero-container">
         <div className="homepage__information">
           <h1 className="homepage__title">Keep track of your projects</h1>
