@@ -4,7 +4,7 @@ import { signInUser, signUpUser, getUserInfo } from "../actions/userActions";
 const userToken = localStorage.getItem("userToken") ? localStorage.getItem("userToken") : null;
 
 const initialState = {
-  userData: {},
+  userData: null,
   userToken,
   error: null,
   success: false,
