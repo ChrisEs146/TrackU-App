@@ -14,14 +14,21 @@ const Form = () => {
   // State to switch between forms
   const [isSignUp, setIsSignUp] = useState(false);
 
-  // Form's values
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+  // Initial form fields
+  const initialFormState = useMemo(
+    () => ({
+      fullName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    }),
+    []
+  );
 
+  // Form's values
+  const [formData, setFormData] = useState(initialFormState);
+
+  // Form values, used as an array to iterate through them.
   const inputs = [
     {
       id: 1,
