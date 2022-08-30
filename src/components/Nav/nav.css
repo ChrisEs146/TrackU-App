@@ -25,6 +25,7 @@
   border: none;
   background-color: rgb(98, 89, 223);
   border-radius: 4px;
+  text-decoration: none;
   cursor: pointer;
   transition: background-color 0.3s;
 }
