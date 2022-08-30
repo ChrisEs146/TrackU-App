@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Homepage from "./pages/homepage/Homepage";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Form from "./pages/form/Form";
@@ -12,6 +14,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
     </main>
   );
 };
