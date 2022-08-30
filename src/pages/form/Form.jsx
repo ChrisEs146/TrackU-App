@@ -5,6 +5,8 @@ import Input from "./input/Input";
 
 const Form = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loading, error, userData, success } = useSelector((state) => state.user);
 
   // State to switch between forms
   const [isSignUp, setIsSignUp] = useState(false);
