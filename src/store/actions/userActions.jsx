@@ -7,11 +7,11 @@ export const signInUser = createAsyncThunk("user/signIn", async (formData, { rej
     localStorage.setItem("userToken", data.token);
     return data;
   } catch (error) {
-    if (error.response && error.response.data.message) {
-      return rejectWithValue(error.response.data.message);
-    } else {
-      return rejectWithValue(error.response);
-    }
+    const errorMessage =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return rejectWithValue(errorMessage);
   }
 });
 
@@ -20,11 +20,11 @@ export const signUpUser = createAsyncThunk("user/signUp", async (formData, { rej
     const { data } = await api.signUp(formData);
     return data;
   } catch (error) {
-    if (error.response && error.response.data.message) {
-      return rejectWithValue(error.response.data.message);
-    } else {
-      return rejectWithValue(error.response);
-    }
+    const errorMessage =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return rejectWithValue(errorMessage);
   }
 });
 
@@ -39,11 +39,11 @@ export const getUserInfo = createAsyncThunk(
       const { data } = api.getUser(config);
       return data;
     } catch (error) {
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
-      } else {
-        return rejectWithValue(error.response);
-      }
+      const errorMessage =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return rejectWithValue(errorMessage);
     }
   }
 );
