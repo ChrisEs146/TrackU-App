@@ -1,6 +1,6 @@
 /* Homepage Styles */
 .homepage {
-  height: 100%;
+  height: calc(100% - 7rem);
   max-width: 130rem;
   margin: 0 auto;
 }
