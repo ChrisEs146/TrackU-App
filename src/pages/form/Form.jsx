@@ -6,6 +6,13 @@ import { toast } from "react-toastify";
 import "./form.css";
 import Input from "./input/Input";
 
+/**
+ * Dynamic form component to be used as a sign up or sign in form.
+ * Its state changes according to the isSignUp variable, if the
+ * variable is true the sign up form is displayed, otherwise the
+ * sign in form is shown.
+ * @returns Form Component
+ */
 const Form = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -70,19 +77,24 @@ const Form = () => {
   ];
 
   useEffect(() => {
+    // Checks for possible errors
     if (error) {
       console.error(error);
       toast.error(error);
     }
 
+    // If sign up form is active and the user's data already exists
     if (isSignUp && userData) navigate("/dashboard");
 
+    // If sign up process is successful
     if (isSignUp && success) {
       toast.success("Account Successfully Created");
       setIsSignUp(false);
+      setFormData(initialFormState);
       navigate("/registration");
     }
 
+    // If sign in process is successful
     if (!isSignUp && userData) {
       navigate("/dashboard");
     }
@@ -93,7 +105,10 @@ const Form = () => {
    * @param {*} e target element
    */
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   /**
