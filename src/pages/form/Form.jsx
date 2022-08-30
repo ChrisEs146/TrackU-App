@@ -57,6 +57,25 @@ const Form = () => {
     },
   ];
 
+  useEffect(() => {
+    if (error) {
+      console.error(error);
+      toast.error(error);
+    }
+
+    if (isSignUp && userData) navigate("/dashboard");
+
+    if (isSignUp && success) {
+      toast.success("Account Successfully Created");
+      setIsSignUp(false);
+      navigate("/registration");
+    }
+
+    if (!isSignUp && userData) {
+      navigate("/dashboard");
+    }
+  }, [navigate, userData, success, isSignUp, error]);
+
   /**
    * Handles input changes in the registration form
    * @param {*} e target element
