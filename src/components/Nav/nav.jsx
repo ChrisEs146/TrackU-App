@@ -6,7 +6,15 @@ import logo from "../../images/logo.png";
 import { useSelector } from "react-redux";
 import "./nav.css";
 const Nav = () => {
-  const { userData } = useSelector((state) => state.user);
+  const { userData, userToken } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  // Fetches user's info on reload
+  useEffect(() => {
+    if (userToken) {
+      dispatch(getUserInfo());
+    }
+  }, [userToken, dispatch]);
 
   return (
     <nav className="navigation">
