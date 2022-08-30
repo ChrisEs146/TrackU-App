@@ -36,7 +36,7 @@ export const getUserInfo = createAsyncThunk(
       const config = {
         headers: { Authorization: `Bearer ${user.userToken}` },
       };
-      const { data } = api.getUser(config);
+      const { data } = await api.getUser(config);
       return data;
     } catch (error) {
       const errorMessage =
