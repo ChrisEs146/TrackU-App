@@ -26,6 +26,7 @@ const userSlice = createSlice({
   extraReducers: {
     [signInUser.pending]: (state) => {
       state.loading = true;
+      state.error = null;
     },
     [signInUser.fulfilled]: (state, action) => {
       state.loading = false;
@@ -38,24 +39,16 @@ const userSlice = createSlice({
     },
     [signUpUser.pending]: (state) => {
       state.loading = true;
+      state.error = null;
     },
     [signUpUser.fulfilled]: (state) => {
+      state.sucess = true;
+      state.userData = null;
       state.loading = false;
-      state.success = true;
     },
     [signUpUser.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload;
-    },
-    [getUserInfo.pending]: (state) => {
-      state.loading = true;
-    },
-    [getUserInfo.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.userData = action.payload;
-    },
-    [getUserInfo.rejected]: (state) => {
-      state.loading = false;
     },
   },
 });
