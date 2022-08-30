@@ -71,6 +71,12 @@ const Form = () => {
    */
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (isSignUp) {
+      dispatch(signUpUser(formData));
+    } else {
+      dispatch(signInUser(formData));
+    }
   };
 
   /**
