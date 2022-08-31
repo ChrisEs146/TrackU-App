@@ -1,22 +1,41 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signUpUser, signInUser } from "../../store/actions/userActions";
+import { toast } from "react-toastify";
 import "./form.css";
 import Input from "./input/Input";
 
+/**
+ * Dynamic form component to be used as a sign up or sign in form.
+ * Its state changes according to the isSignUp variable, if the
+ * variable is true the sign up form is displayed, otherwise the
+ * sign in form is shown.
+ * @returns Form Component
+ */
 const Form = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loading, error, userData, success } = useSelector((state) => state.user);
 
   // State to switch between forms
   const [isSignUp, setIsSignUp] = useState(false);
 
-  // Form's values
-  const [values, setValues] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+  // Initial form fields
+  const initialFormState = useMemo(
+    () => ({
+      fullName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    }),
+    []
+  );
 
+  // Form's values
+  const [formData, setFormData] = useState(initialFormState);
+
+  // Form values, used as an array to iterate through them.
   const inputs = [
     {
       id: 1,
@@ -53,16 +72,43 @@ const Form = () => {
       label: "Confirm Password",
       errorMsg: "Passwords don't match",
       placeholder: "Confirm Password",
-      pattern: values.password,
+      pattern: formData.password,
     },
   ];
+
+  useEffect(() => {
+    // Checks for possible errors
+    if (error) {
+      console.error(error);
+      toast.error(error);
+    }
+
+    // If sign up form is active and the user's data already exists
+    if (isSignUp && userData) navigate("/dashboard");
+
+    // If sign up process is successful
+    if (isSignUp && success) {
+      toast.success("Account Successfully Created");
+      setIsSignUp(false);
+      setFormData(initialFormState);
+      navigate("/registration");
+    }
+
+    // If sign in process is successful
+    if (!isSignUp && userData) {
+      navigate("/dashboard");
+    }
+  }, [navigate, userData, success, isSignUp, error, initialFormState]);
 
   /**
    * Handles input changes in the registration form
    * @param {*} e target element
    */
   const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   /**
@@ -71,6 +117,12 @@ const Form = () => {
    */
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (isSignUp) {
+      dispatch(signUpUser(formData));
+    } else {
+      dispatch(signInUser(formData));
+    }
   };
 
   /**
@@ -90,7 +142,7 @@ const Form = () => {
             inputs.map((input) => (
               <Input
                 key={input.id}
-                value={values[input.name]}
+                value={formData[input.name]}
                 handleChange={handleChange}
                 {...input}
               />
@@ -101,10 +153,10 @@ const Form = () => {
                 name="email"
                 type="email"
                 id="email"
-                label="Email Adress"
+                label="Email Address"
                 handleChange={handleChange}
                 placeholder="Email"
-                value={values.email}
+                value={formData.email}
               />
               <Input
                 name="password"
@@ -113,11 +165,11 @@ const Form = () => {
                 label="Password"
                 handleChange={handleChange}
                 placeholder="Password"
-                value={values.password}
+                value={formData.password}
               />
             </>
           )}
-          <button className="registration__btn" type="submit">
+          <button className="registration__btn" type="submit" disabled={loading}>
             {isSignUp ? "Sign Up" : "Sign In"}
           </button>
           <button className="registration__switch" onClick={handleSwitch}>
