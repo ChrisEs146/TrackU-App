@@ -5,6 +5,7 @@ import { logOut } from "../../store/slices/user";
 import { toast } from "react-toastify";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import jwt_decode from "jwt-decode";
+import "./dashboard.css";
 
 /**
  * Renders the dashboard component, with the sidebar navigation
