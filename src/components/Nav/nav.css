@@ -33,12 +33,19 @@
   background-color: rgba(76, 55, 153, 0.719);
 }
 
-.navigation__avatar-container {
-  width: 4rem;
-  height: 4rem;
-  background-color: red;
-  border-radius: 50%;
-  cursor: pointer;
+.navigation__menu-btn {
+  color: rgb(236, 236, 236);
+  height: fit-content;
+  width: fit-content;
+  padding: 1rem;
+  border: none;
+  background-color: rgb(98, 89, 223);
+  border-radius: 4px;
+}
+
+.navigation__menu-btn svg {
+  height: 1.2em;
+  width: 1.2em;
 }
 
 @media (min-width: 920px) {
