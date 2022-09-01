@@ -123,3 +123,23 @@
   border-style: inset;
   color: rgb(98, 89, 223);
 }
+
+@media (min-width: 800px) {
+  .sidebar {
+    position: initial;
+    width: clamp(25rem, 30vw, 30rem);
+    height: calc(100vh - 7rem);
+  }
+
+  .sidebar__back {
+    display: none;
+  }
+
+  .sidebar__user-info {
+    margin-top: 4rem;
+  }
+
+  .sidebar__logout-btn svg {
+    transform: rotate(180deg);
+  }
+}
