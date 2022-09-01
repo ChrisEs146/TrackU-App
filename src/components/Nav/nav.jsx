@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo } from "../../store/actions/userActions";
 import logo from "../../images/logo.png";
+import { FaBars } from "react-icons/fa";
 import "./nav.css";
 
 /**
