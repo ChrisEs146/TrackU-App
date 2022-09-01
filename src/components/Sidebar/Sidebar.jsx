@@ -85,7 +85,7 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
       </ul>
       <div className="sidebar__logout">
         <button className="sidebar__logout-btn" onClick={handleLogOut}>
-          <FaSignOutAlt /> Log Out
+          <FaSignOutAlt /> Sign Out
         </button>
       </div>
     </div>
