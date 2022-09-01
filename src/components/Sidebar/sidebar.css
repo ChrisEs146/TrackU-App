@@ -7,6 +7,11 @@
   width: 65vw;
   height: 100vh;
   background-color: #16213e;
+  transition: right 0.3s;
+}
+
+.sidebar.active {
+  right: -100%;
 }
 
 .sidebar__back {
