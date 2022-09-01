@@ -18,6 +18,30 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
   const navigate = useNavigate();
   const { userData } = useSelector((state) => state.user);
 
+  // Array of sidebar options
+  const options = [
+    {
+      id: 1,
+      title: "Projects",
+      icon: <FaFolderOpen />,
+    },
+    {
+      id: 2,
+      title: "In Progress",
+      icon: <FaSpinner />,
+    },
+    {
+      id: 3,
+      title: "Completed",
+      icon: <FaCheckCircle />,
+    },
+    {
+      id: 4,
+      title: "Settings",
+      icon: <IoSettingsSharp />,
+    },
+  ];
+
   /**
    * Loggs the user out, and redirects it to the homepage.
    */
