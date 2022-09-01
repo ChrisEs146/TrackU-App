@@ -32,13 +32,19 @@ const Nav = () => {
           Sign In
         </NavLink>
       ) : (
-        <button
-          title="Sidebar menu"
-          aria-label="Button to open menu"
-          className="navigation__menu-btn"
-        >
-          <FaBars />
-        </button>
+        <>
+          <button
+            title="Sidebar menu"
+            aria-label="Button to open menu"
+            className="navigation__menu-btn"
+            onClick={handleSidebarState}
+          >
+            <FaBars />
+          </button>
+          <button title="Add Project" className="navigation__add-btn">
+            <FaPlus /> Add Project
+          </button>
+        </>
       )}
     </nav>
   );
