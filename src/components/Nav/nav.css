@@ -52,6 +52,34 @@
   width: 1.2em;
 }
 
+@media (min-width: 800px) {
+  .navigation__menu-btn {
+    display: none;
+  }
+
+  .navigation__add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: rgb(236, 236, 236);
+    background-color: rgb(12, 116, 202);
+    padding: 1rem 1.5rem;
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    border-radius: 10rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .navigation__add-btn:hover {
+    background-color: rgb(7, 68, 117);
+  }
+}
+
 @media (min-width: 920px) {
   .navigation__btn {
     padding: 1rem 2.5rem;
