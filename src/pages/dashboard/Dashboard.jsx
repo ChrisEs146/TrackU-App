@@ -12,7 +12,7 @@ import "./dashboard.css";
  * and the projects main panel.
  * @returns Dashboard Component
  */
-const Dashboard = () => {
+const Dashboard = ({ handleSidebarState, isSidebarActive }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { userData, userToken } = useSelector((state) => state.user);
