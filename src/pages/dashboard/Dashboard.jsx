@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { logOut } from "../../store/slices/user";
 import { toast } from "react-toastify";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import jwt_decode from "jwt-decode";
-import { useEffect } from "react";
 
 /**
  * Renders the dashboard component, with the sidebar navigation
@@ -31,10 +32,11 @@ const Dashboard = () => {
   }, [dispatch, userToken, navigate]);
 
   return (
-    <div>
-      <h2>Dashboard</h2>
-      <h3>Welcome {userData?.fullName}</h3>
-      <button onClick={handleLogOut}>Log Out</button>
+    <div className="dashboard">
+      <Sidebar />
+      <div className="dashboard__projects-container">
+        <h2 className="dashboard__title">Dashboard</h2>
+      </div>
     </div>
   );
 };
