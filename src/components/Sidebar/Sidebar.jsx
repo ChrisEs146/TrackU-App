@@ -50,6 +50,11 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
     navigate("/");
   };
 
+  /**
+   * Handler to change the active state of the sidebar's options
+   */
+  const handleOptionState = () => setIsOptionActive(!isOptionActive);
+
   return (
     <div className={isSidebarActive ? "sidebar active" : "sidebar"}>
       <div className="sidebar__back">
