@@ -10,7 +10,7 @@
 }
 
 .sidebar__back {
-  margin: 1rem 0rem 4rem 1rem;
+  margin: 1rem 0 4rem 1rem;
 }
 
 .sidebar__back-btn,
@@ -42,7 +42,7 @@
   color: #fff;
   border-bottom: 2px solid #fff;
   border-radius: 2px;
-  margin: 0rem 1rem;
+  margin: 0 1rem;
 }
 
 .sidebar__user-info h3 {
