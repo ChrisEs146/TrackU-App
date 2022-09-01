@@ -69,6 +69,11 @@
   margin-top: 2rem;
 }
 
+.sidebar__option {
+  width: 100%;
+  height: 4rem;
+  transition: border-left 0.2s ease-in, background-color 0.2s;
+}
 .sidebar__option-btn {
   display: flex;
   align-items: center;
