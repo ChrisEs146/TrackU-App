@@ -30,14 +30,6 @@ const Dashboard = () => {
     }
   }, [dispatch, userToken, navigate]);
 
-  /**
-   * Loggs the user out, and redirects it to the homepage.
-   */
-  const handleLogOut = () => {
-    dispatch(logOut());
-    navigate("/");
-  };
-
   return (
     <div>
       <h2>Dashboard</h2>
