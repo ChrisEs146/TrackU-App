@@ -1,0 +1,15 @@
+.dashboard {
+  width: 100vw;
+  height: calc(100vh - 7rem);
+}
+
+.dashboard__projects-container {
+  background-color: aquamarine;
+}
+
+@media (min-width: 800px) {
+  .dashboard {
+    display: grid;
+    grid-template-columns: auto 2fr;
+  }
+}
