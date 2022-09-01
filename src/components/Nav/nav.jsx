@@ -32,11 +32,13 @@ const Nav = () => {
           Sign In
         </NavLink>
       ) : (
-        <div title="Username" className="navigation__avatar-container">
-          <div alt="user's avatar" className="navigation__avatar">
-            <span>{userData.fullName.charAt(0).toUpperCase()}</span>
-          </div>
-        </div>
+        <button
+          title="Sidebar menu"
+          aria-label="Button to open menu"
+          className="navigation__menu-btn"
+        >
+          <FaBars />
+        </button>
       )}
     </nav>
   );
