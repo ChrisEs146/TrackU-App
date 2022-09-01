@@ -11,7 +11,7 @@ import "./nav.css";
  * the user profile in case the user exists.
  * @returns Navigation Component
  */
-const Nav = () => {
+const Nav = ({ handleSidebarState }) => {
   const { userData, userToken } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
