@@ -66,26 +66,22 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
         <h3>Welcome, {userData?.fullName.split(" ")[0]}</h3>
       </div>
       <ul className="sidebar__options-list">
-        <li className="sidebar__option">
-          <button className="sidebar__option-btn">
-            <FaFolderOpen /> Projects
-          </button>
-        </li>
-        <li className="sidebar__option">
-          <button className="sidebar__option-btn">
-            <FaSpinner /> In Progress
-          </button>
-        </li>
-        <li className="sidebar__option">
-          <button className="sidebar__option-btn">
-            <FaCheckCircle /> Completed
-          </button>
-        </li>
-        <li className="sidebar__option">
-          <button className="sidebar__option-btn">
-            <IoSettingsSharp /> Settings
-          </button>
-        </li>
+        {options.map((option) => {
+          return (
+            <li className="sidebar__option" key={option.id}>
+              <button
+                title={option.title}
+                className="sidebar__option-btn"
+                onClick={handleSidebarState}
+              >
+                <span>
+                  {option.icon}
+                  {option.title}
+                </span>
+              </button>
+            </li>
+          );
+        })}
       </ul>
       <div className="sidebar__logout">
         <button className="sidebar__logout-btn" onClick={handleLogOut}>
