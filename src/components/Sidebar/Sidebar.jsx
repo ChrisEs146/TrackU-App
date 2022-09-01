@@ -51,9 +51,14 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
   };
 
   return (
-    <div className="sidebar">
+    <div className={isSidebarActive ? "sidebar active" : "sidebar"}>
       <div className="sidebar__back">
-        <button title="Close menu" aria-label="Button to close menu" className="sidebar__back-btn">
+        <button
+          title="Close menu"
+          aria-label="Button to close menu"
+          className="sidebar__back-btn"
+          onClick={handleSidebarState}
+        >
           <FaArrowRight />
         </button>
       </div>
