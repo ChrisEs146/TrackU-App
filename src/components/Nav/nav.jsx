@@ -26,6 +26,7 @@ const Nav = ({ handleSidebarState }) => {
     <nav className="navigation">
       <div className="navigation__logo">
         <img src={logo} alt="TrackU logo" title="TrackU" />
+        <p>TrackU</p>
       </div>
       {!userData ? (
         <NavLink className="navigation__btn" to="/registration">
