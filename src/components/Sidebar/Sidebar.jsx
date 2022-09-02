@@ -24,11 +24,13 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
       id: 1,
       title: "Projects",
       icon: <FaFolderOpen />,
+      path: "/dashboard/projects",
     },
     {
       id: 2,
       title: "Settings",
       icon: <IoSettingsSharp />,
+      path: "/dashboard/settings",
     },
   ];
 
