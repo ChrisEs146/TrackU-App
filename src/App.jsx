@@ -6,6 +6,8 @@ import Homepage from "./pages/homepage/Homepage";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Form from "./pages/form/Form";
 import Nav from "./components/Nav/nav";
+import Settings from "./pages/settings/Settings";
+import Projects from "./pages/projects/Projects";
 const App = () => {
   // Setting the sidebar activation and deactivation state
   const [isSidebarActive, setIsSidebarActive] = useState(false);
@@ -26,11 +28,15 @@ const App = () => {
             path="/dashboard"
             element={
               <Dashboard
-                handleSidebarState={handleSidebarState}
                 isSidebarActive={isSidebarActive}
+                handleSidebarState={handleSidebarState}
               />
             }
-          />
+          >
+            <Route index element={<Projects />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
         </Routes>
       </BrowserRouter>
       <ToastContainer />
