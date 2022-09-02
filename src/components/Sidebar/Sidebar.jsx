@@ -27,16 +27,6 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
     },
     {
       id: 2,
-      title: "In Progress",
-      icon: <FaSpinner />,
-    },
-    {
-      id: 3,
-      title: "Completed",
-      icon: <FaCheckCircle />,
-    },
-    {
-      id: 4,
       title: "Settings",
       icon: <IoSettingsSharp />,
     },
