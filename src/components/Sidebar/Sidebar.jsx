@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
 import { logOut } from "../../store/slices/user";
@@ -13,7 +12,6 @@ import "./sidebar.css";
  * @returns Sidebar Menu Component
  */
 const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
-  const [isOptionActive, setIsOptionActive] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { userData } = useSelector((state) => state.user);
@@ -45,7 +43,6 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
   /**
    * Handler to change the active state of the sidebar's options
    */
-  const handleOptionState = () => setIsOptionActive(!isOptionActive);
 
   return (
     <div className={isSidebarActive ? "sidebar active" : "sidebar"}>
