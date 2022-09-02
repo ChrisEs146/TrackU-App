@@ -1,5 +1,5 @@
-/* Navigation styles */
-
+/* NAVIGATION STYLES */
+/* ==Navigation Component== */
 .navigation {
   display: flex;
   align-items: center;
@@ -9,11 +9,25 @@
   width: 100%;
 }
 
+/* ==Navigation logo== */
+.navigation__logo {
+  display: flex;
+  align-items: center;
+}
+
 .navigation__logo img {
   height: 5rem;
   width: 5rem;
 }
 
+.navigation__logo p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: rgb(98, 89, 223);
+}
+
+/* ==Navigation button== */
 .navigation__add-btn {
   display: none;
 }
@@ -55,6 +69,7 @@
   width: 1.2em;
 }
 
+/* MEDIA QUERIES */
 @media (min-width: 800px) {
   .navigation__menu-btn {
     display: none;
