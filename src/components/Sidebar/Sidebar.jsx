@@ -71,16 +71,17 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
         {options.map((option) => {
           return (
             <li className="sidebar__option" key={option.id}>
-              <button
+              <NavLink
                 title={option.title}
-                className="sidebar__option-btn"
+                className="sidebar__option-link"
+                to={option.path}
                 onClick={handleSidebarState}
               >
                 <span>
                   {option.icon}
                   {option.title}
                 </span>
-              </button>
+              </NavLink>
             </li>
           );
         })}
