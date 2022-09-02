@@ -36,7 +36,7 @@ const Dashboard = ({ handleSidebarState, isSidebarActive }) => {
     <div className="dashboard">
       <Sidebar handleSidebarState={handleSidebarState} isSidebarActive={isSidebarActive} />
       <div className="dashboard__projects-container">
-        <h2 className="dashboard__title">Dashboard</h2>
+        <Outlet />
       </div>
     </div>
   );
