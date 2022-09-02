@@ -34,6 +34,31 @@
   border-radius: 4px;
 }
 
+.sidebar__logout {
+  margin: auto 2rem 4rem 2rem;
+}
+
+.sidebar__logout-btn {
+  gap: 2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  width: 100%;
+  height: 4rem;
+  background-color: #fff;
+  border: 2px solid transparent;
+  border-style: inset;
+  border-radius: 3px;
+  transition: border 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.sidebar__logout-btn:hover {
+  border: 2px solid rgb(98, 89, 223);
+  border-style: inset;
+  color: rgb(98, 89, 223);
+}
+
+/* ==Sidebar user info== */
 .sidebar__user-info,
 .sidebar__avatar-container {
   display: flex;
@@ -100,30 +125,7 @@
   margin-left: 5.5rem;
 }
 
-.sidebar__logout {
-  margin: auto 2rem 4rem 2rem;
-}
-
-.sidebar__logout-btn {
-  gap: 2rem;
-  font-size: 1.6rem;
-  font-weight: 500;
-  width: 100%;
-  height: 4rem;
-  background-color: #fff;
-  border: 2px solid transparent;
-  border-style: inset;
-  border-radius: 3px;
-  transition: border 0.3s, color 0.3s;
-  cursor: pointer;
-}
-
-.sidebar__logout-btn:hover {
-  border: 2px solid rgb(98, 89, 223);
-  border-style: inset;
-  color: rgb(98, 89, 223);
-}
-
+/* MEDIA QUERIES */
 @media (min-width: 800px) {
   .sidebar {
     position: initial;
