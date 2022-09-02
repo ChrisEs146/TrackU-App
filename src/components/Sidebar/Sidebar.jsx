@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { logOut } from "../../store/slices/user";
 import { FaArrowRight, FaSignOutAlt, FaFolderOpen } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
