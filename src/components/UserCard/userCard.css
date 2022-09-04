@@ -1,0 +1,27 @@
+/* USER CARD STYLES */
+.card__user-info,
+.card__avatar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__user-info {
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  border-radius: 2px;
+  margin: 0 1rem;
+}
+
+.card__user-info h3 {
+  margin-bottom: 2rem;
+}
+
+.card__avatar-container {
+  width: 5rem;
+  height: 5rem;
+  background-color: red;
+  border-radius: 50%;
+}
