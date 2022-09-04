@@ -24,10 +24,6 @@
   transition: background-color 0.3s;
 }
 
-.projects__add-btn:hover {
-  background-color: rgb(7, 68, 117);
-}
-
 /* MEDIA QUERIES */
 @media (min-width: 800px) {
   .projects__add-btn {
