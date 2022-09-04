@@ -5,7 +5,7 @@
   flex-direction: column;
   position: absolute;
   top: 0;
-  right: 0;
+  right: -100%;
   width: 65vw;
   height: 100vh;
   background-color: #16213e;
@@ -14,7 +14,7 @@
 }
 
 .sidebar.active {
-  right: -100%;
+  right: 0;
 }
 
 /* ==Sidebar back and sign out btn== */
