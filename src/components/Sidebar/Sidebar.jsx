@@ -57,14 +57,7 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
           <FaArrowRight />
         </button>
       </div>
-      <div className="sidebar__user-info">
-        <div title="Username" className="sidebar__avatar-container">
-          <div alt="user's avatar" className="sidebar__avatar">
-            <span>{userData?.fullName.charAt(0).toUpperCase()}</span>
-          </div>
-        </div>
-        <h3>Welcome, {userData?.fullName.split(" ")[0]}</h3>
-      </div>
+      <UserCard message={"Welcome, "} fullName={userData.fullName} />
       <ul className="sidebar__options-list">
         {options.map((option) => {
           return (
