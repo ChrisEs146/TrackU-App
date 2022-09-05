@@ -43,6 +43,7 @@ const Form = () => {
       name: "fullName",
       type: "text",
       label: "Full Name",
+      icon: <FaUserAlt />,
       errorMsg:
         "Name should be at least 4 characters long and shouldn't include any special character!",
       placeholder: "Full Name",
@@ -53,6 +54,7 @@ const Form = () => {
       name: "email",
       type: "email",
       label: "Email Address",
+      icon: <FaEnvelope />,
       errorMsg: "It must be a valid email!",
       placeholder: "Email",
     },
@@ -61,6 +63,7 @@ const Form = () => {
       name: "password",
       type: "password",
       label: "Password",
+      icon: <FaLock />,
       errorMsg:
         "Password should be 8 - 20 characters. It must include at least 1 letter, 1 number and 1 special character!",
       placeholder: "Password",
@@ -71,6 +74,7 @@ const Form = () => {
       name: "confirmPassword",
       type: "password",
       label: "Confirm Password",
+      icon: <FaLock />,
       errorMsg: "Passwords don't match",
       placeholder: "Confirm Password",
       pattern: formData.password,
