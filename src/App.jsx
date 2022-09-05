@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Homepage from "./pages/homepage/Homepage";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Form from "./pages/form/Form";
 import Nav from "./components/Nav/nav";
 import Settings from "./pages/settings/Settings";
+import UserUpdate from "./pages/settings/userUpdate/UserUpdate";
+import UserDelete from "./pages/settings/userDelete/UserDelete";
+import ChangePassword from "./pages/settings/changePassword/ChangePassword";
 import Projects from "./pages/projects/Projects";
+import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   // Setting the sidebar activation and deactivation state
   const [isSidebarActive, setIsSidebarActive] = useState(false);
@@ -35,7 +38,12 @@ const App = () => {
           >
             <Route index element={<Projects />} />
             <Route path="projects" element={<Projects />} />
-            <Route path="settings" element={<Settings />} />
+            <Route path="settings" element={<Settings />}>
+              <Route index element={<UserUpdate />} />
+              <Route path="update-user" element={<UserUpdate />} />
+              <Route path="delete-user" element={<UserDelete />} />
+              <Route path="change-password" element={<ChangePassword />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
