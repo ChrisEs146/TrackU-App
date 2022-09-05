@@ -7,7 +7,7 @@ const Settings = () => {
 
   return (
     <section className="settings">
-      <h2>Settings</h2>
+      <h2 className="settings__title">Settings</h2>
       <div className="settings-form-container">
         <div className="settings__user-info">
           <UserCard fullName={userData.fullName} />
