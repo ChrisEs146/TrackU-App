@@ -76,10 +76,6 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
     navigate("/");
   };
 
-  /**
-   * Handler to change the active state of the sidebar's options
-   */
-
   return (
     <div className={isSidebarActive ? "sidebar active" : "sidebar"}>
       <div className="sidebar__back">
@@ -96,18 +92,38 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
       <ul className="sidebar__options-list">
         {options.map((option) => {
           return (
-            <li className="sidebar__option" key={option.id}>
+            <li className="sidebar__option">
               <NavLink
                 title={option.title}
                 className="sidebar__option-link"
                 to={option.path}
-                onClick={handleSidebarState}
+                onClick={option.id === 1 ? handleSidebarState : handleSettingsState}
               >
                 <span>
                   {option.icon}
                   {option.title}
+                  {areSettingsOpen ? option.icon3 : option.icon2}
                 </span>
               </NavLink>
+              {option.subNav &&
+                option.subNav.map((item) => {
+                  return (
+                    <NavLink
+                      title={item.title}
+                      key={item.id}
+                      className={
+                        areSettingsOpen ? "sidebar__option-subnav active" : "sidebar__option-subnav"
+                      }
+                      to={item.path}
+                      onClick={handleSidebarState}
+                    >
+                      <span>
+                        {item.icon}
+                        {item.title}
+                      </span>
+                    </NavLink>
+                  );
+                })}
             </li>
           );
         })}
