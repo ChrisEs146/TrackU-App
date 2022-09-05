@@ -13,14 +13,7 @@ const Settings = () => {
       <div className="settings-form-container">
         <div className="settings__user-info">
           <UserCard fullName={userData.fullName} />
-          <div className="settings__user-btns">
-            <button className="settings__update-btn">
-              <FaUserEdit /> Update User
-            </button>
-            <button className="settings__delete-btn">
-              <AiOutlineUserDelete /> Delete User
-            </button>
-          </div>
+        </div>
         </div>
         <form className="settings__form"></form>
       </div>
