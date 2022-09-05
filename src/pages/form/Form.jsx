@@ -141,7 +141,7 @@ const Form = () => {
         <form className="registration__form" onSubmit={handleSubmit}>
           {isSignUp ? (
             inputs.map((input) => (
-              <Input
+              <FormInput
                 key={input.id}
                 value={formData[input.name]}
                 handleChange={handleChange}
@@ -150,7 +150,7 @@ const Form = () => {
             ))
           ) : (
             <>
-              <Input
+              <FormInput
                 name="email"
                 type="email"
                 id="email"
@@ -159,7 +159,7 @@ const Form = () => {
                 placeholder="Email"
                 value={formData.email}
               />
-              <Input
+              <FormInput
                 name="password"
                 type="password"
                 id="password"
