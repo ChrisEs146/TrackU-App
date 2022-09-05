@@ -75,7 +75,12 @@
   height: 4rem;
 }
 
-.sidebar__option-link {
+.sidebar__option-subnav {
+  display: none;
+}
+
+.sidebar__option-link,
+.sidebar__option-subnav.active {
   display: flex;
   align-items: center;
   font-size: 1.6rem;
@@ -96,11 +101,19 @@
   background-color: #2c417d;
 }
 
-.sidebar__option-link span {
+.sidebar__option-link span,
+.sidebar__option-subnav span {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 2rem;
+}
+
+.sidebar__option-link span {
+  margin-left: 3.5rem;
+}
+
+.sidebar__option-subnav span {
   margin-left: 5.5rem;
 }
 
