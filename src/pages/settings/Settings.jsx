@@ -1,8 +1,6 @@
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import UserCard from "../../components/UserCard/UserCard";
-import { FaUserEdit } from "react-icons/fa";
-import { AiOutlineUserDelete } from "react-icons/ai";
 import "./settings.css";
 const Settings = () => {
   const { userData } = useSelector((state) => state.user);
@@ -14,8 +12,9 @@ const Settings = () => {
         <div className="settings__user-info">
           <UserCard fullName={userData.fullName} />
         </div>
+        <div className="settings__form">
+          <Outlet />
         </div>
-        <form className="settings__form"></form>
       </div>
     </section>
   );
