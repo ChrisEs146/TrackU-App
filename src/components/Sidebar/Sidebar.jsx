@@ -66,6 +66,8 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
     },
   ];
 
+  const handleSettingsState = () => setAreSettingsOpen(!areSettingsOpen);
+
   /**
    * Loggs the user out, and redirects it to the homepage.
    */
