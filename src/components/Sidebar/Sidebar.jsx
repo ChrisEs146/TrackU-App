@@ -92,7 +92,7 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
       <ul className="sidebar__options-list">
         {options.map((option) => {
           return (
-            <li className="sidebar__option">
+            <li className="sidebar__option" key={option.id}>
               <NavLink
                 title={option.title}
                 className="sidebar__option-link"
