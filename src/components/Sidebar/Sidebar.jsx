@@ -26,6 +26,7 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { userData } = useSelector((state) => state.user);
+  const [areSettingsOpen, setAreSettingsOpen] = useState(false);
 
   // Array of sidebar options
   const options = [
