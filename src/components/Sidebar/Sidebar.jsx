@@ -14,6 +14,7 @@ import {
 import { IoSettingsSharp } from "react-icons/io5";
 import { AiOutlineUserDelete } from "react-icons/ai";
 import "./sidebar.css";
+import { useState } from "react";
 
 /**
  * Sidebar menu component that shows the user information
