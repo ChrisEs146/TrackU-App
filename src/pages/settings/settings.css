@@ -2,6 +2,20 @@
 .settings {
   width: 100%;
   height: 100%;
+  padding: 1rem;
+}
+
+.settings__title {
+  margin-bottom: 2rem;
+}
+
+.settings__form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+  max-width: 68rem;
+  margin: 0 auto;
 }
 
 .settings__user-info {
@@ -11,38 +25,6 @@
   flex-direction: column;
   gap: 2rem;
   background-color: #6992e4;
-  padding: 1rem 0;
-  margin: 0 1rem 0 1rem;
+  padding: 1rem;
   border-radius: 4px;
-}
-
-.settings__user-btns {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.settings__user-btns button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  font-size: 1.4rem;
-  font-weight: 500;
-  width: fit-content;
-  height: fit-content;
-  padding: 1.2rem;
-  border-radius: 6px;
-}
-
-.settings__update-btn {
-  color: #fff;
-  background-color: #2b3595;
-  border: 2px solid transparent;
-}
-
-.settings__delete-btn {
-  color: #500000;
-  background-color: #fff;
-  border: 2px solid #c21010;
 }
