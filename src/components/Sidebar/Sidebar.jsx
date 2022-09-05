@@ -2,8 +2,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
 import UserCard from "../UserCard/UserCard";
 import { logOut } from "../../store/slices/user";
-import { FaArrowRight, FaSignOutAlt, FaFolderOpen } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaSignOutAlt,
+  FaFolderOpen,
+  FaUserEdit,
+  FaUserLock,
+  FaAngleDown,
+  FaAngleUp,
+} from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
+import { AiOutlineUserDelete } from "react-icons/ai";
 import "./sidebar.css";
 
 /**
