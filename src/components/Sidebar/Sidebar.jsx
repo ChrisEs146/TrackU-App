@@ -40,7 +40,29 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
       id: 2,
       title: "Settings",
       icon: <IoSettingsSharp />,
+      icon2: <FaAngleDown />,
+      icon3: <FaAngleUp />,
       path: "/dashboard/settings",
+      subNav: [
+        {
+          id: 2.1,
+          title: "Update Account",
+          icon: <FaUserEdit />,
+          path: "/dashboard/settings/update-user",
+        },
+        {
+          id: 2.2,
+          title: "Change Password",
+          icon: <FaUserLock />,
+          path: "/dashboard/settings/change-password",
+        },
+        {
+          id: 2.3,
+          title: "Delete Account",
+          icon: <AiOutlineUserDelete />,
+          path: "/dashboard/settings/delete-user",
+        },
+      ],
     },
   ];
 
