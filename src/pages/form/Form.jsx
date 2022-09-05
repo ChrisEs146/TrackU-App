@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpUser, signInUser } from "../../store/actions/userActions";
+import { FaUserAlt, FaEnvelope, FaLock } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "./form.css";
 import Input from "./input/Input";
