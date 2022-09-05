@@ -66,6 +66,9 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
     },
   ];
 
+  /**
+   *  Handler to activate and deactivate the settings subnavigation
+   */
   const handleSettingsState = () => setAreSettingsOpen(!areSettingsOpen);
 
   /**
