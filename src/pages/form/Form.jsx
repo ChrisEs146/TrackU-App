@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { signUpUser, signInUser } from "../../store/actions/userActions";
 import { FaUserAlt, FaEnvelope, FaLock } from "react-icons/fa";
 import { toast } from "react-toastify";
+import FormInput from "../../components/FormInput/FormInput";
 import "./form.css";
-import Input from "./input/Input";
 
 /**
  * Dynamic form component to be used as a sign up or sign in form.
