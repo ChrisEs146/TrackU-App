@@ -1,0 +1,59 @@
+/* PROJECT CARD STYLES */
+.project {
+  background-color: #fff;
+  box-shadow: 7px 9px 9px -1px rgba(94, 94, 94, 0.75);
+  width: 100%;
+  height: fit-content;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 4px solid slateblue;
+  transition: transform 0.3s ease-in;
+}
+
+.project:hover {
+  transform: translateY(-3px);
+}
+
+.project__info,
+.project__status-container,
+.project__status,
+.project__progress {
+  display: flex;
+  align-items: center;
+}
+
+.project__info {
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.project__status,
+.project__progress {
+  flex-direction: column;
+  gap: 2rem;
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.project__status-container {
+  font-size: 1.5rem;
+  border-top: 2px solid slateblue;
+  width: 100%;
+}
+
+.project__status-value {
+  font-weight: 500;
+  color: #fff;
+  padding: 1rem;
+  background-color: slateblue;
+  border-radius: 6px;
+}
+
+.project__progress-percent {
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding: 1rem;
+  color: steelblue;
+  border-radius: 50%;
+}
