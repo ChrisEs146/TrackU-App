@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
 import UserCard from "../UserCard/UserCard";
+import { toast } from "react-toastify";
 import { logOut } from "../../store/slices/user";
 import {
   FaArrowRight,
@@ -14,7 +16,6 @@ import {
 import { IoSettingsSharp } from "react-icons/io5";
 import { AiOutlineUserDelete } from "react-icons/ai";
 import "./sidebar.css";
-import { useState } from "react";
 
 /**
  * Sidebar menu component that shows the user information
@@ -91,7 +92,7 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
           <FaArrowRight />
         </button>
       </div>
-      <UserCard message={"Welcome, "} fullName={userData.fullName} />
+      <UserCard message={"Welcome, "} fullName={userData?.fullName} />
       <ul className="sidebar__options-list">
         {options.map((option) => {
           return (
