@@ -2,6 +2,7 @@
 .dashboard {
   width: 100vw;
   height: calc(100vh - 7rem);
+  overflow-y: scroll;
 }
 
 @media (min-width: 800px) {
