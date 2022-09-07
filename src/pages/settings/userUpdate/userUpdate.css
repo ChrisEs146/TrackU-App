@@ -2,7 +2,6 @@
 
 .update__form-container {
   width: 100%;
-  /* width: clamp(30rem, 50%, 42rem); */
   height: fit-content;
   background-color: #fff;
   box-shadow: 5px 10px 11px 0px rgba(0, 0, 0, 0.51);
@@ -12,14 +11,16 @@
 
 .update__form-title {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
   width: 100%;
   height: fit-content;
+  margin-bottom: 4rem;
 }
 
 .update__form-title h2 {
   color: rgb(5, 82, 184);
-  margin-bottom: 5rem;
 }
 
 .update__form div {
