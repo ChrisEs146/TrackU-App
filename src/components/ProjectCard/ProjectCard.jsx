@@ -2,11 +2,20 @@ import "./projectCard.css";
 
 const ProjectCard = () => {
   const currentDate = new Date();
+
   const testDate = currentDate.toLocaleDateString("default", {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
   });
+
+  const proj1 = {
+    title: "Angular Web Application",
+    date: testDate,
+    status: "In Progress",
+    progress: 55,
+  };
+
   const progressColor = (value) => {
     if (value >= 80 && value <= 100) {
       return "#3EC70B";
@@ -15,20 +24,26 @@ const ProjectCard = () => {
     }
     return "#c21010";
   };
+
   return (
     <div className="project">
       <div className="project__info">
-        <h3>Angular Web Application</h3>
-        <span>{testDate}</span>
+        <h3>{proj1.title}</h3>
+        <span>{proj1.date}</span>
       </div>
       <div className="project__status-container">
         <div className="project__status">
-          <span>Status</span>
-          <span className="project__status-value">In Progress</span>
+          <span className="project__item-header">Status</span>
+          <span className="project__status-value">{proj1.status}</span>
         </div>
         <div className="project__progress">
-          <span>Progress</span>
-          <span className="project__progress-percent">20%</span>
+          <span className="project__item-header">Progress</span>
+          <span
+            className="project__progress-percent"
+            style={{ color: `${progressColor(proj1.progress)}` }}
+          >
+            {proj1.progress}%
+          </span>
         </div>
       </div>
     </div>
