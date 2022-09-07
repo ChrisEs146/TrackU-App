@@ -53,8 +53,7 @@
 .project__progress-percent {
   font-size: 1.8rem;
   font-weight: 600;
-  padding: 1rem;
-  color: steelblue;
+  padding: 0.7rem;
   border-radius: 50%;
 }
 
