@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { logOut } from "../../store/slices/user";
 import { toast } from "react-toastify";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Sidebar from "../dashboard/Sidebar/Sidebar";
 import jwt_decode from "jwt-decode";
 import "./dashboard.css";
 
