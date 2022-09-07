@@ -4,16 +4,19 @@
   height: 100%;
 }
 
-.projects__title-container {
+.projects__title-container,
+.projects__add-btn,
+.projects__container {
   display: flex;
   align-items: center;
+}
+
+.projects__title-container {
   justify-content: space-between;
   padding: 1rem;
 }
 
 .projects__add-btn {
-  display: flex;
-  align-items: center;
   justify-content: center;
   font-size: 1.4rem;
   font-weight: 500;
@@ -28,9 +31,6 @@
 }
 
 .projects__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   gap: 2rem;
   width: 100%;
