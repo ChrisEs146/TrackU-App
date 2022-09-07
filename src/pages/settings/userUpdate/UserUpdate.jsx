@@ -56,7 +56,7 @@ const UserUpdate = () => {
           );
         })}
         <button className="update__form-btn" type="submit">
-          Update Account
+          Update Name
         </button>
       </form>
     </div>
