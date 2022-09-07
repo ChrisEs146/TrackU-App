@@ -39,6 +39,11 @@
   overflow-y: scroll;
 }
 
+.projects__headers {
+  display: none;
+  max-width: 90rem;
+}
+
 /* MEDIA QUERIES */
 @media (min-width: 700px) {
   .projects__headers,
