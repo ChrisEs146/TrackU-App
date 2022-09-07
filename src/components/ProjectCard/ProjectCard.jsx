@@ -7,6 +7,14 @@ const ProjectCard = () => {
     month: "2-digit",
     day: "2-digit",
   });
+  const progressColor = (value) => {
+    if (value >= 80 && value <= 100) {
+      return "#3EC70B";
+    } else if (value >= 40 && value < 80) {
+      return "#3120E0";
+    }
+    return "#c21010";
+  };
   return (
     <div className="project">
       <div className="project__info">
