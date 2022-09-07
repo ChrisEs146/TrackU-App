@@ -15,6 +15,16 @@ const Projects = () => {
         </button>
       </div>
       <div className="projects__container">
+        <div className="projects__headers">
+          <div className="projects__headers-info">
+            <span>Title</span>
+            <span>Added</span>
+          </div>
+          <div className="projects__headers-progress">
+            <span>Status</span>
+            <span>Progress</span>
+          </div>
+        </div>
         <ProjectCard />
       </div>
     </section>
