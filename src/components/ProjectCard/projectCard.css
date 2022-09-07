@@ -57,3 +57,34 @@
   color: steelblue;
   border-radius: 50%;
 }
+
+@media (min-width: 700px) {
+  .project {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .project__info {
+    width: 50%;
+    justify-content: space-around;
+    margin-bottom: 0;
+    padding-right: 2.5rem;
+  }
+
+  .project__status-container {
+    justify-content: space-around;
+    width: 50%;
+    border: none;
+  }
+
+  .project__progress,
+  .project__status {
+    width: 50%;
+    margin: 0;
+  }
+
+  .project__item-header {
+    display: none;
+  }
+}
