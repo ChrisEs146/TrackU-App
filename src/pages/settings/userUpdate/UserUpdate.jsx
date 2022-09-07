@@ -41,7 +41,8 @@ const UserUpdate = () => {
   return (
     <div className="update__form-container">
       <div className="update__form-title">
-        <h2>Update Account</h2>
+        <h2>Update Name</h2>
+        <p>Enter a new name</p>
       </div>
       <form className="update__form">
         {formInputs.map((input) => {
