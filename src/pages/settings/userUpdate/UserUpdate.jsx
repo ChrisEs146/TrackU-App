@@ -23,15 +23,6 @@ const UserUpdate = () => {
       placeholder: "Full Name",
       pattern: "^[A-Za-z0-9 ]{4,}$",
     },
-    {
-      id: 2,
-      name: "email",
-      type: "email",
-      label: "Email Address",
-      icon: <FaEnvelope />,
-      errorMsg: "It must be a valid email!",
-      placeholder: "Email",
-    },
   ];
 
   const handleChange = (e) => {
