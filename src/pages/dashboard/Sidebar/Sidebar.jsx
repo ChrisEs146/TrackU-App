@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
-import UserCard from "../UserCard/UserCard";
-import { toast } from "react-toastify";
-import { logOut } from "../../store/slices/user";
+import UserCard from "../../../components/UserCard/UserCard";
+import { logOut } from "../../../store/slices/user";
 import {
   FaArrowRight,
   FaSignOutAlt,
