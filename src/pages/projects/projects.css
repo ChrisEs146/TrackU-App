@@ -40,6 +40,32 @@
 }
 
 /* MEDIA QUERIES */
+@media (min-width: 700px) {
+  .projects__headers,
+  .projects__headers-info,
+  .projects__headers-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .projects__headers {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: rgb(2, 52, 92);
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #fff;
+    box-shadow: 5px 3px 10px -4px rgba(0, 0, 0, 0.69);
+    border-radius: 8px;
+  }
+
+  .projects__headers-info,
+  .projects__headers-progress {
+    width: 50%;
+  }
+}
+
 @media (min-width: 800px) {
   .projects__add-btn {
     display: none;
