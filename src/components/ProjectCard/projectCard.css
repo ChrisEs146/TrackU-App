@@ -3,6 +3,7 @@
   background-color: #fff;
   box-shadow: 7px 9px 9px -1px rgba(94, 94, 94, 0.75);
   width: 100%;
+  max-width: 90rem;
   height: fit-content;
   padding: 1rem;
   border-radius: 6px;
@@ -30,7 +31,7 @@
 .project__status,
 .project__progress {
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   width: 90%;
   margin: 0 auto;
   padding: 1rem;
