@@ -10,6 +10,7 @@ import UserUpdate from "./pages/settings/userUpdate/UserUpdate";
 import UserDelete from "./pages/settings/userDelete/UserDelete";
 import ChangePassword from "./pages/settings/changePassword/ChangePassword";
 import Projects from "./pages/projects/Projects";
+import Project from "./pages/project/Project";
 import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   // Setting the sidebar activation and deactivation state
@@ -38,6 +39,7 @@ const App = () => {
           >
             <Route index element={<Projects />} />
             <Route path="projects" element={<Projects />} />
+            <Route path="project/:projectId" element={<Project />} />
             <Route path="settings" element={<Settings />}>
               <Route index element={<UserUpdate />} />
               <Route path="update-user" element={<UserUpdate />} />
