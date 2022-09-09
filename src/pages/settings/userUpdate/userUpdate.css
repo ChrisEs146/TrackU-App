@@ -1,14 +1,5 @@
 /* USER UPDATE FORM STYLES */
 
-.update__form-container {
-  width: 100%;
-  height: fit-content;
-  background-color: #fff;
-  box-shadow: 5px 10px 11px 0px rgba(0, 0, 0, 0.51);
-  padding: 2rem;
-  border-radius: 4px;
-}
-
 .update__form-title {
   display: flex;
   align-items: center;
