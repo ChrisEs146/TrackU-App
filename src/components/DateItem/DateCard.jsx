@@ -1,4 +1,4 @@
-import "./dateItem.css";
+import "./dateCard.css";
 
 const DateCard = ({ date }) => {
   const day = date.toLocaleString("default", { day: "2-digit" });
