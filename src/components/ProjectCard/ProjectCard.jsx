@@ -1,21 +1,8 @@
+import { NavLink } from "react-router-dom";
+import DateCard from "../DateItem/DateCard";
 import "./projectCard.css";
 
-const ProjectCard = () => {
-  const currentDate = new Date();
-
-  const testDate = currentDate.toLocaleDateString("default", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  });
-
-  const proj1 = {
-    title: "Angular Web Application",
-    date: testDate,
-    status: "In Progress",
-    progress: 55,
-  };
-
+const ProjectCard = ({ project }) => {
   const progressColor = (value) => {
     if (value >= 80 && value <= 100) {
       return "#3EC70B";
@@ -26,27 +13,27 @@ const ProjectCard = () => {
   };
 
   return (
-    <div className="project">
+    <NavLink to={`/dashboard/project/${project.id}`} className="project">
       <div className="project__info">
-        <h3>{proj1.title}</h3>
-        <span>{proj1.date}</span>
+        <h3>{project.title}</h3>
+        <DateCard date={project.date} />
       </div>
       <div className="project__status-container">
         <div className="project__status">
           <span className="project__item-header">Status</span>
-          <span className="project__status-value">{proj1.status}</span>
+          <span className="project__status-value">{project.status}</span>
         </div>
         <div className="project__progress">
           <span className="project__item-header">Progress</span>
           <span
             className="project__progress-percent"
-            style={{ color: `${progressColor(proj1.progress)}` }}
+            style={{ color: `${progressColor(project.progress)}` }}
           >
-            {proj1.progress}%
+            {project.progress}%
           </span>
         </div>
       </div>
-    </div>
+    </NavLink>
   );
 };
 
