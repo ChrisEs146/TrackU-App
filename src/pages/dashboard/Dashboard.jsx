@@ -34,7 +34,11 @@ const Dashboard = ({ handleSidebarState, isSidebarActive }) => {
 
   return (
     <div className="dashboard">
-      <Sidebar handleSidebarState={handleSidebarState} isSidebarActive={isSidebarActive} />
+      <Sidebar
+        handleSidebarState={handleSidebarState}
+        isSidebarActive={isSidebarActive}
+        fullName={userData?.fullName}
+      />
       <div className="dashboard__projects-container">
         <Outlet />
       </div>
