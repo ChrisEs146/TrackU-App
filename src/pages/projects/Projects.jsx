@@ -2,6 +2,14 @@ import { FaPlus } from "react-icons/fa";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import "./projects.css";
 const Projects = () => {
+  const proj1 = {
+    id: 1,
+    title: "Angular Web Application",
+    date: new Date(),
+    status: "In Progress",
+    progress: 55,
+  };
+
   return (
     <section className="projects">
       <div className="projects__title-container">
@@ -15,17 +23,7 @@ const Projects = () => {
         </button>
       </div>
       <div className="projects__container">
-        <div className="projects__headers">
-          <div className="projects__headers-info">
-            <span>Title</span>
-            <span>Added</span>
-          </div>
-          <div className="projects__headers-progress">
-            <span>Status</span>
-            <span>Progress</span>
-          </div>
-        </div>
-        <ProjectCard />
+        <ProjectCard project={proj1} />
       </div>
     </section>
   );
