@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { FaUserAlt, FaEnvelope } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { FaUserAlt } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
+import FormCard from "../../../components/FormCard/FormCard";
 import "./userUpdate.css";
 const UserUpdate = () => {
   const { userData } = useSelector((state) => state.user);
