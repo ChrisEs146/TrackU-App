@@ -78,6 +78,10 @@
     padding-right: 2.5rem;
   }
 
+  .project__info h3 {
+    order: 2;
+  }
+
   .project__status-container {
     justify-content: space-around;
     width: 50%;
