@@ -38,7 +38,7 @@ const UserDelete = () => {
   };
 
   return (
-    <div className="delete__form-container">
+    <FormCard>
       <div className="delete__form-title">
         <h2>Delete Account</h2>
         <p>Confirm your password to delete this account</p>
@@ -58,7 +58,7 @@ const UserDelete = () => {
           Delete Account
         </button>
       </form>
-    </div>
+    </FormCard>
   );
 };
 

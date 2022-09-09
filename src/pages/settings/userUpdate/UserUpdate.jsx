@@ -29,7 +29,7 @@ const UserUpdate = () => {
   };
 
   return (
-    <div className="update__form-container">
+    <FormCard>
       <div className="update__form-title">
         <h2>Update Name</h2>
         <p>Enter a new name</p>
@@ -49,7 +49,7 @@ const UserUpdate = () => {
           Update Name
         </button>
       </form>
-    </div>
+    </FormCard>
   );
 };
 

@@ -4,6 +4,7 @@ import { FaLock } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
 import "./changePassword.css";
+
 const ChangePassword = () => {
   const { userData } = useSelector((state) => state.user);
   const [pwdFormData, setPwdFormData] = useState({
@@ -51,7 +52,7 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="changePwd__form-container">
+    <FormCard>
       <div className="changePwd__form-title">
         <h2>Change Password</h2>
         <p>Enter a new password</p>
@@ -71,7 +72,7 @@ const ChangePassword = () => {
           Change Password
         </button>
       </form>
-    </div>
+    </FormCard>
   );
 };
 
