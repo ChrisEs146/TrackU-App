@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
-import UserCard from "../../../components/UserCard/UserCard";
-import { logOut } from "../../../store/slices/user";
+import UserCard from "../UserCard/UserCard";
+import { logOut } from "../../store/slices/user";
 import {
   FaArrowRight,
   FaSignOutAlt,
@@ -22,10 +22,9 @@ import "./sidebar.css";
  * also contains the log out button.
  * @returns Sidebar Menu Component
  */
-const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
+const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { userData } = useSelector((state) => state.user);
   const [areSettingsOpen, setAreSettingsOpen] = useState(false);
 
   // Array of sidebar options
@@ -91,7 +90,7 @@ const Sidebar = ({ handleSidebarState, isSidebarActive }) => {
           <FaArrowRight />
         </button>
       </div>
-      <UserCard message={"Welcome, "} fullName={userData?.fullName} />
+      <UserCard message={"Welcome, "} fullName={fullName} />
       <ul className="sidebar__options-list">
         {options.map((option) => {
           return (
