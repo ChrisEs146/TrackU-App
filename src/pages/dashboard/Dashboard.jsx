@@ -21,16 +21,12 @@ const Dashboard = ({ handleSidebarState, isSidebarActive }) => {
     // Checks if token exists and verifies if it's still valid.
     if (userToken) {
       const decodedToken = jwt_decode(userToken);
-
       if (decodedToken.exp * 1000 < new Date().getTime()) {
         dispatch(logOut());
         navigate("/registration");
       }
-    } else {
-      toast.error("Please, Sign In");
-      navigate("/registration");
     }
-  }, [dispatch, userToken, navigate]);
+  }, [userToken, dispatch, navigate]);
 
   return (
     <div className="dashboard">
