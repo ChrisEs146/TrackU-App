@@ -12,6 +12,7 @@ import ChangePassword from "./pages/settings/changePassword/ChangePassword";
 import Projects from "./pages/projects/Projects";
 import Project from "./pages/project/Project";
 import "react-toastify/dist/ReactToastify.css";
+import ProtectedRoute from "./components/Route/ProtectedRoute";
 const App = () => {
   // Setting the sidebar activation and deactivation state
   const [isSidebarActive, setIsSidebarActive] = useState(false);
@@ -26,25 +27,27 @@ const App = () => {
       <BrowserRouter>
         <Nav handleSidebarState={handleSidebarState} />
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route index element={<Homepage />} />
           <Route path="/registration" element={<Form />} />
-          <Route
-            path="/dashboard"
-            element={
-              <Dashboard
-                isSidebarActive={isSidebarActive}
-                handleSidebarState={handleSidebarState}
-              />
-            }
-          >
-            <Route index element={<Projects />} />
-            <Route path="projects" element={<Projects />} />
-            <Route path="project/:projectId" element={<Project />} />
-            <Route path="settings" element={<Settings />}>
-              <Route index element={<UserUpdate />} />
-              <Route path="update-user" element={<UserUpdate />} />
-              <Route path="delete-user" element={<UserDelete />} />
-              <Route path="change-password" element={<ChangePassword />} />
+          <Route element={<ProtectedRoute />}>
+            <Route
+              path="/dashboard"
+              element={
+                <Dashboard
+                  isSidebarActive={isSidebarActive}
+                  handleSidebarState={handleSidebarState}
+                />
+              }
+            >
+              <Route index element={<Projects />} />
+              <Route path="projects" element={<Projects />} />
+              <Route path="project/:projectId" element={<Project />} />
+              <Route path="settings" element={<Settings />}>
+                <Route index element={<UserUpdate />} />
+                <Route path="update-user" element={<UserUpdate />} />
+                <Route path="delete-user" element={<UserDelete />} />
+                <Route path="change-password" element={<ChangePassword />} />
+              </Route>
             </Route>
           </Route>
         </Routes>
