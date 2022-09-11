@@ -88,9 +88,6 @@ const Form = () => {
       toast.error(error);
     }
 
-    // If sign up form is active and the user's data already exists
-    if (isSignUp && userData) navigate("/dashboard");
-
     // If sign up process is successful
     if (isSignUp && success) {
       toast.success("Account Successfully Created");
