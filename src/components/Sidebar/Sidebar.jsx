@@ -80,8 +80,8 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
 
   return (
     <div className={isSidebarActive ? "container active" : "container"}>
-      <div className={isSidebarActive ? "sidebar__background active" : "sidebar__background"}></div>
-      <div className={isSidebarActive ? "sidebar active" : "sidebar"}>
+      <div className="sidebar__background"></div>
+      <div className="sidebar">
         <div className="sidebar__back">
           <button
             title="Close menu"
