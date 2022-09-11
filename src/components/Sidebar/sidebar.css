@@ -34,11 +34,14 @@
   background-color: rgb(39, 39, 39);
   z-index: 3;
 }
+
 /* ==Sidebar component== */
 .sidebar {
   display: flex;
   flex-direction: column;
   position: absolute;
+  visibility: hidden;
+  pointer-events: none;
   top: 0;
   right: -100%;
   width: 65vw;
@@ -48,7 +51,9 @@
   transition: right 0.3s;
 }
 
-.sidebar.active {
+.active .sidebar {
+  visibility: visible;
+  pointer-events: visible;
   right: 0;
 }
 
