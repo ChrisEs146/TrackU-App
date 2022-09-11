@@ -167,6 +167,9 @@
     height: calc(100vh - 7rem);
   }
 
+  .active .sidebar__background {
+    display: none;
+  }
 
   .sidebar {
     position: initial;
