@@ -1,5 +1,10 @@
 import "./dateCard.css";
 
+/**
+ * DateCard component that shows the month, day and year.
+ * @param {Date} date
+ * @returns DateCard component
+ */
 const DateCard = ({ date }) => {
   const day = date.toLocaleString("default", { day: "2-digit" });
   const month = date.toLocaleString("default", { month: "short" });
