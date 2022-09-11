@@ -5,12 +5,20 @@ import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
 import "./userDelete.css";
 
+/**
+ * UserDelete page contains a form that allows users
+ * to delete their accounts by providing a password
+ * confirmation.
+ * @returns UserDelete page
+ */
 const UserDelete = () => {
   const { userData } = useSelector((state) => state.user);
   const [deleteFormData, setDeleteFormData] = useState({
     email: userData.email,
     password: "",
   });
+
+  // Inputs array
   const formInputs = [
     {
       id: 1,
@@ -33,6 +41,10 @@ const UserDelete = () => {
     },
   ];
 
+  /**
+   * Handles the changes in the form's inputs.
+   * @param {*} e
+   */
   const handleChange = (e) => {
     setDeleteFormData({ ...deleteFormData, [e.target.name]: e.target.value });
   };

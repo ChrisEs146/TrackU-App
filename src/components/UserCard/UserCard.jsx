@@ -1,4 +1,11 @@
 import "./userCard.css";
+
+/**
+ * UserCard component that shows the user's name and profile icon.
+ * @param {string} message
+ * @param {string} fullName
+ * @returns UserCard component
+ */
 const UserCard = ({ message, fullName }) => {
   return (
     <div className="card__user-info">

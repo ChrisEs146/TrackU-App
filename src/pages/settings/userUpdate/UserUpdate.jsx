@@ -4,12 +4,21 @@ import { FaUserAlt } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
 import "./userUpdate.css";
+
+/**
+ * UserUpdate page contains a form that allows the user
+ * to update his/her name by providing the email and
+ * the new name.
+ * @returns UserUpdate page
+ */
 const UserUpdate = () => {
   const { userData } = useSelector((state) => state.user);
   const [updateFormData, setUpdateFormData] = useState({
     fullName: userData.fullName,
     email: userData.email,
   });
+
+  // Inputs array
   const formInputs = [
     {
       id: 1,
@@ -24,6 +33,10 @@ const UserUpdate = () => {
     },
   ];
 
+  /**
+   * Handles the changes in the form's input.
+   * @param {*} e
+   */
   const handleChange = (e) => {
     setUpdateFormData({ ...updateFormData, [e.target.name]: e.target.value });
   };

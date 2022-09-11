@@ -2,7 +2,19 @@ import { NavLink } from "react-router-dom";
 import DateCard from "../DateItem/DateCard";
 import "./projectCard.css";
 
+/**
+ * ProjectCard component that shows the date, title,
+ * project status and project progres (in percentage).
+ * @param {*} project
+ * @returns ProjectCard component
+ */
 const ProjectCard = ({ project }) => {
+  /**
+   * Analyzes progress value and returns a color based on said value.
+   * @param {number} value
+   * @returns Hex code to change the progress number's color
+   * according to the project's progress.
+   */
   const progressColor = (value) => {
     if (value >= 80 && value <= 100) {
       return "#3EC70B";

@@ -5,6 +5,12 @@ import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
 import "./changePassword.css";
 
+/**
+ * Shows form that allows users to change their password
+ * by providing the current password, new password and
+ * a confirmation of the new password.
+ * @returns ChangePassword page
+ */
 const ChangePassword = () => {
   const { userData } = useSelector((state) => state.user);
   const [pwdFormData, setPwdFormData] = useState({
@@ -12,6 +18,8 @@ const ChangePassword = () => {
     newPassword: "",
     confirmNewPassword: "",
   });
+
+  // Inputs array
   const formInputs = [
     {
       id: 1,
@@ -47,6 +55,10 @@ const ChangePassword = () => {
     },
   ];
 
+  /**
+   * Handles the form's input changes
+   * @param {*} e
+   */
   const handleChange = (e) => {
     setPwdFormData({ ...pwdFormData, [e.target.name]: e.target.value });
   };
