@@ -79,69 +79,74 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
   };
 
   return (
-    <div className={isSidebarActive ? "sidebar active" : "sidebar"}>
-      <div className="sidebar__back">
-        <button
-          title="Close menu"
-          aria-label="Button to close menu"
-          className="sidebar__back-btn"
-          onClick={handleSidebarState}
-        >
-          <FaArrowRight />
-        </button>
+    <>
+      <div className={isSidebarActive ? "sidebar__background active" : "sidebar__background"}></div>
+      <div className={isSidebarActive ? "sidebar active" : "sidebar"}>
+        <div className="sidebar__back">
+          <button
+            title="Close menu"
+            aria-label="Button to close menu"
+            className="sidebar__back-btn"
+            onClick={handleSidebarState}
+          >
+            <FaArrowRight />
+          </button>
+        </div>
+        <UserCard message={"Welcome, "} fullName={fullName} />
+        <ul className="sidebar__options-list">
+          {options.map((option) => {
+            return (
+              <li className="sidebar__option" key={option.id}>
+                <NavLink
+                  title={option.title}
+                  className="sidebar__option-link"
+                  to={option.path}
+                  onClick={option.id === 1 ? handleSidebarState : handleSettingsState}
+                >
+                  <span>
+                    {option.icon}
+                    {option.title}
+                    {areSettingsOpen ? option.icon3 : option.icon2}
+                  </span>
+                </NavLink>
+                {option.subNav &&
+                  option.subNav.map((item) => {
+                    return (
+                      <NavLink
+                        title={item.title}
+                        key={item.id}
+                        className={
+                          areSettingsOpen
+                            ? "sidebar__option-subnav active"
+                            : "sidebar__option-subnav"
+                        }
+                        to={item.path}
+                        onClick={handleSidebarState}
+                      >
+                        <span>
+                          {item.icon}
+                          {item.title}
+                        </span>
+                      </NavLink>
+                    );
+                  })}
+              </li>
+            );
+          })}
+        </ul>
+        <div className="sidebar__logout">
+          <button
+            className="sidebar__logout-btn"
+            onClick={() => {
+              handleLogOut();
+              handleSidebarState();
+            }}
+          >
+            <FaSignOutAlt /> Sign Out
+          </button>
+        </div>
       </div>
-      <UserCard message={"Welcome, "} fullName={fullName} />
-      <ul className="sidebar__options-list">
-        {options.map((option) => {
-          return (
-            <li className="sidebar__option" key={option.id}>
-              <NavLink
-                title={option.title}
-                className="sidebar__option-link"
-                to={option.path}
-                onClick={option.id === 1 ? handleSidebarState : handleSettingsState}
-              >
-                <span>
-                  {option.icon}
-                  {option.title}
-                  {areSettingsOpen ? option.icon3 : option.icon2}
-                </span>
-              </NavLink>
-              {option.subNav &&
-                option.subNav.map((item) => {
-                  return (
-                    <NavLink
-                      title={item.title}
-                      key={item.id}
-                      className={
-                        areSettingsOpen ? "sidebar__option-subnav active" : "sidebar__option-subnav"
-                      }
-                      to={item.path}
-                      onClick={handleSidebarState}
-                    >
-                      <span>
-                        {item.icon}
-                        {item.title}
-                      </span>
-                    </NavLink>
-                  );
-                })}
-            </li>
-          );
-        })}
-      </ul>
-      <div className="sidebar__logout">
-        <button
-          className="sidebar__logout-btn"
-          onClick={() => {
-            handleLogOut();
-            handleSidebarState();
-          }}
-        >
-          <FaSignOutAlt /> Sign Out
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 
