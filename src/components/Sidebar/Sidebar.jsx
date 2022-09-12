@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
 import UserCard from "../UserCard/UserCard";
 import { logOut } from "../../store/slices/user";
