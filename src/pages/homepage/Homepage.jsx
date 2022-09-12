@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 /**
  * Homepage allows users to sign in or sign up to have
- * access to TrakU dashboard.
+ * access to TrackU dashboard.
  * @returns Homepage Component
  */
 const Homepage = () => {
