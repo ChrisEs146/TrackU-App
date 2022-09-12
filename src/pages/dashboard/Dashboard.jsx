@@ -1,10 +1,6 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { logOut } from "../../store/slices/user";
-import { toast } from "react-toastify";
+import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import jwt_decode from "jwt-decode";
 import "./dashboard.css";
 
 /**
