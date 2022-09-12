@@ -9,20 +9,7 @@ import "./dashboard.css";
  * @returns Dashboard Component
  */
 const Dashboard = ({ handleSidebarState, isSidebarActive }) => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { userData, userToken } = useSelector((state) => state.user);
-
-  useEffect(() => {
-    // Checks if token exists and verifies if it's still valid.
-    if (userToken) {
-      const decodedToken = jwt_decode(userToken);
-      if (decodedToken.exp * 1000 < new Date().getTime()) {
-        dispatch(logOut());
-        navigate("/registration");
-      }
-    }
-  }, [userToken, dispatch, navigate]);
+  const { userData } = useSelector((state) => state.user);
 
   return (
     <div className="dashboard">
