@@ -65,6 +65,21 @@ const Project = () => {
             <span> In Progress</span>
           </div>
         </div>
+        <div className="projectPage__info">
+          <div className="projectPage__description">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique accusamus ea
+              incidunt. Eum placeat voluptate dolores, quas debitis perspiciatis harum saepe minus!
+              Vitae ut est, dignissimos minus aliquid fuga asperiores beatae, ea facilis sint ipsa,
+              earum cupiditate. Dolor molestias quaerat reprehenderit velit laboriosam? Maiores
+              sapiente esse minus quae. Optio voluptas, officiis quo, ipsa non recusandae maxime
+              dolorum dolor ipsam assumenda aliquid sunt voluptatum harum vel, excepturi accusantium
+              consequatur veniam facere eveniet inventore reprehenderit aliquam esse. Odio qui vel
+              vitae, repudiandae maxime praesentium tempore pariatur doloribus, temporibus explicabo
+              porro adipisci in recusandae voluptates mollitia veritatis ipsa. In nesciunt commodi
+              molestiae explicabo.
+            </p>
+          </div>
   );
 };
 
