@@ -50,6 +50,21 @@ const Project = () => {
             <FaEdit />
           </button>
         </div>
+        <h2 className="projectPage__title">Mock Title</h2>
+        <div className="projectPage__status-container">
+          <div className="projectPage__added">
+            <span className="projectPage__status-label">
+              <FaCalendarDay /> Added:
+            </span>
+            <span> 02/12/2022</span>
+          </div>
+          <div className="projectPage__status">
+            <span className="projectPage__status-label">
+              <FaQuestionCircle /> Status:
+            </span>
+            <span> In Progress</span>
+          </div>
+        </div>
   );
 };
 
