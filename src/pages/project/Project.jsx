@@ -89,6 +89,23 @@ const Project = () => {
             </CircularProgressbarWithChildren>
           </div>
         </div>
+      </div>
+      <div className="projectPage__updates-container">
+        <div className="projectPage__updates-title">
+          <h2>Updates</h2>
+          <button className="projectPage__updates-btn">
+            <FaPlus />
+            Add Update
+          </button>
+        </div>
+        <div className="projectPage__updates">
+          <UpdateCard date={date} title={title} description={description} />
+          <UpdateCard date={date} title={title2} description={description2} />
+          <UpdateCard date={date} title={title3} description={description3} />
+          <UpdateCard date={date} title={title3} description={description3} />
+        </div>
+      </div>
+    </section>
   );
 };
 
