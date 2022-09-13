@@ -7,7 +7,12 @@ import { progressColor } from "../../Utils/Functions";
 import "./project.css";
 
 const Project = () => {
-  const { projectId } = useParams();
+
+  const progressStyles = buildStyles({
+    pathColor: { currentColor },
+    trailColor: "#CFD2CF",
+    strokeLinecap: "round",
+  });
   return (
     <div>
       <p>PROJECT PAGE {projectId}</p>
