@@ -80,6 +80,15 @@ const Project = () => {
               molestiae explicabo.
             </p>
           </div>
+          <div className="projectPage__progress-container">
+            <CircularProgressbarWithChildren value={percentage} styles={progressStyles}>
+              <div className="projectPage__progress-text" style={{ color: currentColor }}>
+                <span>{percentage}%</span>
+                <span>Completed</span>
+              </div>
+            </CircularProgressbarWithChildren>
+          </div>
+        </div>
   );
 };
 
