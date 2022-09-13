@@ -33,10 +33,23 @@ const Project = () => {
     "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis, repellat?";
 
   return (
-    <div>
-      <p>PROJECT PAGE {projectId}</p>
-      <NavLink to="/dashboard/projects">Back</NavLink>
-    </div>
+    <section className="projectPage">
+      <div className="projectPage__main-content">
+        <div className="projectPage__btns-container">
+          <NavLink title="Go back" className="projectPage__back-link" to="/dashboard/projects">
+            <span>
+              <AiOutlineArrowLeft />
+              Back
+            </span>
+          </NavLink>
+          <button
+            title="Edit Project"
+            aria-label="Project edit button"
+            className="projectPage__edit-btn"
+          >
+            <FaEdit />
+          </button>
+        </div>
   );
 };
 
