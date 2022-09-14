@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import UserCard from "../../components/UserCard/UserCard";
@@ -24,7 +25,7 @@ const Settings = () => {
           <UserCard fullName={userData.fullName} />
         </div>
         <div className="settings__form">
-          <Outlet />
+          <Outlet context={[isModalActive, handleModalActivation]} />
         </div>
       </div>
     </section>
