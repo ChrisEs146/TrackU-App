@@ -11,6 +11,10 @@ import "./settings.css";
  */
 const Settings = () => {
   const { userData } = useSelector((state) => state.user);
+  const [isModalActive, setIsModalActive] = useState(false);
+
+  // Confirmation modal handler
+  const handleModalActivation = () => setIsModalActive(!isModalActive);
 
   return (
     <section className="settings">
