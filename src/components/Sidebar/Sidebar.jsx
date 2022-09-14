@@ -81,7 +81,7 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
   return (
     <div className={isSidebarActive ? "container active" : "container"}>
       <div className="sidebar__background"></div>
-      <div className="sidebar">
+      <aside className="sidebar">
         <div className="sidebar__back">
           <button
             title="Close menu"
@@ -145,7 +145,7 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
             <FaSignOutAlt /> Sign Out
           </button>
         </div>
-      </div>
+      </aside>
     </div>
   );
 };
