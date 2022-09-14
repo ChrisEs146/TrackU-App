@@ -15,6 +15,7 @@ import "./userUpdate.css";
  */
 const UserUpdate = () => {
   const { userData } = useSelector((state) => state.user);
+  const [isModalActive, handleModalActivation] = useOutletContext();
   const [updateFormData, setUpdateFormData] = useState({
     fullName: userData.fullName,
     email: userData.email,

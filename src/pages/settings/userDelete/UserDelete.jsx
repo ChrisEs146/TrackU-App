@@ -15,6 +15,7 @@ import { useOutletContext } from "react-router-dom";
  */
 const UserDelete = () => {
   const { userData } = useSelector((state) => state.user);
+  const [isModalActive, handleModalActivation] = useOutletContext();
   const [deleteFormData, setDeleteFormData] = useState({
     email: userData.email,
     password: "",
@@ -33,11 +34,10 @@ const UserDelete = () => {
     },
     {
       id: 2,
-      name: "confirmPassword",
+      name: "Password",
       type: "password",
       label: "Confirm Password",
       icon: <FaLock />,
-      errorMsg: "Passwords don't match",
       placeholder: "Confirm Password",
       pattern: deleteFormData.password,
     },

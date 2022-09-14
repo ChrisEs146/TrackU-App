@@ -15,6 +15,7 @@ import { useOutletContext } from "react-router-dom";
  */
 const ChangePassword = () => {
   const { userData } = useSelector((state) => state.user);
+  const [isModalActive, handleModalActivation] = useOutletContext();
   const [pwdFormData, setPwdFormData] = useState({
     currentPassword: "",
     newPassword: "",
