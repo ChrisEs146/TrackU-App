@@ -32,3 +32,76 @@
   opacity: 0.5;
 }
 
+/* ==Modal Window(aside)== */
+.modal__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 7px 9px 9px -1px rgba(94, 94, 94, 0.75);
+  width: clamp(20rem, 80%, 40rem);
+  padding: 2rem;
+  z-index: 20;
+}
+
+/* ==Modal Logo== */
+.modal__logo {
+  width: 100%;
+  height: fit-content;
+  margin-bottom: 2rem;
+}
+
+.modal__logo[data-action="confirm"] {
+  color: green;
+}
+.modal__logo[data-action="delete"] {
+  color: red;
+}
+
+.modal__logo svg {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto;
+}
+
+/* ==Modal Information== */
+.modal__title {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.modal__description {
+  margin-bottom: 3rem;
+}
+
+/* ==Modal Buttons== */
+.modal__btns-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.modal__btns-container button {
+  font-size: 1.5rem;
+  font-weight: 500;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal__action-btn[data-action="confirm"] {
+  color: #fff;
+  background-color: seagreen;
+}
+
+.modal__action-btn[data-action="delete"] {
+  color: #fff;
+  background-color: rgb(92, 3, 3);
+}
