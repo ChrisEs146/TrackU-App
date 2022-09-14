@@ -64,27 +64,36 @@ const ChangePassword = () => {
   };
 
   return (
-    <FormCard>
-      <div className="changePwd__form-title">
-        <h2>Change Password</h2>
-        <p>Enter a new password</p>
-      </div>
-      <form className="changePwd__form">
-        {formInputs.map((input) => {
-          return (
-            <FormInput
-              key={input.id}
-              value={pwdFormData[input.name]}
-              handleChange={handleChange}
-              {...input}
-            />
-          );
-        })}
-        <button className="changePwd__form-btn" type="submit">
-          Change Password
-        </button>
-      </form>
-    </FormCard>
+    <>
+      <FormCard>
+        <div className="changePwd__form-title">
+          <h2>Change Password</h2>
+          <p>Enter a new password</p>
+        </div>
+        <form className="changePwd__form">
+          {formInputs.map((input) => {
+            return (
+              <FormInput
+                key={input.id}
+                value={pwdFormData[input.name]}
+                handleChange={handleChange}
+                {...input}
+              />
+            );
+          })}
+          <button className="changePwd__form-btn" type="button" onClick={handleModalActivation}>
+            Change Password
+          </button>
+        </form>
+      </FormCard>
+      <ConfirmationModal
+        action={modalData.action}
+        title={modalData.title}
+        description={modalData.description}
+        isModalActive={isModalActive}
+        handleModalActivation={handleModalActivation}
+      />
+    </>
   );
 };
 

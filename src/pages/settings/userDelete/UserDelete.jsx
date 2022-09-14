@@ -50,27 +50,36 @@ const UserDelete = () => {
   };
 
   return (
-    <FormCard>
-      <div className="delete__form-title">
-        <h2>Delete Account</h2>
-        <p>Confirm your password to delete this account</p>
-      </div>
-      <form className="delete__form">
-        {formInputs.map((input) => {
-          return (
-            <FormInput
-              key={input.id}
-              value={deleteFormData[input.name]}
-              handleChange={handleChange}
-              {...input}
-            />
-          );
-        })}
-        <button className="delete__form-btn" type="submit">
-          Delete Account
-        </button>
-      </form>
-    </FormCard>
+    <>
+      <FormCard>
+        <div className="delete__form-title">
+          <h2>Delete Account</h2>
+          <p>Confirm your password to delete this account</p>
+        </div>
+        <form className="delete__form">
+          {formInputs.map((input) => {
+            return (
+              <FormInput
+                key={input.id}
+                value={deleteFormData[input.name]}
+                handleChange={handleChange}
+                {...input}
+              />
+            );
+          })}
+          <button className="delete__form-btn" type="button" onClick={handleModalActivation}>
+            Delete Account
+          </button>
+        </form>
+      </FormCard>
+      <ConfirmationModal
+        action={modalData.action}
+        title={modalData.title}
+        description={modalData.description}
+        isModalActive={isModalActive}
+        handleModalActivation={handleModalActivation}
+      />
+    </>
   );
 };
 

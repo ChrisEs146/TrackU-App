@@ -42,27 +42,36 @@ const UserUpdate = () => {
   };
 
   return (
-    <FormCard>
-      <div className="update__form-title">
-        <h2>Update Name</h2>
-        <p>Enter a new name</p>
-      </div>
-      <form className="update__form">
-        {formInputs.map((input) => {
-          return (
-            <FormInput
-              key={input.id}
-              value={updateFormData[input.name]}
-              handleChange={handleChange}
-              {...input}
-            />
-          );
-        })}
-        <button className="update__form-btn" type="submit">
-          Update Name
-        </button>
-      </form>
-    </FormCard>
+    <>
+      <FormCard>
+        <div className="update__form-title">
+          <h2>Update Name</h2>
+          <p>Enter a new name</p>
+        </div>
+        <form className="update__form">
+          {formInputs.map((input) => {
+            return (
+              <FormInput
+                key={input.id}
+                value={updateFormData[input.name]}
+                handleChange={handleChange}
+                {...input}
+              />
+            );
+          })}
+          <button className="update__form-btn" type="button" onClick={handleModalActivation}>
+            Update Name
+          </button>
+        </form>
+      </FormCard>
+      <ConfirmationModal
+        action={modalData.action}
+        title={modalData.title}
+        description={modalData.description}
+        isModalActive={isModalActive}
+        handleModalActivation={handleModalActivation}
+      />
+    </>
   );
 };
 
