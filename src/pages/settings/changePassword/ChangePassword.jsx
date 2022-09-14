@@ -55,6 +55,14 @@ const ChangePassword = () => {
     },
   ];
 
+  // Modal window information
+  const modalData = {
+    title: "ARE YOU SURE?",
+    action: "confirm",
+    description:
+      "You are about to change your account's password. If you want to proceed click confirm, otherwise cancel this operation.",
+  };
+
   /**
    * Handles the form's input changes
    * @param {*} e

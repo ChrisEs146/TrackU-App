@@ -33,6 +33,14 @@ const UserUpdate = () => {
     },
   ];
 
+  // Modal window information
+  const modalData = {
+    title: "ARE YOU SURE?",
+    action: "confirm",
+    description:
+      "You are about to change your account's name. If you want to proceed press confirm, otherwise cancel this operation",
+  };
+
   /**
    * Handles the changes in the form's input.
    * @param {*} e

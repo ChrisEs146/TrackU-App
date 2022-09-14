@@ -41,6 +41,14 @@ const UserDelete = () => {
     },
   ];
 
+  // Modal window information
+  const modalData = {
+    title: "WARNING",
+    action: "delete",
+    description:
+      "You are about to delete your account. This is a point of no return, if later on you want your account back, you will have to create a new one.",
+  };
+
   /**
    * Handles the changes in the form's inputs.
    * @param {*} e
