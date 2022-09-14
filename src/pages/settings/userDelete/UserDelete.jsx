@@ -3,7 +3,9 @@ import { useSelector } from "react-redux";
 import { FaLock, FaEnvelope } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
+import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
 import "./userDelete.css";
+import { useOutletContext } from "react-router-dom";
 
 /**
  * UserDelete page contains a form that allows users

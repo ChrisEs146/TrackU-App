@@ -3,7 +3,9 @@ import { useSelector } from "react-redux";
 import { FaLock } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
+import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
 import "./changePassword.css";
+import { useOutletContext } from "react-router-dom";
 
 /**
  * Shows form that allows users to change their password
