@@ -11,7 +11,7 @@ const Project = () => {
   const currentColor = progressColor(percentage);
 
   const progressStyles = buildStyles({
-    pathColor: { currentColor },
+    pathColor: `${currentColor}`,
     trailColor: "#CFD2CF",
     strokeLinecap: "round",
   });
