@@ -1,0 +1,171 @@
+/* PROJECT PAGE STYLES */
+
+.projectPage {
+  height: calc(100vh - 7rem);
+  overflow-y: scroll;
+}
+
+.projectPage__main-content {
+  padding: 1rem;
+}
+
+.projectPage__btns-container,
+.projectPage__back-link span,
+.projectPage__edit-btn,
+.projectPage__progress-text,
+.projectPage__status-container,
+.projectPage__progress-container,
+.projectPage__updates-title,
+.projectPage__updates {
+  display: flex;
+  align-items: center;
+}
+
+/* ==Upper btns== */
+.projectPage__btns-container {
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.projectPage__back-link {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  background-color: rgb(33, 114, 180);
+  transition: background-color 0.3s;
+}
+
+.projectPage__back-link:hover {
+  background-color: rgb(26, 79, 122);
+}
+
+.projectPage__back-link span {
+  justify-content: center;
+  gap: 1rem;
+}
+
+.projectPage__edit-btn {
+  justify-content: center;
+  color: #fff;
+  background-color: rgb(51, 190, 81);
+  width: 4.5rem;
+  height: 4.5rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.projectPage__edit-btn:hover {
+  background-color: rgb(17, 110, 37);
+}
+
+.projectPage__edit-btn svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+/* ==Project Info== */
+.projectPage__info {
+  margin-bottom: 7rem;
+}
+.projectPage__title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.projectPage__description {
+  margin-bottom: 3rem;
+}
+
+/* ==Status Container */
+.projectPage__status-container {
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.projectPage__status-label {
+  font-weight: 500;
+}
+
+/* ==Circular Progress== */
+.projectPage__progress-container {
+  justify-content: center;
+  width: 100%;
+}
+
+.projectPage__progress-container svg {
+  width: 20rem;
+  height: auto;
+}
+
+.projectPage__progress-text {
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.projectPage__progress-text span:first-child {
+  font-size: 3rem;
+}
+
+/* ==Updates== */
+.projectPage__updates-container {
+  color: #fff;
+  background-color: #371b58;
+  height: 50rem;
+  padding: 1rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow-y: scroll;
+}
+
+.projectPage__updates-title {
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.projectPage__updates-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #371b58;
+  padding: 1rem 3rem;
+  background-color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.projectPage__updates-btn:hover {
+  background-color: rgb(190, 190, 190);
+}
+
+.projectPage__updates {
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media (min-width: 1100px) {
+  .projectPage__info {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .projectPage__progress-container {
+    width: fit-content;
+  }
+
+  .projectPage__description {
+    max-width: 60ch;
+    margin: 0;
+  }
+}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./input.css";
+import "./formInput.css";
 
 /**
  * Input field component to be used in the sign up and sign in forms.
@@ -7,7 +7,7 @@ import "./input.css";
  * @returns Custom input field
  */
 const Input = (props) => {
-  const { name, label, errorMsg, type, handleChange, value, placeholder, pattern } = props;
+  const { name, label, errorMsg, type, handleChange, value, placeholder, pattern, icon } = props;
   const [focused, setFocused] = useState(false);
 
   /**
@@ -19,12 +19,15 @@ const Input = (props) => {
 
   return (
     <div className="input__container">
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={name}>
+        {icon}
+        {label}
+      </label>
       <input
+        required
         type={type}
         name={name}
         id={name}
-        required
         value={value}
         placeholder={placeholder}
         pattern={pattern}

@@ -2,9 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpUser, signInUser } from "../../store/actions/userActions";
+import { FaUserAlt, FaEnvelope, FaLock } from "react-icons/fa";
 import { toast } from "react-toastify";
+import FormInput from "../../components/FormInput/FormInput";
 import "./form.css";
-import Input from "./input/Input";
 
 /**
  * Dynamic form component to be used as a sign up or sign in form.
@@ -42,6 +43,7 @@ const Form = () => {
       name: "fullName",
       type: "text",
       label: "Full Name",
+      icon: <FaUserAlt />,
       errorMsg:
         "Name should be at least 4 characters long and shouldn't include any special character!",
       placeholder: "Full Name",
@@ -52,6 +54,7 @@ const Form = () => {
       name: "email",
       type: "email",
       label: "Email Address",
+      icon: <FaEnvelope />,
       errorMsg: "It must be a valid email!",
       placeholder: "Email",
     },
@@ -60,6 +63,7 @@ const Form = () => {
       name: "password",
       type: "password",
       label: "Password",
+      icon: <FaLock />,
       errorMsg:
         "Password should be 8 - 20 characters. It must include at least 1 letter, 1 number and 1 special character!",
       placeholder: "Password",
@@ -70,6 +74,7 @@ const Form = () => {
       name: "confirmPassword",
       type: "password",
       label: "Confirm Password",
+      icon: <FaLock />,
       errorMsg: "Passwords don't match",
       placeholder: "Confirm Password",
       pattern: formData.password,
@@ -83,9 +88,6 @@ const Form = () => {
       toast.error(error);
     }
 
-    // If sign up form is active and the user's data already exists
-    if (isSignUp && userData) navigate("/dashboard");
-
     // If sign up process is successful
     if (isSignUp && success) {
       toast.success("Account Successfully Created");
@@ -96,7 +98,7 @@ const Form = () => {
 
     // If sign in process is successful
     if (!isSignUp && userData) {
-      navigate("/dashboard");
+      navigate("/dashboard/projects");
     }
   }, [navigate, userData, success, isSignUp, error, initialFormState]);
 
@@ -140,7 +142,7 @@ const Form = () => {
         <form className="registration__form" onSubmit={handleSubmit}>
           {isSignUp ? (
             inputs.map((input) => (
-              <Input
+              <FormInput
                 key={input.id}
                 value={formData[input.name]}
                 handleChange={handleChange}
@@ -149,20 +151,22 @@ const Form = () => {
             ))
           ) : (
             <>
-              <Input
+              <FormInput
                 name="email"
                 type="email"
                 id="email"
                 label="Email Address"
+                icon={<FaEnvelope />}
                 handleChange={handleChange}
                 placeholder="Email"
                 value={formData.email}
               />
-              <Input
+              <FormInput
                 name="password"
                 type="password"
                 id="password"
                 label="Password"
+                icon={<FaLock />}
                 handleChange={handleChange}
                 placeholder="Password"
                 value={formData.password}
@@ -172,7 +176,7 @@ const Form = () => {
           <button className="registration__btn" type="submit" disabled={loading}>
             {isSignUp ? "Sign Up" : "Sign In"}
           </button>
-          <button className="registration__switch" onClick={handleSwitch}>
+          <button type="button" className="registration__switch" onClick={handleSwitch}>
             {isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}
           </button>
         </form>

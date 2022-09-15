@@ -1,0 +1,12 @@
+/* DASHBOARD STYLES */
+.dashboard {
+  width: 100vw;
+  height: calc(100vh - 7rem);
+}
+
+@media (min-width: 800px) {
+  .dashboard {
+    display: grid;
+    grid-template-columns: auto 2fr;
+  }
+}

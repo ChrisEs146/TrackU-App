@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo } from "../../store/actions/userActions";
 import logo from "../../images/logo.png";
+import { FaBars, FaPlus } from "react-icons/fa";
 import "./nav.css";
 
 /**
@@ -10,7 +11,7 @@ import "./nav.css";
  * the user profile in case the user exists.
  * @returns Navigation Component
  */
-const Nav = () => {
+const Nav = ({ handleSidebarState }) => {
   const { userData, userToken } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -25,17 +26,26 @@ const Nav = () => {
     <nav className="navigation">
       <div className="navigation__logo">
         <img src={logo} alt="TrackU logo" title="TrackU" />
+        <p>TrackU</p>
       </div>
       {!userData ? (
         <NavLink className="navigation__btn" to="/registration">
           Sign In
         </NavLink>
       ) : (
-        <div title="Username" className="navigation__avatar-container">
-          <div alt="user's avatar" className="navigation__avatar">
-            <span>{userData.fullName.charAt(0).toUpperCase()}</span>
-          </div>
-        </div>
+        <>
+          <button
+            title="Sidebar menu"
+            aria-label="Button to open menu"
+            className="navigation__menu-btn"
+            onClick={handleSidebarState}
+          >
+            <FaBars />
+          </button>
+          <button title="Add Project" className="navigation__add-btn">
+            <FaPlus /> Add Project
+          </button>
+        </>
       )}
     </nav>
   );

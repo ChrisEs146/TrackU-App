@@ -1,0 +1,37 @@
+/* USER UPDATE FORM STYLES */
+
+.update__form-title {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  height: fit-content;
+  margin-bottom: 4rem;
+}
+
+.update__form-title h2 {
+  color: rgb(5, 82, 184);
+}
+
+.update__form div {
+  margin-bottom: 4rem;
+}
+.update__form-btn {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #fff;
+  width: 100%;
+  height: fit-content;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: rgb(43, 132, 248);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.update__form-btn:hover {
+  background-color: rgb(5, 82, 184);
+}

@@ -1,0 +1,73 @@
+/* UPDATE CARD STYLES */
+.update {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  padding: 0.8rem;
+  border-radius: 10px;
+  background-color: rgba(139, 139, 139, 0.3);
+}
+
+/* ==Options Container== */
+.update__options-container {
+  display: none;
+}
+
+.update__options-container.active {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: absolute;
+  top: 2rem;
+  right: 4.5rem;
+  color: #fff;
+  background-color: rgb(61, 61, 61);
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem;
+  z-index: 20;
+}
+
+.update__options-btn {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: transparent;
+  width: 8rem;
+  height: 3rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.update__options-btn:hover {
+  background-color: grey;
+}
+
+.update__btn {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  background-color: transparent;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.update__btn:hover {
+  background-color: rgb(110, 110, 110);
+}
+
+/* ==Date Container== */
+.update__date-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==Title Styles== */
+.update__title {
+  margin-bottom: 0.8rem;
+}

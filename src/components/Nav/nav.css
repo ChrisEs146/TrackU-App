@@ -1,17 +1,35 @@
-/* Navigation styles */
-
+/* NAVIGATION STYLES */
+/* ==Navigation Component== */
 .navigation {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: inherit;
+  background-color: #fff;
   width: 100%;
+}
+
+/* ==Navigation logo== */
+.navigation__logo {
+  display: flex;
+  align-items: center;
 }
 
 .navigation__logo img {
   height: 5rem;
   width: 5rem;
+}
+
+.navigation__logo p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: rgb(98, 89, 223);
+}
+
+/* ==Navigation button== */
+.navigation__add-btn {
+  display: none;
 }
 
 .navigation__btn {
@@ -33,12 +51,51 @@
   background-color: rgba(76, 55, 153, 0.719);
 }
 
-.navigation__avatar-container {
-  width: 4rem;
-  height: 4rem;
-  background-color: red;
-  border-radius: 50%;
-  cursor: pointer;
+.navigation__menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(236, 236, 236);
+  height: fit-content;
+  width: fit-content;
+  padding: 1rem;
+  border: none;
+  background-color: rgb(98, 89, 223);
+  border-radius: 4px;
+}
+
+.navigation__menu-btn svg {
+  height: 1.2em;
+  width: 1.2em;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 800px) {
+  .navigation__menu-btn {
+    display: none;
+  }
+
+  .navigation__add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: rgb(236, 236, 236);
+    background-color: rgb(12, 116, 202);
+    padding: 1rem 1.5rem;
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    border-radius: 10rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .navigation__add-btn:hover {
+    background-color: rgb(7, 68, 117);
+  }
 }
 
 @media (min-width: 920px) {
