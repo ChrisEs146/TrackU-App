@@ -15,7 +15,7 @@ import { useOutletContext } from "react-router-dom";
  */
 const UserDelete = () => {
   const { userData } = useSelector((state) => state.user);
-  const [isModalActive, handleModalActivation] = useOutletContext();
+  const [isConfirmActive, handleConfirmActivation] = useOutletContext();
   const [deleteFormData, setDeleteFormData] = useState({
     email: userData.email,
     password: "",
