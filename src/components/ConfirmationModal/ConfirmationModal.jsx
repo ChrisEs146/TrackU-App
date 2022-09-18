@@ -1,5 +1,6 @@
 import { FiAlertTriangle } from "react-icons/fi";
 import { FaRegCheckCircle } from "react-icons/fa";
+import Modal from "../Modal/Modal";
 import "./confirmationModal.css";
 
 /**
@@ -10,32 +11,31 @@ import "./confirmationModal.css";
  */
 const ConfirmationModal = (props) => {
   return (
-    <div className={props.isModalActive ? "modal active" : "modal"}>
-      <div className="modal__background"></div>
-      <aside className="modal__container">
-        <div className="modal__logo" data-action={props.action}>
+    <Modal isModalActive={props.isModalActive}>
+      <aside className="confirmation">
+        <div className="confirmation__logo" data-action={props.action}>
           {props.action === "delete" ? <FiAlertTriangle /> : <FaRegCheckCircle />}
         </div>
-        <h3 className="modal__title">{props.title}</h3>
-        <p className="modal__description">{props.description}</p>
-        <div className="modal__btns-container">
+        <h3 className="confirmation__title">{props.title}</h3>
+        <p className="confirmation__description">{props.description}</p>
+        <div className="confirmation__btns-container">
           <button
             title="Cancel"
-            className="modal__cancel-btn"
+            className="confirmation__cancel-btn"
             onClick={props.handleModalActivation}
           >
             Cancel
           </button>
           <button
             title={props.action === "delete" ? "Delete" : "Confirm"}
-            className="modal__action-btn"
+            className="confirmation__action-btn"
             data-action={props.action}
           >
             {props.action === "delete" ? "Delete" : "Confirm"}
           </button>
         </div>
       </aside>
-    </div>
+    </Modal>
   );
 };
 
