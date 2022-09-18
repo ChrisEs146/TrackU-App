@@ -91,7 +91,7 @@ const ChangePassword = () => {
               />
             );
           })}
-          <button className="changePwd__form-btn" type="button" onClick={handleModalActivation}>
+          <button className="changePwd__form-btn" type="button" onClick={handleConfirmActivation}>
             Change Password
           </button>
         </form>

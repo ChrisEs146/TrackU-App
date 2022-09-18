@@ -70,7 +70,7 @@ const UserUpdate = () => {
               />
             );
           })}
-          <button className="update__form-btn" type="button" onClick={handleModalActivation}>
+          <button className="update__form-btn" type="button" onClick={handleConfirmActivation}>
             Update Name
           </button>
         </form>

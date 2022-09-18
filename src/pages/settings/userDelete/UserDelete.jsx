@@ -77,7 +77,7 @@ const UserDelete = () => {
               />
             );
           })}
-          <button className="delete__form-btn" type="button" onClick={handleModalActivation}>
+          <button className="delete__form-btn" type="button" onClick={handleConfirmActivation}>
             Delete Account
           </button>
         </form>
