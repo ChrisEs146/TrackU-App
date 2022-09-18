@@ -79,8 +79,8 @@ const UserUpdate = () => {
         action={modalData.action}
         title={modalData.title}
         description={modalData.description}
-        isModalActive={isModalActive}
-        handleModalActivation={handleModalActivation}
+        isModalActive={isConfirmActive}
+        handleModalActivation={handleConfirmActivation}
       />
     </>
   );

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { FaLock } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
@@ -100,8 +99,8 @@ const ChangePassword = () => {
         action={modalData.action}
         title={modalData.title}
         description={modalData.description}
-        isModalActive={isModalActive}
-        handleModalActivation={handleModalActivation}
+        isModalActive={isConfirmActive}
+        handleModalActivation={handleConfirmActivation}
       />
     </>
   );
