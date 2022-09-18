@@ -14,7 +14,7 @@ const Input = (props) => {
    * Function that sets the focus state.
    */
   const handleFocus = () => {
-    setFocused(true);
+    setFocused(!focused);
   };
 
   return (
@@ -36,7 +36,7 @@ const Input = (props) => {
         onBlur={handleFocus}
         onFocus={() => name === "confirmPassword" && setFocused(true)}
       />
-      <span>{errorMsg}</span>
+      {errorMsg && <span>{errorMsg}</span>}
     </div>
   );
 };
