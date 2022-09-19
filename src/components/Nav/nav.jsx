@@ -12,8 +12,10 @@ import { AddFormContext } from "../../contexts/AddFormContext";
  * the user profile in case the user exists.
  * @returns Navigation Component
  */
-const Nav = ({ handleSidebarState }) => {
+const Nav = () => {
   const { userData, userToken } = useSelector((state) => state.user);
+  const { sidebarHandler } = useContext(SidebarContext);
+  const { formHandler } = useContext(AddFormContext);
   const dispatch = useDispatch();
 
   // Fetches user's info on reload
