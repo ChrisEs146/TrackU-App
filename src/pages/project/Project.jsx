@@ -110,6 +110,9 @@ const Project = () => {
           <UpdateCard date={date} title={title3} description={description3} />
         </div>
       </div>
+      <Modal isModalActive={formStatus}>
+        <AddForm type={"Update"} handleModalActivation={formHandler} />
+      </Modal>
     </section>
   );
 };
