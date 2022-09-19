@@ -11,8 +11,11 @@ import UserDelete from "./pages/settings/userDelete/UserDelete";
 import ChangePassword from "./pages/settings/changePassword/ChangePassword";
 import Projects from "./pages/projects/Projects";
 import Project from "./pages/project/Project";
-import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./components/Route/ProtectedRoute";
+import { SidebarProvider } from "./contexts/SidebarContext";
+import { AddFormProvider } from "./contexts/AddFormContext";
+import "react-toastify/dist/ReactToastify.css";
+
 const App = () => {
   // Setting the sidebar activation and deactivation state
   const [isSidebarActive, setIsSidebarActive] = useState(false);
