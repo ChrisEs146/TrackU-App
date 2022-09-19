@@ -37,38 +37,40 @@ const AddForm = (props) => {
   };
 
   return (
-    <div className="addForm">
-      <button title="Close Form" className="addForm__close-btn" onClick={handleFormClose}>
-        <AiOutlinePlus />
-      </button>
-      <div className="addForm__title">
-        <h2>{`New ${props.type}`}</h2>
-        <p>{`Create new ${props.type}`}</p>
-      </div>
-      <form className="addForm__form">
-        <FormInput value={addFormData.title} handleChange={props.handleChange} {...formInput} />
-        <div className="addForm__description-container">
-          <label className="addForm__description-label" htmlFor="description">
-            Description
-          </label>
-          <textarea
-            required
-            className="addForm__description"
-            name="description"
-            id="description"
-            placeholder="Description"
-            cols="30"
-            rows="10"
-            value={addFormData.description}
-            onChange={handleChange}
-            maxLength="800"
-            minLength="4"
-          ></textarea>
-        </div>
-        <button className="addForm__btn" type="button" onClick={handleConfirmActivation}>
-          {`Add ${props.type}`}
+    <>
+      <div className="addForm">
+        <button title="Close Form" className="addForm__close-btn" onClick={handleFormClose}>
+          <AiOutlinePlus />
         </button>
-      </form>
+        <div className="addForm__title">
+          <h2>{`New ${props.type}`}</h2>
+          <p>{`Create new ${props.type}`}</p>
+        </div>
+        <form className="addForm__form">
+          <FormInput value={addFormData.title} handleChange={handleChange} {...formInput} />
+          <div className="addForm__description-container">
+            <label className="addForm__description-label" htmlFor="description">
+              Description
+            </label>
+            <textarea
+              required
+              className="addForm__description"
+              name="description"
+              id="description"
+              placeholder="Description"
+              cols="30"
+              rows="10"
+              value={addFormData.description}
+              onChange={handleChange}
+              maxLength="800"
+              minLength="4"
+            ></textarea>
+          </div>
+          <button className="addForm__btn" type="button" onClick={handleConfirmActivation}>
+            {`Add ${props.type}`}
+          </button>
+        </form>
+      </div>
       <ConfirmationModal
         action={modalData.action}
         title={modalData.title}
@@ -76,7 +78,7 @@ const AddForm = (props) => {
         isModalActive={isConfirmationActive}
         handleModalActivation={handleConfirmActivation}
       />
-    </div>
+    </>
   );
 };
 
