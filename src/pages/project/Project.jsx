@@ -98,7 +98,7 @@ const Project = () => {
       <div className="projectPage__updates-container">
         <div className="projectPage__updates-title">
           <h2>Updates</h2>
-          <button className="projectPage__updates-btn">
+          <button title="Add Update" className="projectPage__updates-btn" onClick={formHandler}>
             <FaPlus />
             Add Update
           </button>
