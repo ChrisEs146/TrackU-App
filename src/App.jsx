@@ -28,32 +28,28 @@ const App = () => {
   return (
     <main className="app">
       <BrowserRouter>
-        <Nav handleSidebarState={handleSidebarState} />
-        <Routes>
-          <Route index element={<Homepage />} />
-          <Route path="/registration" element={<Form />} />
-          <Route element={<ProtectedRoute />}>
-            <Route
-              path="/dashboard"
-              element={
-                <Dashboard
-                  isSidebarActive={isSidebarActive}
-                  handleSidebarState={handleSidebarState}
-                />
-              }
-            >
-              <Route index element={<Projects />} />
-              <Route path="projects" element={<Projects />} />
-              <Route path="project/:projectId" element={<Project />} />
-              <Route path="settings" element={<Settings />}>
-                <Route index element={<UserUpdate />} />
-                <Route path="update-user" element={<UserUpdate />} />
-                <Route path="delete-user" element={<UserDelete />} />
-                <Route path="change-password" element={<ChangePassword />} />
+        <SidebarProvider>
+          <AddFormProvider>
+            <Nav />
+            <Routes>
+              <Route index element={<Homepage />} />
+              <Route path="/registration" element={<Form />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="/dashboard" element={<Dashboard />}>
+                  <Route index element={<Projects />} />
+                  <Route path="projects" element={<Projects />} />
+                  <Route path="project/:projectId" element={<Project />} />
+                  <Route path="settings" element={<Settings />}>
+                    <Route index element={<UserUpdate />} />
+                    <Route path="update-user" element={<UserUpdate />} />
+                    <Route path="delete-user" element={<UserDelete />} />
+                    <Route path="change-password" element={<ChangePassword />} />
+                  </Route>
+                </Route>
               </Route>
-            </Route>
-          </Route>
-        </Routes>
+            </Routes>
+          </AddFormProvider>
+        </SidebarProvider>
       </BrowserRouter>
       <ToastContainer />
     </main>
