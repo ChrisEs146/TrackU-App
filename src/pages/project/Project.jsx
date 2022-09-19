@@ -11,6 +11,7 @@ import "./project.css";
 import { AddFormContext } from "../../contexts/AddFormContext";
 
 const Project = () => {
+  const { formStatus, formHandler } = useContext(AddFormContext);
   const percentage = 55;
   const currentColor = progressColor(percentage);
 
