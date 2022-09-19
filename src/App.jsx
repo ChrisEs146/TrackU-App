@@ -17,14 +17,6 @@ import { AddFormProvider } from "./contexts/AddFormContext";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
-  // Setting the sidebar activation and deactivation state
-  const [isSidebarActive, setIsSidebarActive] = useState(false);
-  /**
-   * Handler to change the sidebar state. It's used in the nav component
-   * and in the sidebar itsef, which is located in the dashboard.
-   */
-  const handleSidebarState = () => setIsSidebarActive(!isSidebarActive);
-
   return (
     <main className="app">
       <BrowserRouter>
