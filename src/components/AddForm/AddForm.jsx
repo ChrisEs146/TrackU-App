@@ -28,12 +28,12 @@ const AddForm = (props) => {
     placeholder: "Title",
     pattern: "^[A-Za-z0-9,. ]{4,24}$",
   };
+
   // Modal window information
   const modalData = {
     title: "ARE YOU SURE?",
     action: "confirm",
-    description:
-      "You are about to change your account's name. If you want to proceed press confirm, otherwise cancel this operation",
+    description: `You are about to add a new ${props.type.toLowerCase()}. If you want to proceed click confirm, otherwise cancel this operation.`,
   };
 
   return (
