@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import { SidebarContext } from "../../contexts/SidebarContext";
 import "./dashboard.css";
 
 /**
@@ -8,14 +10,15 @@ import "./dashboard.css";
  * and the projects main panel.
  * @returns Dashboard Component
  */
-const Dashboard = ({ handleSidebarState, isSidebarActive }) => {
+const Dashboard = () => {
   const { userData } = useSelector((state) => state.user);
+  const { sidebarStatus, sidebarHandler } = useContext(SidebarContext);
 
   return (
     <div className="dashboard">
       <Sidebar
-        handleSidebarState={handleSidebarState}
-        isSidebarActive={isSidebarActive}
+        handleSidebarState={sidebarHandler}
+        isSidebarActive={sidebarStatus}
         fullName={userData?.fullName}
       />
       <div className="dashboard__projects-container">
