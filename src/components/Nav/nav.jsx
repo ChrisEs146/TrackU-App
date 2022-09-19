@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo } from "../../store/actions/userActions";
-import logo from "../../images/logo.png";
+import { SidebarContext } from "../../contexts/SidebarContext";
 import { FaBars, FaPlus } from "react-icons/fa";
 import "./nav.css";
+import { AddFormContext } from "../../contexts/AddFormContext";
 
 /**
  * Navigation component that shows the sign in button or
