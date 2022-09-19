@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar";
 import { FaEdit, FaCalendarDay, FaQuestionCircle, FaPlus } from "react-icons/fa";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import UpdateCard from "../../components/UpdateCard/UpdateCard";
 import { progressColor } from "../../Utils/Functions";
+import UpdateCard from "../../components/UpdateCard/UpdateCard";
+import Modal from "../../components/Modal/Modal";
+import AddForm from "../../components/AddForm/AddForm";
 import "./project.css";
+import { AddFormContext } from "../../contexts/AddFormContext";
 
 const Project = () => {
   const percentage = 55;
