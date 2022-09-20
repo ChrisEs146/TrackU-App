@@ -12,9 +12,27 @@ import { AddFormContext } from "../../contexts/AddFormContext";
 
 const Project = () => {
   const { formStatus, formHandler } = useContext(AddFormContext);
-  const percentage = 55;
-  const currentColor = progressColor(percentage);
+  const date = new Date().toLocaleString("default", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+  const mockData = {
+    id: 3,
+    title: "DRF Rest API",
+    date,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit recusandae soluta voluptas quas nulla facere repellat velit molestiae fuga similique!",
+    status: "Completed",
+    progress: 100,
+    updates: [
+      { id: 3.1, title: "Endpoint Issues", description: "Test description", date },
+      { id: 3.2, title: "Rate limiting finished", description: "Another test description", date },
+      { id: 3.3, title: "Project Completed", description: "Another test description", date },
+    ],
+  };
 
+  const currentColor = progressColor(mockData.progress);
   const progressStyles = buildStyles({
     pathColor: `${currentColor}`,
     trailColor: "#CFD2CF",
@@ -55,40 +73,29 @@ const Project = () => {
             <FaEdit />
           </button>
         </div>
-        <h2 className="projectPage__title">Mock Title</h2>
+        <h2 className="projectPage__title">{mockData.title}</h2>
         <div className="projectPage__status-container">
           <div className="projectPage__added">
             <span className="projectPage__status-label">
               <FaCalendarDay /> Added:
             </span>
-            <span> 02/12/2022</span>
+            <span>{mockData.date}</span>
           </div>
           <div className="projectPage__status">
             <span className="projectPage__status-label">
               <FaQuestionCircle /> Status:
             </span>
-            <span> In Progress</span>
+            <span>{mockData.status}</span>
           </div>
         </div>
         <div className="projectPage__info">
           <div className="projectPage__description">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique accusamus ea
-              incidunt. Eum placeat voluptate dolores, quas debitis perspiciatis harum saepe minus!
-              Vitae ut est, dignissimos minus aliquid fuga asperiores beatae, ea facilis sint ipsa,
-              earum cupiditate. Dolor molestias quaerat reprehenderit velit laboriosam? Maiores
-              sapiente esse minus quae. Optio voluptas, officiis quo, ipsa non recusandae maxime
-              dolorum dolor ipsam assumenda aliquid sunt voluptatum harum vel, excepturi accusantium
-              consequatur veniam facere eveniet inventore reprehenderit aliquam esse. Odio qui vel
-              vitae, repudiandae maxime praesentium tempore pariatur doloribus, temporibus explicabo
-              porro adipisci in recusandae voluptates mollitia veritatis ipsa. In nesciunt commodi
-              molestiae explicabo.
-            </p>
+            <p>{mockData.description}</p>
           </div>
           <div className="projectPage__progress-container">
-            <CircularProgressbarWithChildren value={percentage} styles={progressStyles}>
+            <CircularProgressbarWithChildren value={mockData.progress} styles={progressStyles}>
               <div className="projectPage__progress-text" style={{ color: currentColor }}>
-                <span>{percentage}%</span>
+                <span>{mockData.progress}%</span>
                 <span>Completed</span>
               </div>
             </CircularProgressbarWithChildren>
