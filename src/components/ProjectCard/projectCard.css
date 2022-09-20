@@ -9,7 +9,6 @@
   height: fit-content;
   padding: 1rem;
   border-radius: 6px;
-  border-left: 4px solid slateblue;
   transition: transform 0.3s ease-in;
 }
 
