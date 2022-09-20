@@ -130,7 +130,7 @@ const Project = () => {
         />
       </Modal>
       <Modal isModalActive={formStatus}>
-        <AddForm type={"Update"} handleModalActivation={formHandler} />
+        <DynamicForm type={"Update"} editMode={false} handleModalActivation={formHandler} />
       </Modal>
     </section>
   );
