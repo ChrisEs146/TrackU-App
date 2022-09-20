@@ -1,6 +1,6 @@
 import { FaPlus } from "react-icons/fa";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
-import AddForm from "../../components/AddForm/AddForm";
+import DynamicForm from "../../components/DynamicForm/DynamicForm";
 import Modal from "../../components/Modal/Modal";
 import "./projects.css";
 import { useContext } from "react";
