@@ -13,13 +13,31 @@ import { AddFormContext } from "../../contexts/AddFormContext";
  */
 const Projects = () => {
   const { formStatus, formHandler } = useContext(AddFormContext);
-  const proj1 = {
-    id: 1,
-    title: "Angular Web Application",
-    date: new Date(),
-    status: "In Progress",
-    progress: 55,
-  };
+  const date = new Date();
+
+  const mockData = [
+    {
+      id: 1,
+      title: "Angular Web Application",
+      date,
+      status: "In Progress",
+      progress: 55,
+    },
+    {
+      id: 2,
+      title: "ASP.NET CORE WEB API",
+      date,
+      status: "Not Started",
+      progress: 0,
+    },
+    {
+      id: 3,
+      title: "DRF Rest API",
+      date,
+      status: "Completed",
+      progress: 100,
+    },
+  ];
 
   return (
     <section className="projects">
