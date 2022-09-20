@@ -121,6 +121,14 @@ const Project = () => {
           ))}
         </div>
       </div>
+      <Modal isModalActive={isProjectUpdateActive}>
+        <DynamicForm
+          type={"Project"}
+          editMode={true}
+          project={mockData}
+          handleModalActivation={handleProjectUpdateActivation}
+        />
+      </Modal>
       <Modal isModalActive={formStatus}>
         <AddForm type={"Update"} handleModalActivation={formHandler} />
       </Modal>
