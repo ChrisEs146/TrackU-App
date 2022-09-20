@@ -12,6 +12,9 @@ import { AddFormContext } from "../../contexts/AddFormContext";
 
 const Project = () => {
   const { formStatus, formHandler } = useContext(AddFormContext);
+  const [isProjectUpdateActive, setIsProjectUpdateActive] = useState(false);
+  const handleProjectUpdateActivation = () => setIsProjectUpdateActive(!isProjectUpdateActive);
+
   const date = new Date().toLocaleString("default", {
     day: "2-digit",
     month: "2-digit",
