@@ -31,6 +31,7 @@ const UserDelete = () => {
       icon: <FaEnvelope />,
       errorMsg: "It must be a valid email!",
       placeholder: "Email",
+      readOnly: true,
     },
     {
       id: 2,
