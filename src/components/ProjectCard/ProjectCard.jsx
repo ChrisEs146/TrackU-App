@@ -10,8 +10,13 @@ import "./projectCard.css";
  * @returns ProjectCard component
  */
 const ProjectCard = ({ project }) => {
+  const currentColor = progressColor(project.progress);
   return (
-    <NavLink to={`/dashboard/project/${project.id}`} className="project">
+    <NavLink
+      to={`/dashboard/project/${project.id}`}
+      className="project"
+      style={{ borderLeft: `4px solid ${currentColor}` }}
+    >
       <div className="project__info">
         <h3>{project.title}</h3>
         <DateCard date={project.date} />
@@ -19,7 +24,9 @@ const ProjectCard = ({ project }) => {
       <div className="project__status-container">
         <div className="project__status">
           <span className="project__item-header">Status</span>
-          <span className="project__status-value">{project.status}</span>
+          <span style={{ backgroundColor: `${currentColor}` }} className="project__status-value">
+            {project.status}
+          </span>
         </div>
         <div className="project__progress">
           <span className="project__item-header">Progress</span>
