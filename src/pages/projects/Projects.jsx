@@ -38,7 +38,7 @@ const Projects = () => {
         <ProjectCard project={proj1} />
       </div>
       <Modal isModalActive={formStatus}>
-        <AddForm type={"Project"} handleModalActivation={formHandler} />
+        <DynamicForm type={"Project"} editMode={false} handleModalActivation={formHandler} />
       </Modal>
     </section>
   );
