@@ -7,7 +7,8 @@ import "./formInput.css";
  * @returns Custom input field
  */
 const Input = (props) => {
-  const { name, label, errorMsg, type, handleChange, value, placeholder, pattern, icon } = props;
+  const { name, label, errorMsg, type, handleChange, value, placeholder, pattern, icon, readOnly } =
+    props;
   const [focused, setFocused] = useState(false);
 
   /**
@@ -24,6 +25,7 @@ const Input = (props) => {
         {label}
       </label>
       <input
+        readOnly={readOnly}
         required
         type={type}
         name={name}
