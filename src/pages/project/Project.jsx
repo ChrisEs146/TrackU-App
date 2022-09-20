@@ -111,10 +111,14 @@ const Project = () => {
           </button>
         </div>
         <div className="projectPage__updates">
-          <UpdateCard date={date} title={title} description={description} />
-          <UpdateCard date={date} title={title2} description={description2} />
-          <UpdateCard date={date} title={title3} description={description3} />
-          <UpdateCard date={date} title={title3} description={description3} />
+          {mockData.updates?.map((update) => (
+            <UpdateCard
+              date={update.date}
+              title={update.title}
+              description={update.description}
+              key={update.id}
+            />
+          ))}
         </div>
       </div>
       <Modal isModalActive={formStatus}>
