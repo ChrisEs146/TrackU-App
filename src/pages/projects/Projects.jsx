@@ -53,7 +53,9 @@ const Projects = () => {
         </button>
       </div>
       <div className="projects__container">
-        <ProjectCard project={proj1} />
+        {mockData?.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
       </div>
       <Modal isModalActive={formStatus}>
         <DynamicForm type={"Project"} editMode={false} handleModalActivation={formHandler} />
