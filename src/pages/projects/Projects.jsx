@@ -13,6 +13,7 @@ import { AddFormContext } from "../../contexts/AddFormContext";
  */
 const Projects = () => {
   const { formStatus, formHandler } = useContext(AddFormContext);
+  const formFields = { title: "", description: "" };
   const date = new Date();
 
   const mockData = [
@@ -58,7 +59,12 @@ const Projects = () => {
         ))}
       </div>
       <Modal isModalActive={formStatus}>
-        <DynamicForm type={"Project"} editMode={false} handleModalActivation={formHandler} />
+        <DynamicForm
+          type={"Project"}
+          editMode={false}
+          handleModalActivation={formHandler}
+          formFields={formFields}
+        />
       </Modal>
     </section>
   );
