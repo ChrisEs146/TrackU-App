@@ -5,7 +5,7 @@ import FormInput from "../FormInput/FormInput";
 import "./dynamicForm.css";
 
 const DynamicForm = (props) => {
-  const defaultForm = { title: "", description: "", status: "", progress: 30 };
+  const defaultForm = { title: "", description: "", status: "", progress: "" };
   const [formData, setFormData] = useState(defaultForm);
   const [isConfirmationActive, setIsConfirmationActive] = useState(false);
 
