@@ -1,17 +1,15 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar";
-import { FaEdit, FaCalendarDay, FaQuestionCircle, FaPlus } from "react-icons/fa";
+import { FaEdit, FaCalendarDay, FaQuestionCircle } from "react-icons/fa";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import { progressColor } from "../../Utils/Functions";
-import UpdateCard from "../../components/UpdateCard/UpdateCard";
+import { getProgressColor } from "../../Utils/Functions";
 import Modal from "../../components/Modal/Modal";
 import DynamicForm from "../../components/DynamicForm/DynamicForm";
-import { AddFormContext } from "../../contexts/AddFormContext";
+import Updates from "./Updates/Updates";
 import "./project.css";
 
 const Project = () => {
-  const { formStatus, formHandler } = useContext(AddFormContext);
   const [isProjectUpdateActive, setIsProjectUpdateActive] = useState(false);
   const handleProjectUpdateActivation = () => setIsProjectUpdateActive(!isProjectUpdateActive);
 
@@ -20,6 +18,7 @@ const Project = () => {
     month: "2-digit",
     year: "numeric",
   });
+
   const mockData = {
     id: 3,
     title: "DRF Rest API",
@@ -35,7 +34,7 @@ const Project = () => {
     ],
   };
 
-  const currentColor = progressColor(mockData.progress);
+  const currentColor = getProgressColor(mockData.progress);
   const progressStyles = buildStyles({
     pathColor: `${currentColor}`,
     trailColor: "#CFD2CF",
@@ -90,25 +89,7 @@ const Project = () => {
           </div>
         </div>
       </div>
-      <div className="projectPage__updates-container">
-        <div className="projectPage__updates-title">
-          <h2>Updates</h2>
-          <button title="Add Update" className="projectPage__updates-btn" onClick={formHandler}>
-            <FaPlus />
-            Add Update
-          </button>
-        </div>
-        <div className="projectPage__updates">
-          {mockData.updates?.map((update) => (
-            <UpdateCard
-              date={update.date}
-              title={update.title}
-              description={update.description}
-              key={update.id}
-            />
-          ))}
-        </div>
-      </div>
+      <Updates updates={mockData.updates} />
       <Modal isModalActive={isProjectUpdateActive}>
         <DynamicForm
           type={"Project"}
@@ -116,9 +97,6 @@ const Project = () => {
           project={mockData}
           handleModalActivation={handleProjectUpdateActivation}
         />
-      </Modal>
-      <Modal isModalActive={formStatus}>
-        <DynamicForm type={"Update"} editMode={false} handleModalActivation={formHandler} />
       </Modal>
     </section>
   );
