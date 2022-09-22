@@ -14,9 +14,7 @@
 .projectPage__edit-btn,
 .projectPage__progress-text,
 .projectPage__status-container,
-.projectPage__progress-container,
-.projectPage__updates-title,
-.projectPage__updates {
+.projectPage__progress-container {
   display: flex;
   align-items: center;
 }
@@ -111,47 +109,6 @@
 
 .projectPage__progress-text span:first-child {
   font-size: 3rem;
-}
-
-/* ==Updates== */
-.projectPage__updates-container {
-  color: #fff;
-  background-color: #371b58;
-  height: 50rem;
-  padding: 1rem;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  overflow-y: scroll;
-}
-
-.projectPage__updates-title {
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-
-.projectPage__updates-btn {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #371b58;
-  padding: 1rem 3rem;
-  background-color: #fff;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.projectPage__updates-btn:hover {
-  background-color: rgb(190, 190, 190);
-}
-
-.projectPage__updates {
-  flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
 }
 
 @media (min-width: 1100px) {
