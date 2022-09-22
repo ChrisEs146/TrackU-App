@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { progressColor } from "../../Utils/Functions";
+import { getProgressColor } from "../../Utils/Functions";
 import DateCard from "../DateItem/DateCard";
 import "./projectCard.css";
 
@@ -10,7 +10,7 @@ import "./projectCard.css";
  * @returns ProjectCard component
  */
 const ProjectCard = ({ project }) => {
-  const currentColor = progressColor(project.progress);
+  const currentColor = getProgressColor(project.progress);
   return (
     <NavLink
       to={`/dashboard/project/${project.id}`}
@@ -30,10 +30,7 @@ const ProjectCard = ({ project }) => {
         </div>
         <div className="project__progress">
           <span className="project__item-header">Progress</span>
-          <span
-            className="project__progress-percent"
-            style={{ color: `${progressColor(project.progress)}` }}
-          >
+          <span className="project__progress-percent" style={{ color: `${currentColor}` }}>
             {project.progress}%
           </span>
         </div>
