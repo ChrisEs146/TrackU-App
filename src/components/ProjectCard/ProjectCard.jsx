@@ -13,7 +13,7 @@ const ProjectCard = ({ project }) => {
   const currentColor = getProgressColor(project.progress);
   return (
     <NavLink
-      to={`/dashboard/project/${project.id}`}
+      to={`/dashboard/projects/${project.projectId}`}
       className="project"
       style={{ borderLeft: `4px solid ${currentColor}` }}
     >
