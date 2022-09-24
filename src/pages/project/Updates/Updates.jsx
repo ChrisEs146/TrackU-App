@@ -43,19 +43,6 @@ const Updates = ({ updates }) => {
           ))}
         </div>
       </div>
-      {/* Add update form */}
-      <Modal isModalActive={formStatus}>
-        <DynamicForm type={"Update"} editMode={false} handleModalActivation={formHandler} />
-      </Modal>
-      {/* Edit update form */}
-      <Modal isModalActive={isUpdateFormActive}>
-        <DynamicForm
-          type={"Update"}
-          editMode={true}
-          handleModalActivation={handleUpdateFormActivation}
-        />
-      </Modal>
-      {/* Delete Confirmation */}
       <ConfirmationModal
         action={modalData.action}
         title={modalData.title}
