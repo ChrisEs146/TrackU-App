@@ -1,11 +1,9 @@
-import { useContext } from "react";
-import { AddFormContext } from "../../../contexts/AddFormContext";
-import { FaPlus } from "react-icons/fa";
-import UpdateCard from "../../../components/UpdateCard/UpdateCard";
-import DynamicForm from "../../../components/DynamicForm/DynamicForm";
-import Modal from "../../../components/Modal/Modal";
-import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
 import { useState } from "react";
+import { FaPlus } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import UpdateCard from "../../../components/UpdateCard/UpdateCard";
+import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
+import { getShortDate } from "../../../Utils/Functions";
 import "./updates.css";
 
 const Updates = ({ updates }) => {
