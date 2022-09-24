@@ -16,11 +16,6 @@ const DynamicForm = ({ type, editMode }) => {
 
   const handleConfirmActivation = () => setIsConfirmationActive(!isConfirmationActive);
 
-  const handleFormClose = () => {
-    setFormData(defaultForm);
-    props.handleModalActivation();
-  };
-
   const formInput = {
     name: "title",
     type: "text",
