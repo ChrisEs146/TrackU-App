@@ -3,7 +3,7 @@ import { useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo } from "../../store/actions/userActions";
 import { SidebarContext } from "../../contexts/SidebarContext";
-import { FaBars, FaPlus } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import logo from "../../images/logo.png";
 import "./nav.css";
 
@@ -43,9 +43,6 @@ const Nav = () => {
             onClick={sidebarHandler}
           >
             <FaBars />
-          </button>
-          <button title="Add Project" className="navigation__add-btn" onClick={formHandler}>
-            <FaPlus /> Add Project
           </button>
         </>
       )}
