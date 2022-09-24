@@ -30,14 +30,14 @@ const Project = () => {
               Back
             </span>
           </NavLink>
-          <button
+          <NavLink
             title="Edit Project"
             aria-label="Project edit button"
             className="projectPage__edit-btn"
-            onClick={handleProjectUpdateActivation}
+            to={`/dashboard/projects/edit-project/${project.projectId}`}
           >
             <FaEdit />
-          </button>
+          </NavLink>
         </div>
         <h2 className="projectPage__title">{mockData.title}</h2>
         <div className="projectPage__status-container">
