@@ -1,42 +1,43 @@
 /* ADD FORM COMPONENT STYLES */
 .dynamicForm {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 7px 9px 9px -1px rgba(94, 94, 94, 0.75);
-  width: clamp(20rem, 90%, 80rem);
-  padding: 2rem;
-}
-
-/* ==Close Form button== */
-.dynamicForm__close-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 5px;
-  right: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.dynamicForm__container {
+  width: 100%;
+  max-width: 68rem;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 5px 10px 11px 0px rgba(65, 65, 65, 0.308);
+}
+
+/* ==Close Form button== */
+.dynamicForm__back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: fit-content;
   height: fit-content;
   border: none;
   border-radius: 10px;
-  background-color: transparent;
+  color: #fff;
+  background-color: steelblue;
   padding: 1rem;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.dynamicForm__close-btn:hover {
-  background-color: rgb(211, 211, 211);
+.dynamicForm__back-btn:hover {
+  background-color: rgb(8, 75, 129);
 }
 
-.dynamicForm__close-btn svg {
+.dynamicForm__back-btn svg {
   width: 1.8rem;
   height: 1.8rem;
-  transform: rotate(45deg);
 }
 
 /* ==Title container== */
@@ -47,6 +48,27 @@
   justify-content: center;
   gap: 1rem;
   margin: 2rem 0;
+}
+
+.dynamicForm__status-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.dynamicForm__status,
+.dynamicForm__progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dynamicForm__progress-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 /* ==Text Area== */
