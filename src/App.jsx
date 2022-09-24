@@ -15,6 +15,8 @@ import ProtectedRoute from "./components/Route/ProtectedRoute";
 import { SidebarProvider } from "./contexts/SidebarContext";
 import { AddFormProvider } from "./contexts/AddFormContext";
 import "react-toastify/dist/ReactToastify.css";
+import { ProjectList } from "./pages/projectList/ProjectList";
+import DynamicForm from "./components/DynamicForm/DynamicForm";
 
 const App = () => {
   return (
