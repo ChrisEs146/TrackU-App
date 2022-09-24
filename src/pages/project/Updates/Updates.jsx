@@ -25,10 +25,10 @@ const Updates = ({ updates }) => {
       <div className="updates__container">
         <div className="updates__title">
           <h2>Updates</h2>
-          <button title="Add Update" className="updates__btn" onClick={formHandler}>
+          <NavLink title="Add Update" className="updates__btn" to="/dashboard/projects/add-update">
             <FaPlus />
             Add Update
-          </button>
+          </NavLink>
         </div>
         <div className="updates">
           {updates?.map((update) => (
