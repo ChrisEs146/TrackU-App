@@ -6,7 +6,6 @@ import { SidebarContext } from "../../contexts/SidebarContext";
 import { FaBars, FaPlus } from "react-icons/fa";
 import logo from "../../images/logo.png";
 import "./nav.css";
-import { AddFormContext } from "../../contexts/AddFormContext";
 
 /**
  * Navigation component that shows the sign in button or
@@ -16,7 +15,6 @@ import { AddFormContext } from "../../contexts/AddFormContext";
 const Nav = () => {
   const { userData, userToken } = useSelector((state) => state.user);
   const { sidebarHandler } = useContext(SidebarContext);
-  const { formHandler } = useContext(AddFormContext);
   const dispatch = useDispatch();
 
   // Fetches user's info on reload
