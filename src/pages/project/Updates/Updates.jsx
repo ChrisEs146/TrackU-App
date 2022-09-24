@@ -7,10 +7,7 @@ import { getShortDate } from "../../../Utils/Functions";
 import "./updates.css";
 
 const Updates = ({ updates }) => {
-  const { formStatus, formHandler } = useContext(AddFormContext);
   const [isConfirmActive, setIsConfirmActive] = useState(false);
-  const [isUpdateFormActive, setIsUpdateFormActive] = useState(false);
-  const handleUpdateFormActivation = () => setIsUpdateFormActive(!isUpdateFormActive);
   const handleConfirmModal = () => setIsConfirmActive(!isConfirmActive);
 
   const modalData = {
