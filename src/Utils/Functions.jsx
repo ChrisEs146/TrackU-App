@@ -13,3 +13,19 @@ export const getProgressColor = (value) => {
   }
   return "#c21010";
 };
+
+// DATE RELATED
+/**
+ * Formats a given date and returns it as a string with the format
+ * month/day/year.
+ * @param {string} date
+ * @returns Formatted date in m/d/y
+ */
+export const getShortDate = (date) => {
+  const finalDate = date.toLocaleString("default", {
+    month: "2-digit",
+    day: "2-digit",
+    year: "numeric",
+  });
+  return finalDate;
+};
