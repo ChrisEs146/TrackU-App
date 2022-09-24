@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 import "./updateCard.css";
 
-const UpdateCard = ({ date, title, description, handleConfirmModal, handleFormActivation }) => {
+const UpdateCard = ({ date, title, description, id, handleModalActivation }) => {
   const [isOptionsActive, setIsOptionsActive] = useState(false);
   const handleOptionsActive = () => setIsOptionsActive(!isOptionsActive);
 
@@ -14,20 +15,14 @@ const UpdateCard = ({ date, title, description, handleConfirmModal, handleFormAc
             isOptionsActive ? "update__options-container active" : "update__options-container"
           }
         >
+          <NavLink className="update__options-link" to={`/dashboard/projects/edit-update/${id}`}>
+            <span>Edit</span>
+          </NavLink>
           <button
             className="update__options-btn"
             onClick={() => {
               handleOptionsActive();
-              handleFormActivation();
-            }}
-          >
-            Edit
-          </button>
-          <button
-            className="update__options-btn"
-            onClick={() => {
-              handleOptionsActive();
-              handleConfirmModal();
+              handleModalActivation();
             }}
           >
             Delete
