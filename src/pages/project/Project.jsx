@@ -1,12 +1,11 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar";
 import { FaEdit, FaCalendarDay, FaQuestionCircle } from "react-icons/fa";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { getProgressColor } from "../../Utils/Functions";
-import Modal from "../../components/Modal/Modal";
-import DynamicForm from "../../components/DynamicForm/DynamicForm";
 import Updates from "./Updates/Updates";
+import { mockData } from "../projectList/ProjectList";
+import { getShortDate } from "../../Utils/Functions";
 import "./project.css";
 
 const Project = () => {
