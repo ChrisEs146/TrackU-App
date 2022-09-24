@@ -30,69 +30,77 @@ const DynamicForm = ({ type, editMode }) => {
     title: "ARE YOU SURE?",
     action: "confirm",
     description: `You are about to ${
-      props.editMode ? "update this" : "add a new"
-    } ${props.type.toLowerCase()}. If you want to proceed click confirm, otherwise cancel this operation.`,
+      editMode ? "update this" : "add a new"
+    } ${type.toLowerCase()}. If you want to proceed click confirm, otherwise cancel this operation.`,
   };
 
   return (
     <>
       <div className="dynamicForm">
-        <button title="Close Form" className="dynamicForm__close-btn" onClick={handleFormClose}>
-          <AiOutlinePlus />
-        </button>
-        <div className="dynamicForm__title">
-          <h2>{`${props.editMode ? "Update" : "New"} ${props.type}`}</h2>
-          {!props.editMode && <p>{`Create new ${props.type}`}</p>}
-        </div>
-        <form className="dynamicForm__form">
-          <FormInput value={formData.title} handleChange={handleChange} {...formInput} />
-          {props.editMode && props.type === "Project" && (
-            <div className="dynamicForm__status-container">
-              <div className="dynamicForm__status">
-                <label htmlFor="status">Status:</label>
-                <select name="status" id="status" value={formData.status} onChange={handleChange}>
-                  <option value="Not Started">Not Started</option>
-                  <option value="In Progress">In Progress</option>
-                  <option value="Completed">Completed</option>
-                </select>
-              </div>
-              <div className="dynamicForm__progress">
-                <label htmlFor="progress">Progress</label>
-                <input
-                  type="range"
-                  name="progress"
-                  id="progress"
-                  min="0"
-                  max="100"
-                  step="1"
-                  value={formData.progress}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-          )}
-          <div className="dynamicForm__description-container">
-            <label className="dynamicForm__description-label" htmlFor="description">
-              Description
-            </label>
-            <textarea
-              required
-              className="dynamicForm__description"
-              name="description"
-              id="description"
-              placeholder="Description"
-              cols="30"
-              rows="10"
-              value={formData.description}
-              onChange={handleChange}
-              maxLength="800"
-              minLength="4"
-            ></textarea>
+        <div className="dynamicForm__container">
+          <NavLink title="Go Back" className="dynamicForm__back-btn" to="/dashboard/projects">
+            <BiArrowBack />
+          </NavLink>
+          <div className="dynamicForm__title">
+            <h2>
+              {editMode ? "Edit" : "New"} {type}
+            </h2>
+            {!editMode && <p>{`Create new ${type}`}</p>}
           </div>
-          <button className="dynamicForm__btn" type="button" onClick={handleConfirmActivation}>
-            {`${props.editMode ? "Update" : "Add"} ${props.type}`}
-          </button>
-        </form>
+          <form className="dynamicForm__form">
+            <FormInput value={formData.title} handleChange={handleChange} {...formInput} />
+            {editMode && type === "Project" && (
+              <div className="dynamicForm__status-container">
+                <div className="dynamicForm__status">
+                  <label htmlFor="status">Status:</label>
+                  <select name="status" id="status" value={formData.status} onChange={handleChange}>
+                    <option value="Not Started">Not Started</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                  </select>
+                </div>
+                <div className="dynamicForm__progress">
+                  <div className="dynamicForm__progress-label">
+                    <label htmlFor="progress">Progress</label>
+                    <span>{`${formData.progress}%`}</span>
+                  </div>
+                  <input
+                    title={`${formData.progress}%`}
+                    type="range"
+                    name="progress"
+                    id="progress"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value={formData.progress}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+            )}
+            <div className="dynamicForm__description-container">
+              <label className="dynamicForm__description-label" htmlFor="description">
+                Description
+              </label>
+              <textarea
+                required
+                className="dynamicForm__description"
+                name="description"
+                id="description"
+                placeholder="Description"
+                cols="30"
+                rows="10"
+                value={formData.description}
+                onChange={handleChange}
+                maxLength="800"
+                minLength="4"
+              ></textarea>
+            </div>
+            <button className="dynamicForm__btn" type="button" onClick={handleConfirmActivation}>
+              {editMode ? "Edit" : "Add"} {type}
+            </button>
+          </form>
+        </div>
       </div>
       <ConfirmationModal
         action={modalData.action}
