@@ -9,31 +9,11 @@ import { getShortDate } from "../../Utils/Functions";
 import "./project.css";
 
 const Project = () => {
-  const [isProjectUpdateActive, setIsProjectUpdateActive] = useState(false);
-  const handleProjectUpdateActivation = () => setIsProjectUpdateActive(!isProjectUpdateActive);
+  const { projectId } = useParams();
 
-  const date = new Date().toLocaleString("default", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  });
+  const project = mockData.find((proj) => proj.projectId === Number(projectId));
 
-  const mockData = {
-    id: 3,
-    title: "DRF Rest API",
-    date,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit recusandae soluta voluptas quas nulla facere repellat velit molestiae fuga similique!",
-    status: "Completed",
-    progress: 100,
-    updates: [
-      { id: 3.1, title: "Endpoint Issues", description: "Test description", date },
-      { id: 3.2, title: "Rate limiting finished", description: "Another test description", date },
-      { id: 3.3, title: "Project Completed", description: "Another test description", date },
-    ],
-  };
-
-  const currentColor = getProgressColor(mockData.progress);
+  const currentColor = getProgressColor(project.progress);
   const progressStyles = buildStyles({
     pathColor: `${currentColor}`,
     trailColor: "#CFD2CF",
