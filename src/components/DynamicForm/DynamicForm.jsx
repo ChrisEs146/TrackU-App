@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { AiOutlinePlus } from "react-icons/ai";
+import { BiArrowBack } from "react-icons/bi";
+import { NavLink } from "react-router-dom";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import FormInput from "../FormInput/FormInput";
 import "./dynamicForm.css";
 
-const DynamicForm = (props) => {
-  const defaultForm = { title: "", description: "", status: "", progress: "" };
+const DynamicForm = ({ type, editMode }) => {
+  const defaultForm = { title: "", description: "", status: "", progress: 0 };
   const [formData, setFormData] = useState(defaultForm);
   const [isConfirmationActive, setIsConfirmationActive] = useState(false);
 
