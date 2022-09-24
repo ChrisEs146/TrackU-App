@@ -24,6 +24,7 @@
 .updates__btn {
   display: flex;
   align-items: center;
+  text-decoration: none;
   gap: 1rem;
   font-size: 1.5rem;
   font-weight: 500;
