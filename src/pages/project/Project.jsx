@@ -39,44 +39,36 @@ const Project = () => {
             <FaEdit />
           </NavLink>
         </div>
-        <h2 className="projectPage__title">{mockData.title}</h2>
+        <h2 className="projectPage__title">{project.title}</h2>
         <div className="projectPage__status-container">
           <div className="projectPage__added">
             <span className="projectPage__status-label">
               <FaCalendarDay /> Added:
             </span>
-            <span>{mockData.date}</span>
+            <span>{getShortDate(project.date)}</span>
           </div>
           <div className="projectPage__status">
             <span className="projectPage__status-label">
               <FaQuestionCircle /> Status:
             </span>
-            <span>{mockData.status}</span>
+            <span>{project.status}</span>
           </div>
         </div>
         <div className="projectPage__info">
           <div className="projectPage__description">
-            <p>{mockData.description}</p>
+            <p>{project.description}</p>
           </div>
           <div className="projectPage__progress-container">
-            <CircularProgressbarWithChildren value={mockData.progress} styles={progressStyles}>
+            <CircularProgressbarWithChildren value={project.progress} styles={progressStyles}>
               <div className="projectPage__progress-text" style={{ color: currentColor }}>
-                <span>{mockData.progress}%</span>
+                <span>{project.progress}%</span>
                 <span>Completed</span>
               </div>
             </CircularProgressbarWithChildren>
           </div>
         </div>
       </div>
-      <Updates updates={mockData.updates} />
-      <Modal isModalActive={isProjectUpdateActive}>
-        <DynamicForm
-          type={"Project"}
-          editMode={true}
-          project={mockData}
-          handleModalActivation={handleProjectUpdateActivation}
-        />
-      </Modal>
+      <Updates updates={project.updates} />
     </section>
   );
 };
