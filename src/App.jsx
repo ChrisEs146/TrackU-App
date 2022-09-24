@@ -21,26 +21,42 @@ const App = () => {
     <main className="app">
       <BrowserRouter>
         <SidebarProvider>
-          <AddFormProvider>
-            <Nav />
-            <Routes>
-              <Route index element={<Homepage />} />
-              <Route path="/registration" element={<Form />} />
-              <Route element={<ProtectedRoute />}>
-                <Route path="/dashboard" element={<Dashboard />}>
-                  <Route index element={<Projects />} />
-                  <Route path="projects" element={<Projects />} />
-                  <Route path="project/:projectId" element={<Project />} />
-                  <Route path="settings" element={<Settings />}>
-                    <Route index element={<UserUpdate />} />
-                    <Route path="update-user" element={<UserUpdate />} />
-                    <Route path="delete-user" element={<UserDelete />} />
-                    <Route path="change-password" element={<ChangePassword />} />
-                  </Route>
+          <Nav />
+          <Routes>
+            <Route index element={<Homepage />} />
+            <Route path="/registration" element={<Form />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/dashboard" element={<Dashboard />}>
+                <Route index element={<Projects />} />
+                <Route path="projects" element={<Projects />}>
+                  <Route index element={<ProjectList />} />
+                  <Route
+                    path="add-project"
+                    element={<DynamicForm type="Project" editMode={false} />}
+                  />
+                  <Route path=":projectId" element={<Project />} />
+                  <Route
+                    path="edit-project/:projectId"
+                    element={<DynamicForm type="Project" editMode={true} />}
+                  />
+                  <Route
+                    path="add-update"
+                    element={<DynamicForm type="Update" editMode={false} />}
+                  />
+                  <Route
+                    path="edit-update/:updateId"
+                    element={<DynamicForm type="Update" editMode={true} />}
+                  />
+                </Route>
+                <Route path="settings" element={<Settings />}>
+                  <Route index element={<UserUpdate />} />
+                  <Route path="update-user" element={<UserUpdate />} />
+                  <Route path="delete-user" element={<UserDelete />} />
+                  <Route path="change-password" element={<ChangePassword />} />
                 </Route>
               </Route>
-            </Routes>
-          </AddFormProvider>
+            </Route>
+          </Routes>
         </SidebarProvider>
       </BrowserRouter>
       <ToastContainer />
