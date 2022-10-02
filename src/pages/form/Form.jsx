@@ -17,7 +17,7 @@ import "./form.css";
 const Form = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, error, userData, success } = useSelector((state) => state.user);
+  const { loading, error, userToken, success } = useSelector((state) => state.user);
 
   // State to switch between forms
   const [isSignUp, setIsSignUp] = useState(false);
@@ -82,12 +82,6 @@ const Form = () => {
   ];
 
   useEffect(() => {
-    // Checks for possible errors
-    if (error) {
-      console.error(error);
-      toast.error(error);
-    }
-
     // If sign up process is successful
     if (isSignUp && success) {
       toast.success("Account Successfully Created");
@@ -97,10 +91,16 @@ const Form = () => {
     }
 
     // If sign in process is successful
-    if (!isSignUp && userData) {
+    if (!isSignUp && userToken) {
       navigate("/dashboard/projects");
     }
-  }, [navigate, userData, success, isSignUp, error, initialFormState]);
+  }, [navigate, success, isSignUp, initialFormState, userToken]);
+
+  // Checks for possible errors
+  if (error) {
+    console.error(error);
+    toast.error(error);
+  }
 
   /**
    * Handles input changes in the registration form
