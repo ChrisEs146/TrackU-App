@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { useEffect, useContext } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserInfo } from "../../store/actions/userActions";
+import { useContext } from "react";
+import { useSelector } from "react-redux";
 import { SidebarContext } from "../../contexts/SidebarContext";
 import { FaBars } from "react-icons/fa";
 import logo from "../../images/logo.png";
@@ -13,16 +12,8 @@ import "./nav.css";
  * @returns Navigation Component
  */
 const Nav = () => {
-  const { userData, userToken } = useSelector((state) => state.user);
+  const { userData } = useSelector((state) => state.user);
   const { sidebarHandler } = useContext(SidebarContext);
-  const dispatch = useDispatch();
-
-  // Fetches user's info on reload
-  useEffect(() => {
-    if (userToken) {
-      dispatch(getUserInfo());
-    }
-  }, [userToken, dispatch]);
 
   return (
     <nav className="navigation">
