@@ -30,6 +30,11 @@
 .input__container input:invalid[focused="true"] ~ span {
   display: block;
 }
+
 .input__container input:invalid[focused="true"] {
   border: 1px solid red;
+}
+
+.input__container input:read-only {
+  cursor: not-allowed;
 }

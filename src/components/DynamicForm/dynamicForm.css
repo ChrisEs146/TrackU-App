@@ -1,0 +1,112 @@
+/* ADD FORM COMPONENT STYLES */
+.dynamicForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.dynamicForm__container {
+  width: 100%;
+  max-width: 68rem;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 5px 10px 11px 0px rgba(65, 65, 65, 0.308);
+}
+
+/* ==Close Form button== */
+.dynamicForm__back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  background-color: steelblue;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dynamicForm__back-btn:hover {
+  background-color: rgb(8, 75, 129);
+}
+
+.dynamicForm__back-btn svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+/* ==Title container== */
+.dynamicForm__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.dynamicForm__status-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.dynamicForm__status,
+.dynamicForm__progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dynamicForm__progress-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ==Text Area== */
+.dynamicForm__description-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dynamicForm__description-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.dynamicForm__description {
+  width: 100%;
+  padding: 1rem;
+}
+
+/* ==Add Button== */
+.dynamicForm__btn {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 4rem;
+  margin: 0 auto;
+  background-color: steelblue;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dynamicForm__btn:hover {
+  background-color: rgb(25, 83, 129);
+}

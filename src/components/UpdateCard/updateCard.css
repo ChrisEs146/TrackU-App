@@ -28,9 +28,11 @@
   z-index: 20;
 }
 
-.update__options-btn {
+.update__options-btn,
+.update__options-link {
   font-size: 1.5rem;
   font-weight: 500;
+  text-decoration: none;
   color: #fff;
   background-color: transparent;
   width: 8rem;
@@ -40,7 +42,14 @@
   transition: background-color 0.3s;
 }
 
-.update__options-btn:hover {
+.update__options-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.update__options-btn:hover,
+.update__options-link:hover {
   background-color: grey;
 }
 

@@ -1,0 +1,33 @@
+/* MODAL WINDOW STYLES */
+.modal {
+  display: none;
+}
+
+.modal.active {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+/* ==Modal Background== */
+
+.modal__background {
+  visibility: hidden;
+}
+
+.active .modal__background {
+  visibility: visible;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(156, 156, 156);
+  opacity: 0.5;
+}

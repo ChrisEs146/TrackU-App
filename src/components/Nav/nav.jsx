@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserInfo } from "../../store/actions/userActions";
+import { useContext } from "react";
+import { useSelector } from "react-redux";
+import { SidebarContext } from "../../contexts/SidebarContext";
+import { FaBars } from "react-icons/fa";
 import logo from "../../images/logo.png";
-import { FaBars, FaPlus } from "react-icons/fa";
 import "./nav.css";
 
 /**
@@ -11,16 +11,9 @@ import "./nav.css";
  * the user profile in case the user exists.
  * @returns Navigation Component
  */
-const Nav = ({ handleSidebarState }) => {
-  const { userData, userToken } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-
-  // Fetches user's info on reload
-  useEffect(() => {
-    if (userToken) {
-      dispatch(getUserInfo());
-    }
-  }, [userToken, dispatch]);
+const Nav = () => {
+  const { userData } = useSelector((state) => state.user);
+  const { sidebarHandler } = useContext(SidebarContext);
 
   return (
     <nav className="navigation">
@@ -38,12 +31,9 @@ const Nav = ({ handleSidebarState }) => {
             title="Sidebar menu"
             aria-label="Button to open menu"
             className="navigation__menu-btn"
-            onClick={handleSidebarState}
+            onClick={sidebarHandler}
           >
             <FaBars />
-          </button>
-          <button title="Add Project" className="navigation__add-btn">
-            <FaPlus /> Add Project
           </button>
         </>
       )}

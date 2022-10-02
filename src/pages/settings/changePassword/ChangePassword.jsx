@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { FaLock } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
@@ -14,8 +13,7 @@ import { useOutletContext } from "react-router-dom";
  * @returns ChangePassword page
  */
 const ChangePassword = () => {
-  const { userData } = useSelector((state) => state.user);
-  const [isModalActive, handleModalActivation] = useOutletContext();
+  const [isConfirmActive, handleConfirmActivation] = useOutletContext();
   const [pwdFormData, setPwdFormData] = useState({
     currentPassword: "",
     newPassword: "",
@@ -92,7 +90,7 @@ const ChangePassword = () => {
               />
             );
           })}
-          <button className="changePwd__form-btn" type="button" onClick={handleModalActivation}>
+          <button className="changePwd__form-btn" type="button" onClick={handleConfirmActivation}>
             Change Password
           </button>
         </form>
@@ -101,8 +99,8 @@ const ChangePassword = () => {
         action={modalData.action}
         title={modalData.title}
         description={modalData.description}
-        isModalActive={isModalActive}
-        handleModalActivation={handleModalActivation}
+        isModalActive={isConfirmActive}
+        handleModalActivation={handleConfirmActivation}
       />
     </>
   );

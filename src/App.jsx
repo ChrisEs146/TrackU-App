@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Homepage from "./pages/homepage/Homepage";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -11,47 +10,44 @@ import UserDelete from "./pages/settings/userDelete/UserDelete";
 import ChangePassword from "./pages/settings/changePassword/ChangePassword";
 import Projects from "./pages/projects/Projects";
 import Project from "./pages/project/Project";
-import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./components/Route/ProtectedRoute";
-const App = () => {
-  // Setting the sidebar activation and deactivation state
-  const [isSidebarActive, setIsSidebarActive] = useState(false);
-  /**
-   * Handler to change the sidebar state. It's used in the nav component
-   * and in the sidebar itsef, which is located in the dashboard.
-   */
-  const handleSidebarState = () => setIsSidebarActive(!isSidebarActive);
+import "react-toastify/dist/ReactToastify.css";
+import { ProjectList } from "./pages/projectList/ProjectList";
+import DynamicForm from "./components/DynamicForm/DynamicForm";
 
+const App = () => {
   return (
     <main className="app">
-      <BrowserRouter>
-        <Nav handleSidebarState={handleSidebarState} />
-        <Routes>
-          <Route index element={<Homepage />} />
-          <Route path="/registration" element={<Form />} />
-          <Route element={<ProtectedRoute />}>
-            <Route
-              path="/dashboard"
-              element={
-                <Dashboard
-                  isSidebarActive={isSidebarActive}
-                  handleSidebarState={handleSidebarState}
-                />
-              }
-            >
-              <Route index element={<Projects />} />
-              <Route path="projects" element={<Projects />} />
-              <Route path="project/:projectId" element={<Project />} />
-              <Route path="settings" element={<Settings />}>
-                <Route index element={<UserUpdate />} />
-                <Route path="update-user" element={<UserUpdate />} />
-                <Route path="delete-user" element={<UserDelete />} />
-                <Route path="change-password" element={<ChangePassword />} />
-              </Route>
+      <Nav />
+      <Routes>
+        <Route index element={<Homepage />} />
+        <Route path="/registration" element={<Form />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route index element={<Projects />} />
+            <Route path="projects" element={<Projects />}>
+              <Route index element={<ProjectList />} />
+              <Route path="add-project" element={<DynamicForm type="Project" editMode={false} />} />
+              <Route path=":projectId" element={<Project />} />
+              <Route
+                path="edit-project/:projectId"
+                element={<DynamicForm type="Project" editMode={true} />}
+              />
+              <Route path="add-update" element={<DynamicForm type="Update" editMode={false} />} />
+              <Route
+                path="edit-update/:updateId"
+                element={<DynamicForm type="Update" editMode={true} />}
+              />
+            </Route>
+            <Route path="settings" element={<Settings />}>
+              <Route index element={<UserUpdate />} />
+              <Route path="update-user" element={<UserUpdate />} />
+              <Route path="delete-user" element={<UserDelete />} />
+              <Route path="change-password" element={<ChangePassword />} />
             </Route>
           </Route>
-        </Routes>
-      </BrowserRouter>
+        </Route>
+      </Routes>
       <ToastContainer />
     </main>
   );

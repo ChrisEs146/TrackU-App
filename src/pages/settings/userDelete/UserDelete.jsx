@@ -15,7 +15,7 @@ import { useOutletContext } from "react-router-dom";
  */
 const UserDelete = () => {
   const { userData } = useSelector((state) => state.user);
-  const [isModalActive, handleModalActivation] = useOutletContext();
+  const [isConfirmActive, handleConfirmActivation] = useOutletContext();
   const [deleteFormData, setDeleteFormData] = useState({
     email: userData.email,
     password: "",
@@ -31,6 +31,7 @@ const UserDelete = () => {
       icon: <FaEnvelope />,
       errorMsg: "It must be a valid email!",
       placeholder: "Email",
+      readOnly: true,
     },
     {
       id: 2,
@@ -77,7 +78,7 @@ const UserDelete = () => {
               />
             );
           })}
-          <button className="delete__form-btn" type="button" onClick={handleModalActivation}>
+          <button className="delete__form-btn" type="button" onClick={handleConfirmActivation}>
             Delete Account
           </button>
         </form>
@@ -86,8 +87,8 @@ const UserDelete = () => {
         action={modalData.action}
         title={modalData.title}
         description={modalData.description}
-        isModalActive={isModalActive}
-        handleModalActivation={handleModalActivation}
+        isModalActive={isConfirmActive}
+        handleModalActivation={handleConfirmActivation}
       />
     </>
   );

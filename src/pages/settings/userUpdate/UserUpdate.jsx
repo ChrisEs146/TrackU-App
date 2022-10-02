@@ -15,7 +15,7 @@ import "./userUpdate.css";
  */
 const UserUpdate = () => {
   const { userData } = useSelector((state) => state.user);
-  const [isModalActive, handleModalActivation] = useOutletContext();
+  const [isConfirmActive, handleConfirmActivation] = useOutletContext();
   const [updateFormData, setUpdateFormData] = useState({
     fullName: userData.fullName,
     email: userData.email,
@@ -70,7 +70,7 @@ const UserUpdate = () => {
               />
             );
           })}
-          <button className="update__form-btn" type="button" onClick={handleModalActivation}>
+          <button className="update__form-btn" type="button" onClick={handleConfirmActivation}>
             Update Name
           </button>
         </form>
@@ -79,8 +79,8 @@ const UserUpdate = () => {
         action={modalData.action}
         title={modalData.title}
         description={modalData.description}
-        isModalActive={isModalActive}
-        handleModalActivation={handleModalActivation}
+        isModalActive={isConfirmActive}
+        handleModalActivation={handleConfirmActivation}
       />
     </>
   );

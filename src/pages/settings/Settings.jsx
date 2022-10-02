@@ -12,11 +12,12 @@ import "./settings.css";
  */
 const Settings = () => {
   const { userData } = useSelector((state) => state.user);
-  const [isModalActive, setIsModalActive] = useState(false);
 
-  // Confirmation modal handler
-  const handleModalActivation = () => setIsModalActive(!isModalActive);
+  // Modal windows activation and deactivation state
+  const [isConfirmActive, setIsConfirmActive] = useState(false);
 
+  // Modal window handlers
+  const handleConfirmActivation = () => setIsConfirmActive(!isConfirmActive);
   return (
     <section className="settings">
       <h2 className="settings__title">Settings</h2>
@@ -25,7 +26,7 @@ const Settings = () => {
           <UserCard fullName={userData.fullName} />
         </div>
         <div className="settings__form">
-          <Outlet context={[isModalActive, handleModalActivation]} />
+          <Outlet context={[isConfirmActive, handleConfirmActivation]} />
         </div>
       </div>
     </section>

@@ -7,14 +7,15 @@ import "./formInput.css";
  * @returns Custom input field
  */
 const Input = (props) => {
-  const { name, label, errorMsg, type, handleChange, value, placeholder, pattern, icon } = props;
+  const { name, label, errorMsg, type, handleChange, value, placeholder, pattern, icon, readOnly } =
+    props;
   const [focused, setFocused] = useState(false);
 
   /**
    * Function that sets the focus state.
    */
   const handleFocus = () => {
-    setFocused(true);
+    setFocused(!focused);
   };
 
   return (
@@ -24,6 +25,7 @@ const Input = (props) => {
         {label}
       </label>
       <input
+        readOnly={readOnly}
         required
         type={type}
         name={name}
@@ -36,7 +38,7 @@ const Input = (props) => {
         onBlur={handleFocus}
         onFocus={() => name === "confirmPassword" && setFocused(true)}
       />
-      <span>{errorMsg}</span>
+      {errorMsg && <span>{errorMsg}</span>}
     </div>
   );
 };

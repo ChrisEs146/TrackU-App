@@ -9,7 +9,6 @@
   height: fit-content;
   padding: 1rem;
   border-radius: 6px;
-  border-left: 4px solid slateblue;
   transition: transform 0.3s ease-in;
 }
 
@@ -53,7 +52,6 @@
   font-weight: 500;
   color: #fff;
   padding: 0.7rem;
-  background-color: slateblue;
   border-radius: 6px;
 }
 
