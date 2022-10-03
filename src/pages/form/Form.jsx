@@ -105,38 +105,6 @@ const Form = () => {
     },
   ];
 
-  useEffect(() => {
-    // If sign up process is successful
-    if (isSignUp && success) {
-      toast.success("Account Successfully Created");
-      setIsSignUp(false);
-      setFormData(initialFormState);
-      navigate("/registration");
-    }
-
-    // If sign in process is successful
-    if (!isSignUp && userToken) {
-      navigate("/dashboard/projects");
-    }
-  }, [navigate, success, isSignUp, initialFormState, userToken]);
-
-  // Checks for possible errors
-  if (error) {
-    console.error(error);
-    toast.error(error);
-  }
-
-  /**
-   * Handles input changes in the registration form
-   * @param {*} e target element
-   */
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   /**
    * Handles the submission of the registration form
    * @param {*} e target element
