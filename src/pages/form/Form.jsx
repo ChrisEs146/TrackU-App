@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { signUpUser, signInUser } from "../../store/actions/userActions";
+import { useState, useMemo } from "react";
+import { useDispatch } from "react-redux";
 import { FaUserAlt, FaEnvelope, FaLock } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { useSigninMutation, useSignupMutation } from "../../store/slices/ApiSlices/userApiSlice";
+import { setUserToken } from "../../store/slices/userSlice";
+import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import FormInput from "../../components/FormInput/FormInput";
 import "./form.css";
 
