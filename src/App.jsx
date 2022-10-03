@@ -12,7 +12,7 @@ import Projects from "./pages/projects/Projects";
 import Project from "./pages/project/Project";
 import ProtectedRoute from "./components/Route/ProtectedRoute";
 import "react-toastify/dist/ReactToastify.css";
-import { ProjectList } from "./pages/projectList/ProjectList";
+import ProjectList from "./pages/projectList/ProjectList";
 import DynamicForm from "./components/DynamicForm/DynamicForm";
 
 const App = () => {
