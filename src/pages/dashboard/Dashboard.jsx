@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { SidebarContext } from "../../contexts/SidebarContext";
+import { useGetUserQuery } from "../../store/slices/ApiSlices/userApiSlice";
+import { setUserData } from "../../store/slices/userSlice";
 import "./dashboard.css";
 
 /**
@@ -11,15 +13,23 @@ import "./dashboard.css";
  * @returns Dashboard Component
  */
 const Dashboard = () => {
-  const { userData } = useSelector((state) => state.user);
   const { sidebarStatus, sidebarHandler } = useContext(SidebarContext);
+  const { data: user, isSuccess } = useGetUserQuery();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(setUserData(user));
+    }
+    console.log("Running use effect");
+  }, [dispatch, isSuccess, user]);
 
   return (
     <div className="dashboard">
       <Sidebar
         handleSidebarState={sidebarHandler}
         isSidebarActive={sidebarStatus}
-        fullName={userData?.fullName}
+        fullName={user?.fullName}
       />
       <div className="dashboard__projects-container">
         <Outlet />
