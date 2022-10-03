@@ -4,14 +4,16 @@ import { FaEdit, FaCalendarDay, FaQuestionCircle } from "react-icons/fa";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { getProgressColor } from "../../Utils/Functions";
 import Updates from "./Updates/Updates";
-import { mockData } from "../projectList/ProjectList";
 import { getShortDate } from "../../Utils/Functions";
+import { useGetProjectQuery } from "../../store/slices/ApiSlices/projectApiSlice";
+import { useGetUpdatesQuery } from "../../store/slices/ApiSlices/updateApiSlice";
+import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import "./project.css";
 
 const Project = () => {
   const { projectId } = useParams();
-
-  const project = mockData.find((proj) => proj.projectId === Number(projectId));
+  const { data: project, isLoading } = useGetProjectQuery(projectId);
+  const { data: updates } = useGetUpdatesQuery(projectId);
 
   const currentColor = getProgressColor(project.progress);
   const progressStyles = buildStyles({
@@ -20,7 +22,9 @@ const Project = () => {
     strokeLinecap: "round",
   });
 
-  return (
+  return isLoading ? (
+    <LoadingSpinner />
+  ) : (
     <section className="projectPage">
       <div className="projectPage__main-content">
         <div className="projectPage__btns-container">
@@ -34,7 +38,7 @@ const Project = () => {
             title="Edit Project"
             aria-label="Project edit button"
             className="projectPage__edit-btn"
-            to={`/dashboard/projects/edit-project/${project.projectId}`}
+            to={`/dashboard/projects/edit-project/${project._id}`}
           >
             <FaEdit />
           </NavLink>
@@ -68,7 +72,7 @@ const Project = () => {
           </div>
         </div>
       </div>
-      <Updates updates={project.updates} />
+      <Updates updates={updates} />
     </section>
   );
 };
