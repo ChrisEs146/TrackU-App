@@ -1,98 +1,12 @@
 import { FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import { useGetAllProjectsQuery } from "../../store/slices/ApiSlices/projectApiSlice";
+import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import "./projectList.css";
 
-const date = new Date();
-
-const mockData = [
-  {
-    projectId: 1,
-    title: "Angular Web Application",
-    date,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit recusandae soluta voluptas quas nulla facere repellat velit molestiae fuga similique!",
-    status: "In Progress",
-    progress: 70,
-    updates: [
-      {
-        projectId: 1,
-        id: 1.1,
-        title: "Endpoint Issues",
-        description: "Test description",
-        date,
-      },
-      {
-        projectId: 1,
-        id: 1.2,
-        title: "Rate limiting finished",
-        description: "Another test description",
-        date,
-      },
-      {
-        projectId: 1,
-        id: 1.3,
-        title: "Project Completed",
-        description: "Another test description",
-        date,
-      },
-    ],
-  },
-  {
-    projectId: 2,
-    title: "DRF Rest API",
-    date,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit recusandae soluta voluptas quas nulla facere repellat velit molestiae fuga similique!",
-    status: "Completed",
-    progress: 100,
-    updates: [
-      { projectId: 2, id: 2.1, title: "Endpoint Issues", description: "Test description", date },
-      {
-        projectId: 2,
-        id: 2.2,
-        title: "Rate limiting finished",
-        description: "Another test description",
-        date,
-      },
-      {
-        projectId: 2,
-        id: 2.3,
-        title: "Project Completed",
-        description: "Another test description",
-        date,
-      },
-    ],
-  },
-  {
-    projectId: 3,
-    title: "ASP.NET CORE WEB API",
-    date,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit recusandae soluta voluptas quas nulla facere repellat velit molestiae fuga similique!",
-    status: "Not Started",
-    progress: 0,
-    updates: [
-      { projectId: 3, id: 3.1, title: "Endpoint Issues", description: "Test description", date },
-      {
-        projectId: 3,
-        id: 3.2,
-        title: "Rate limiting finished",
-        description: "Another test description",
-        date,
-      },
-      {
-        projectId: 3,
-        id: 3.3,
-        title: "Project Completed",
-        description: "Another test description",
-        date,
-      },
-    ],
-  },
-];
-
 const ProjectList = () => {
+  const { data: projects, isLoading } = useGetAllProjectsQuery();
   return (
     <div className="projectList">
       <div className="projectList__title-container">
@@ -107,12 +21,14 @@ const ProjectList = () => {
         </NavLink>
       </div>
       <div className="projectList__container">
-        {mockData?.map((project) => (
-          <ProjectCard key={project.projectId} project={project} />
-        ))}
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          projects?.map((project) => <ProjectCard key={project._id} project={project} />)
+        )}
       </div>
     </div>
   );
 };
 
-export { ProjectList, mockData };
+export default ProjectList;
