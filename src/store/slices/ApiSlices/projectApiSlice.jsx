@@ -34,3 +34,11 @@ export const projectApiSlice = apiSlice.injectEndpoints({
     }),
   }),
 });
+
+export const {
+  useGetAllProjectsQuery,
+  useAddProjectMutation,
+  useGetProjectQuery,
+  useDeleteProjectMutation,
+  useUpdateProjectMutation,
+} = projectApiSlice;
