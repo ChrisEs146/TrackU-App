@@ -39,3 +39,9 @@ const privateQuery = async (args, api, extraOptions) => {
   }
   return result;
 };
+
+// API slice wih injected endpoints
+export const apiSlice = createApi({
+  baseQuery: privateQuery,
+  endpoints: (builder) => ({}),
+});
