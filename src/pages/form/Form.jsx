@@ -109,13 +109,29 @@ const Form = () => {
    * Handles the submission of the registration form
    * @param {*} e target element
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (isSignUp) {
-      dispatch(signUpUser(formData));
-    } else {
-      dispatch(signInUser(formData));
+    try {
+      if (isSignUp) {
+        await signup({ ...formData });
+        setFormData(initialFormState);
+        handleSwitch();
+        navigate("/registration");
+        console.log("signUp form");
+      } else {
+        const tokenData = await signin({ ...formData }).unwrap();
+        dispatch(setUserToken({ ...tokenData }));
+        setFormData(initialFormState);
+        navigate("/dashboard/projects");
+        console.log("signin form");
+      }
+    } catch (error) {
+      if (!error?.originalStatus) {
+        toast.error("Oops, something went wrong!");
+      } else {
+        toast.error(error?.data?.message);
+      }
     }
   };
 
