@@ -6,9 +6,10 @@ import "./dateCard.css";
  * @returns DateCard component
  */
 const DateCard = ({ date }) => {
-  const day = date.toLocaleString("default", { day: "2-digit" });
-  const month = date.toLocaleString("default", { month: "short" });
-  const year = date.toLocaleString("default", { year: "numeric" });
+  const fullDate = new Date(date);
+  const day = fullDate.toLocaleString("default", { day: "2-digit" });
+  const month = fullDate.toLocaleString("default", { month: "short" });
+  const year = fullDate.toLocaleString("default", { year: "numeric" });
 
   return (
     <div className="date">
