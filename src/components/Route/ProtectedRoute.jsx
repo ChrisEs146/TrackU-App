@@ -7,22 +7,14 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
  * @returns ProtectedRoute component
  */
 const ProtectedRoute = () => {
-  const dispatch = useDispatch();
   const { userToken } = useSelector((state) => state.user);
+  const location = useLocation();
 
-  // Fetches user's info on reload
-  useEffect(() => {
-    if (userToken) {
-      dispatch(getUserInfo());
-    }
-  }, [userToken, dispatch]);
-
-  if (!userToken) {
-    dispatch(logOut());
-    return <Navigate to="/registration" replace />;
-  }
-
-  return <Outlet />;
+  return userToken ? (
+    <Outlet />
+  ) : (
+    <Navigate to="/registration" state={{ from: location }} replace />
+  );
 };
 
 export default ProtectedRoute;
