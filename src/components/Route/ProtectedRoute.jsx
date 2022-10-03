@@ -1,8 +1,5 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { Navigate, Outlet } from "react-router-dom";
-import { logOut } from "../../store/slices/user";
-import { getUserInfo } from "../../store/actions/userActions";
+import { useSelector } from "react-redux";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 /**
  * Protected component that serves as a bridge between the
