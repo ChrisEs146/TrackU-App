@@ -28,3 +28,10 @@ export const updateApiSlice = apiSlice.injectEndpoints({
     }),
   }),
 });
+
+export const {
+  useGetUpdatesQuery,
+  useAddUpdateMutation,
+  useGetUpdateQuery,
+  useEditUpdateMutation,
+} = updateApiSlice;
