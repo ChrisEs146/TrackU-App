@@ -135,15 +135,9 @@ const Form = () => {
     }
   };
 
-  /**
-   * Handles the switch between the sign in form
-   * and sign up form
-   */
-  const handleSwitch = () => {
-    setIsSignUp((prevState) => !prevState);
-  };
-
-  return (
+  return loading ? (
+    <LoadingSpinner />
+  ) : (
     <section className="registration">
       <div className="registration__container">
         <h2 className="registration__title">{isSignUp ? "Sign Up" : "Sign In"}</h2>
