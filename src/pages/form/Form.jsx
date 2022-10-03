@@ -25,6 +25,16 @@ const Form = () => {
   // State to switch between forms
   const [isSignUp, setIsSignUp] = useState(false);
 
+  const loading = isSignUp ? signupLoading : signinLoading;
+
+  /**
+   * Handles the switch between the sign in form
+   * and sign up form
+   */
+  const handleSwitch = () => {
+    setIsSignUp((prevState) => !prevState);
+  };
+
   // Initial form fields
   const initialFormState = useMemo(
     () => ({
@@ -38,6 +48,17 @@ const Form = () => {
 
   // Form's values
   const [formData, setFormData] = useState(initialFormState);
+
+  /**
+   * Handles input changes in the registration form
+   * @param {*} e target element
+   */
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   // Form values, used as an array to iterate through them.
   const inputs = [
