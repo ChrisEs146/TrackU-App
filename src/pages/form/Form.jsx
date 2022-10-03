@@ -19,7 +19,8 @@ import "./form.css";
 const Form = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, error, userToken, success } = useSelector((state) => state.user);
+  const [signup, { isLoading: signupLoading }] = useSignupMutation();
+  const [signin, { isLoading: signinLoading }] = useSigninMutation();
 
   // State to switch between forms
   const [isSignUp, setIsSignUp] = useState(false);
