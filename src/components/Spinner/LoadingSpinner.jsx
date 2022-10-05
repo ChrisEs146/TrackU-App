@@ -1,4 +1,9 @@
 import { TailSpin } from "react-loader-spinner";
+
+/**
+ * Loading spinner to be used while waiting for data.
+ * @returns Spinner component
+ */
 const LoadingSpinner = () => {
   return (
     <>
