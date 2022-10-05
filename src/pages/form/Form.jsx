@@ -127,7 +127,7 @@ const Form = () => {
         console.log("signin form");
       }
     } catch (error) {
-      if (!error?.originalStatus) {
+      if (!error?.status) {
         toast.error("Oops, something went wrong!");
       } else {
         toast.error(error?.data?.message);
