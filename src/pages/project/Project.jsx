@@ -10,11 +10,17 @@ import { useGetUpdatesQuery } from "../../store/slices/ApiSlices/updateApiSlice"
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import "./project.css";
 
+/**
+ * Shows a projects information including, date, status, progress,
+ * description and updates.
+ * @returns Project component
+ */
 const Project = () => {
   const { projectId } = useParams();
   const { data: project, isLoading } = useGetProjectQuery(projectId);
   const { data: updates } = useGetUpdatesQuery(projectId);
 
+  //Setting a status color based on project's progress
   const currentColor = getProgressColor(project.progress);
   const progressStyles = buildStyles({
     pathColor: `${currentColor}`,
