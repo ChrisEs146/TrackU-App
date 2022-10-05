@@ -21,8 +21,7 @@ const Dashboard = () => {
     if (isSuccess) {
       dispatch(setUserData(user));
     }
-    console.log("Running use effect");
-  }, [dispatch, isSuccess, user]);
+  }, [isSuccess, user, dispatch]);
 
   return (
     <div className="dashboard">
