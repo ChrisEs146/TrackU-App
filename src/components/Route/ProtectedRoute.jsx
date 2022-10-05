@@ -4,7 +4,7 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 /**
  * Protected component that serves as a bridge between the
  * dashboard routes and the public routes.
- * @returns ProtectedRoute component
+ * @returns Child component
  */
 const ProtectedRoute = () => {
   const { userToken } = useSelector((state) => state.user);
