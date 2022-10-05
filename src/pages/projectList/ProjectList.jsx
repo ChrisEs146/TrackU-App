@@ -5,6 +5,11 @@ import { useGetAllProjectsQuery } from "../../store/slices/ApiSlices/projectApiS
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import "./projectList.css";
 
+/**
+ * Component that shows a user's project list. If there are no
+ * projects it shows a "Please, add a project" message.
+ * @returns ProjectList component
+ */
 const ProjectList = () => {
   const { data: projects, isLoading } = useGetAllProjectsQuery();
   return (
