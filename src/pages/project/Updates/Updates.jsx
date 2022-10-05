@@ -6,10 +6,15 @@ import ConfirmationModal from "../../../components/ConfirmationModal/Confirmatio
 import { getShortDate } from "../../../Utils/Functions";
 import "./updates.css";
 
+/**
+ * Shows a list of updates. Each one can be updated or deleted.
+ * @returns Updates component
+ */
 const Updates = ({ updates }) => {
   const [isConfirmActive, setIsConfirmActive] = useState(false);
   const handleConfirmModal = () => setIsConfirmActive(!isConfirmActive);
 
+  //Delete modal info
   const modalData = {
     title: "WARNING!",
     action: "delete",
