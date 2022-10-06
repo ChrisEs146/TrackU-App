@@ -35,12 +35,12 @@ const Updates = ({ updates }) => {
         <div className="updates">
           {updates?.map((update) => (
             <UpdateCard
-              date={getShortDate(update.date)}
-              title={update.title}
-              description={update.description}
+              date={getShortDate(update?.createdAt)}
+              title={update?.title}
+              description={update?.description}
               handleModalActivation={handleConfirmModal}
-              key={update.id}
-              id={update.id}
+              key={update?._id}
+              id={update?._id}
             />
           ))}
         </div>
