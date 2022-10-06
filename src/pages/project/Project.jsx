@@ -19,11 +19,6 @@ const Project = () => {
   const { projectId } = useParams();
   const { data: project, isLoading, isSuccess, isError } = useGetProjectQuery(projectId);
   const { data: updates } = useGetUpdatesQuery(projectId);
-  console.log(projectId);
-  console.log(project);
-  console.log(isLoading);
-  console.log(isSuccess);
-  console.log(isError);
 
   //Setting a status color based on project's progress
   const currentColor = getProgressColor(project?.progress);
