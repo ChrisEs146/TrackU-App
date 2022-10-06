@@ -1,4 +1,4 @@
-import { logOut } from "../userSlice";
+import { logOut, setUserToken } from "../userSlice";
 import { apiSlice } from "./apiSlice";
 
 export const userApiSlice = apiSlice.injectEndpoints({
@@ -20,6 +20,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
     getUser: builder.query({
       query: () => ({
         url: "/users/info",
+        keepUnusedDataFor: 10,
       }),
     }),
     logOut: builder.mutation({
@@ -34,8 +35,9 @@ export const userApiSlice = apiSlice.injectEndpoints({
           dispatch(logOut());
           setTimeout(() => {
             dispatch(apiSlice.util.resetApiState());
-          }, 1000);
+          }, 2000);
         } catch (error) {
+          console.log("Error in logoutSlice");
           console.error(error);
         }
       },
@@ -61,6 +63,24 @@ export const userApiSlice = apiSlice.injectEndpoints({
         body: { ...credentials },
       }),
     }),
+    refresh: builder.mutation({
+      query: () => ({
+        url: "/users/refresh",
+        method: "GET",
+      }),
+      async onQueryStarted(args, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          console.log("Refresh query fullfilled");
+          console.log(data);
+          const { accessToken } = data;
+          dispatch(setUserToken({ accessToken }));
+        } catch (error) {
+          console.log("Error in refresh slice");
+          console.error(error);
+        }
+      },
+    }),
   }),
 });
 
@@ -72,4 +92,5 @@ export const {
   useSignupMutation,
   useGetUserQuery,
   useLogOutMutation,
+  useRefreshMutation,
 } = userApiSlice;
