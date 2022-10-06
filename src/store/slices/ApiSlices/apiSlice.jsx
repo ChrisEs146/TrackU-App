@@ -21,7 +21,7 @@ const baseQuery = fetchBaseQuery({
 const privateQuery = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
 
-  if (result?.error?.originalStatus === 401 && result?.error?.data.message === "Invalid Token") {
+  if (result?.error?.status === 401) {
     console.log("Sending refresh token");
 
     const refreshToken = await baseQuery("/users/refresh", api, extraOptions);
@@ -32,6 +32,7 @@ const privateQuery = async (args, api, extraOptions) => {
       result = await baseQuery(args, api, extraOptions);
     } else {
       if (refreshToken?.error?.status === 401) {
+        console.log("Refresh token expired");
         refreshToken.error.data.message = "Session Expired";
       }
       return refreshToken;
