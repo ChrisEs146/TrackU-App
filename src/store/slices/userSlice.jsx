@@ -20,6 +20,7 @@ const userSlice = createSlice({
     },
     logOut: (state) => {
       state.userToken = null;
+      state.userData = null;
     },
   },
 });
