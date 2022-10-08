@@ -22,6 +22,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         url: "/users/info",
         keepUnusedDataFor: 10,
       }),
+      providesTags: ["User"],
     }),
     logOut: builder.mutation({
       query: () => ({
@@ -48,6 +49,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: "PATCH",
         body: { ...userInfo },
       }),
+      invalidatesTags: ["User"],
     }),
     updatePassword: builder.mutation({
       query: (credentials) => ({
@@ -55,6 +57,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: "PATCH",
         body: { ...credentials },
       }),
+      invalidatesTags: ["User"],
     }),
     deleteUser: builder.mutation({
       query: (credentials) => ({
@@ -62,12 +65,14 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: "DELETE",
         body: { ...credentials },
       }),
+      invalidatesTags: ["User"],
     }),
     refresh: builder.mutation({
       query: () => ({
         url: "/users/refresh",
         method: "GET",
       }),
+      invalidatesTags: ["User"],
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
