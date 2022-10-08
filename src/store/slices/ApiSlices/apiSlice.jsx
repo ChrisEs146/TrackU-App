@@ -22,17 +22,13 @@ const privateQuery = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
 
   if (result?.error?.status === 401) {
-    console.log("Sending refresh token");
-
     const refreshToken = await baseQuery("/users/refresh", api, extraOptions);
-    console.log(refreshToken);
 
     if (refreshToken?.data) {
-      api.dispatch(setUserToken({ ...refreshToken.data })); //CHECK USER DATA
+      api.dispatch(setUserToken({ ...refreshToken.data }));
       result = await baseQuery(args, api, extraOptions);
     } else {
       if (refreshToken?.error?.status === 401) {
-        console.log("Refresh token expired");
         refreshToken.error.data.message = "Session Expired";
         api.dispatch(logOut());
       }
