@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { setUserToken } from "../userSlice";
+import { logOut, setUserToken } from "../userSlice";
 
 // Setting base URL
 const { REACT_APP_BASE_URL } = process.env;
