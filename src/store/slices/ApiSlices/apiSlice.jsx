@@ -34,6 +34,7 @@ const privateQuery = async (args, api, extraOptions) => {
       if (refreshToken?.error?.status === 401) {
         console.log("Refresh token expired");
         refreshToken.error.data.message = "Session Expired";
+        api.dispatch(logOut());
       }
       return refreshToken;
     }
