@@ -6,6 +6,7 @@ export const updateApiSlice = apiSlice.injectEndpoints({
       query: (projectId) => ({
         url: `/updates/${projectId}`,
       }),
+      providesTags: ["Update"],
     }),
     addUpdate: builder.mutation({
       query: (projectId, updateData) => ({
@@ -13,6 +14,7 @@ export const updateApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { ...updateData },
       }),
+      invalidatesTags: ["Update"],
     }),
     getUpdate: builder.query({
       query: (projectId, updateId) => ({
@@ -25,6 +27,7 @@ export const updateApiSlice = apiSlice.injectEndpoints({
         method: "PUT",
         body: { ...updateInfo },
       }),
+      invalidatesTags: ["Update"],
     }),
   }),
 });
