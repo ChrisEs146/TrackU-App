@@ -31,14 +31,12 @@ export const userApiSlice = apiSlice.injectEndpoints({
       }),
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
-          const { data } = await queryFulfilled;
-          console.log(data.message);
+          await queryFulfilled;
           dispatch(logOut());
           setTimeout(() => {
             dispatch(apiSlice.util.resetApiState());
           }, 2000);
         } catch (error) {
-          console.log("Error in logoutSlice");
           console.error(error);
         }
       },
@@ -76,12 +74,9 @@ export const userApiSlice = apiSlice.injectEndpoints({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log("Refresh query fullfilled");
-          console.log(data);
           const { accessToken } = data;
           dispatch(setUserToken({ accessToken }));
         } catch (error) {
-          console.log("Error in refresh slice");
           console.error(error);
         }
       },
