@@ -46,4 +46,5 @@ const privateQuery = async (args, api, extraOptions) => {
 export const apiSlice = createApi({
   baseQuery: privateQuery,
   endpoints: (builder) => ({}),
+  tagTypes: ["Project", "Update", "User"],
 });
