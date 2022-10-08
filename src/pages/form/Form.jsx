@@ -118,13 +118,11 @@ const Form = () => {
         setFormData(initialFormState);
         handleSwitch();
         navigate("/registration");
-        console.log("signUp form");
       } else {
         const tokenData = await signin({ ...formData }).unwrap();
         dispatch(setUserToken({ ...tokenData }));
         setFormData(initialFormState);
         navigate("/dashboard/projects");
-        console.log("signin form");
       }
     } catch (error) {
       if (!error?.status) {
