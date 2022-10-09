@@ -28,8 +28,6 @@ const ChangePassword = () => {
       type: "password",
       label: "Current Password",
       icon: <FaLock />,
-      errorMsg:
-        "Password should be 8 - 20 characters. It must include at least 1 letter, 1 number and 1 special character!",
       placeholder: "Password",
       pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
     },
@@ -40,7 +38,7 @@ const ChangePassword = () => {
       label: "New Password",
       icon: <FaLock />,
       errorMsg:
-        "Password should be 8 - 20 characters. It must include at least 1 letter, 1 number and 1 special character!",
+        "Must be 8 - 20 characters, include at least 1 letter, 1 number and 1 special character.",
       placeholder: "New Password",
       pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
     },
