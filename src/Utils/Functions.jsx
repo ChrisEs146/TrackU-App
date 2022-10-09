@@ -22,7 +22,7 @@ export const getProgressColor = (value) => {
  * @returns Formatted date in m/d/y
  */
 export const getShortDate = (date) => {
-  const finalDate = date.toLocaleString("default", {
+  const finalDate = new Date(date).toLocaleString("default", {
     month: "2-digit",
     day: "2-digit",
     year: "numeric",
