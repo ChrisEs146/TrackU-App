@@ -1,0 +1,21 @@
+/* NOT FOUND COMPONENT STYLES */
+
+.notFound__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: fit-content;
+  height: fit-content;
+}
+
+.notFound__icon-container svg {
+  color: rgb(17, 107, 182);
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.notFound__message {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
