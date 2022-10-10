@@ -33,22 +33,24 @@ const Updates = ({ updates }) => {
           </NavLink>
         </div>
         <div className="updates">
-          {updates?.map((update) => (
-            <UpdateCard
-              date={getShortDate(update?.createdAt)}
-              title={update?.title}
-              description={update?.description}
-              handleModalActivation={handleConfirmModal}
-              key={update?._id}
-              id={update?._id}
-            />
-          ))}
+          {updates.length ? (
+            updates?.map((update) => (
+              <UpdateCard
+                date={getShortDate(update?.createdAt)}
+                title={update?.title}
+                description={update?.description}
+                handleModalActivation={handleConfirmModal}
+                key={update?._id}
+                id={update?._id}
+              />
+            ))
+          ) : (
+            <NotFound message={"Please, add an update."} />
+          )}
         </div>
       </div>
       <ConfirmationModal
-        action={modalData.action}
-        title={modalData.title}
-        description={modalData.description}
+        modal={modalData}
         isModalActive={isConfirmActive}
         handleModalActivation={handleConfirmModal}
       />
