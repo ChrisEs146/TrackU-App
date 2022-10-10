@@ -1,4 +1,9 @@
 /* PROJECT LIST STYLES */
+.projectList {
+  width: 100%;
+  height: 100%;
+}
+
 .projectList__title-container,
 .projectList__add-btn,
 .projectList__container {
@@ -7,6 +12,7 @@
 }
 
 .projectList__title-container {
+  height: 10%;
   justify-content: space-between;
   padding: 1rem;
 }
@@ -30,10 +36,11 @@
 }
 
 .projectList__container {
+  justify-content: center;
   flex-direction: column;
   gap: 2rem;
   width: 100%;
-  height: 100%;
+  height: 90%;
   padding: 1rem;
   overflow-y: scroll;
 }
