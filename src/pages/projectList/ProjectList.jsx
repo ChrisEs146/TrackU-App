@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import { useGetAllProjectsQuery } from "../../store/slices/ApiSlices/projectApiSlice";
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
+import NotFound from "../../components/DefaultMessage/NotFound";
 import "./projectList.css";
 
 /**
@@ -12,6 +13,7 @@ import "./projectList.css";
  */
 const ProjectList = () => {
   const { data: projects, isLoading } = useGetAllProjectsQuery();
+
   return (
     <div className="projectList">
       <div className="projectList__title-container">
@@ -28,6 +30,8 @@ const ProjectList = () => {
       <div className="projectList__container">
         {isLoading ? (
           <LoadingSpinner />
+        ) : !projects.length ? (
+          <NotFound message={"Please, add a project."} />
         ) : (
           projects?.map((project) => <ProjectCard key={project._id} project={project} />)
         )}
