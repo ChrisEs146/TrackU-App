@@ -3,7 +3,8 @@ import { FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import UpdateCard from "../../../components/UpdateCard/UpdateCard";
 import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
-import { getShortDate } from "../../../Utils/Functions";
+import NotFound from "../../../components/DefaultMessage/NotFound";
+import { getModalData, getShortDate } from "../../../Utils/Functions";
 import "./updates.css";
 
 /**
@@ -15,12 +16,7 @@ const Updates = ({ updates }) => {
   const handleConfirmModal = () => setIsConfirmActive(!isConfirmActive);
 
   //Delete modal info
-  const modalData = {
-    title: "WARNING!",
-    action: "delete",
-    description:
-      "You are about to delete this update. Click delete to proceed, otherwise cancel this operation.",
-  };
+  const modalData = getModalData("Update", false, "Delete");
 
   return (
     <>
