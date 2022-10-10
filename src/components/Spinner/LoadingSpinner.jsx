@@ -1,4 +1,5 @@
 import { TailSpin } from "react-loader-spinner";
+import "./spinner.css";
 
 /**
  * Loading spinner to be used while waiting for data.
@@ -6,7 +7,7 @@ import { TailSpin } from "react-loader-spinner";
  */
 const LoadingSpinner = () => {
   return (
-    <>
+    <div className="spinner_container">
       <TailSpin
         height="30"
         width="30"
@@ -16,7 +17,7 @@ const LoadingSpinner = () => {
         visible={true}
       />
       <span>Loading...</span>
-    </>
+    </div>
   );
 };
 
