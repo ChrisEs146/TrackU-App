@@ -35,7 +35,7 @@ const Form = () => {
     setIsSignUp((prevState) => !prevState);
   };
 
-  // Initial form fields
+  // Initial form state
   const initialFormState = useMemo(
     () => ({
       fullName: "",
@@ -51,7 +51,6 @@ const Form = () => {
 
   /**
    * Handles input changes in the registration form
-   * @param {*} e target element
    */
   const handleChange = (e) => {
     setFormData({
@@ -72,6 +71,7 @@ const Form = () => {
         "Name should be at least 4 characters long and shouldn't include any special character!",
       placeholder: "Full Name",
       pattern: "^[A-Za-z0-9 ]{4,}$",
+      minLength: 4,
     },
     {
       id: 2,
@@ -92,6 +92,8 @@ const Form = () => {
         "Password should be 8 - 20 characters. It must include at least 1 letter, 1 number and 1 special character!",
       placeholder: "Password",
       pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+      minLength: 8,
+      maxLength: 20,
     },
     {
       id: 4,
@@ -102,12 +104,13 @@ const Form = () => {
       errorMsg: "Passwords don't match",
       placeholder: "Confirm Password",
       pattern: formData.password,
+      minLength: 8,
+      maxLength: 20,
     },
   ];
 
   /**
    * Handles the submission of the registration form
-   * @param {*} e target element
    */
   const handleSubmit = async (e) => {
     e.preventDefault();
