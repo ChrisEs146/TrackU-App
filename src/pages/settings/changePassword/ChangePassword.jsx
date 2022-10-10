@@ -5,6 +5,7 @@ import FormCard from "../../../components/FormCard/FormCard";
 import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
 import "./changePassword.css";
 import { useOutletContext } from "react-router-dom";
+import { getModalData } from "../../../Utils/Functions";
 
 /**
  * Shows form that allows users to change their password
@@ -29,7 +30,8 @@ const ChangePassword = () => {
       label: "Current Password",
       icon: <FaLock />,
       placeholder: "Password",
-      pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+      minLength: 8,
+      maxLength: 20,
     },
     {
       id: 2,
@@ -41,6 +43,8 @@ const ChangePassword = () => {
         "Must be 8 - 20 characters, include at least 1 letter, 1 number and 1 special character.",
       placeholder: "New Password",
       pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+      minLength: 8,
+      maxLength: 20,
     },
     {
       id: 3,
@@ -51,17 +55,13 @@ const ChangePassword = () => {
       errorMsg: "Passwords don't match",
       placeholder: "Confirm New Password",
       pattern: pwdFormData.newPassword,
+      minLength: 8,
+      maxLength: 20,
     },
   ];
 
   // Modal window information
-  const modalData = {
-    title: "ARE YOU SURE?",
-    action: "confirm",
-    description:
-      "You are about to change your account's password. If you want to proceed click confirm, otherwise cancel this operation.",
-  };
-
+  const modalData = getModalData("User", false, "Confirm");
   /**
    * Handles the form's input changes
    * @param {*} e
@@ -94,9 +94,7 @@ const ChangePassword = () => {
         </form>
       </FormCard>
       <ConfirmationModal
-        action={modalData.action}
-        title={modalData.title}
-        description={modalData.description}
+        modal={modalData}
         isModalActive={isConfirmActive}
         handleModalActivation={handleConfirmActivation}
       />

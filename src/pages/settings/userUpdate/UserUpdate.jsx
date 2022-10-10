@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useOutletContext } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
+import { getModalData } from "../../../Utils/Functions";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
 import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
+import { useUpdateUserMutation } from "../../../store/slices/ApiSlices/userApiSlice";
 import "./userUpdate.css";
 
 /**
@@ -16,16 +18,16 @@ import "./userUpdate.css";
 const UserUpdate = () => {
   const { userData } = useSelector((state) => state.user);
   const [isConfirmActive, handleConfirmActivation] = useOutletContext();
+  const [updateUser, { isLoading, isSuccess, isError, error }] = useUpdateUserMutation();
   const [updateFormData, setUpdateFormData] = useState({
-    fullName: userData.fullName,
-    email: userData.email,
+    newFullName: userData.fullName,
   });
 
   // Inputs array
   const formInputs = [
     {
       id: 1,
-      name: "fullName",
+      name: "newFullName",
       type: "text",
       label: "Full Name",
       icon: <FaUserAlt />,
@@ -33,16 +35,12 @@ const UserUpdate = () => {
         "Name should be at least 4 characters long and shouldn't include any special character!",
       placeholder: "Full Name",
       pattern: "^[A-Za-z0-9 ]{4,}$",
+      minLength: 4,
     },
   ];
 
   // Modal window information
-  const modalData = {
-    title: "ARE YOU SURE?",
-    action: "confirm",
-    description:
-      "You are about to change your account's name. If you want to proceed press confirm, otherwise cancel this operation",
-  };
+  const modalData = getModalData("User", false, "Confirm");
 
   /**
    * Handles the changes in the form's input.
@@ -50,6 +48,10 @@ const UserUpdate = () => {
    */
   const handleChange = (e) => {
     setUpdateFormData({ ...updateFormData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = () => {
+    updateUser(updateFormData);
   };
 
   return (
@@ -76,9 +78,12 @@ const UserUpdate = () => {
         </form>
       </FormCard>
       <ConfirmationModal
-        action={modalData.action}
-        title={modalData.title}
-        description={modalData.description}
+        modal={modalData}
+        submit={handleSubmit}
+        isSuccess={isSuccess}
+        isError={isError}
+        error={error}
+        isLoading={isLoading}
         isModalActive={isConfirmActive}
         handleModalActivation={handleConfirmActivation}
       />

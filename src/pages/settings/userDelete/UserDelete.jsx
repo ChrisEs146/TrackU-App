@@ -6,6 +6,7 @@ import FormCard from "../../../components/FormCard/FormCard";
 import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
 import "./userDelete.css";
 import { useOutletContext } from "react-router-dom";
+import { getModalData } from "../../../Utils/Functions";
 
 /**
  * UserDelete page contains a form that allows users
@@ -40,17 +41,13 @@ const UserDelete = () => {
       label: "Confirm Password",
       icon: <FaLock />,
       placeholder: "Confirm Password",
-      pattern: deleteFormData.password,
+      minLength: 8,
+      maxLength: 20,
     },
   ];
 
   // Modal window information
-  const modalData = {
-    title: "WARNING",
-    action: "delete",
-    description:
-      "You are about to delete your account. This is a point of no return, if later on you want your account back, you will have to create a new one.",
-  };
+  const modalData = getModalData("User", false, "Delete");
 
   /**
    * Handles the changes in the form's inputs.
@@ -84,9 +81,7 @@ const UserDelete = () => {
         </form>
       </FormCard>
       <ConfirmationModal
-        action={modalData.action}
-        title={modalData.title}
-        description={modalData.description}
+        modal={modalData}
         isModalActive={isConfirmActive}
         handleModalActivation={handleConfirmActivation}
       />
