@@ -40,7 +40,7 @@ const UserUpdate = () => {
   ];
 
   // Modal window information
-  const modalData = getModalData("User", false, "Confirm");
+  const modalData = getModalData("User", false, "update");
 
   /**
    * Handles the changes in the form's input.
