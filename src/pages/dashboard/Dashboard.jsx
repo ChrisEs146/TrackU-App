@@ -1,10 +1,10 @@
 import { useContext, useEffect } from "react";
+import { useNavigate, Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Outlet } from "react-router-dom";
-import Sidebar from "../../components/Sidebar/Sidebar";
-import { SidebarContext } from "../../contexts/SidebarContext";
 import { useGetUserQuery } from "../../store/slices/ApiSlices/userApiSlice";
 import { setUserData } from "../../store/slices/userSlice";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import { SidebarContext } from "../../contexts/SidebarContext";
 import "./dashboard.css";
 
 /**
@@ -13,15 +13,23 @@ import "./dashboard.css";
  * @returns Dashboard Component
  */
 const Dashboard = () => {
-  const { sidebarStatus, sidebarHandler } = useContext(SidebarContext);
-  const { data: user, isSuccess } = useGetUserQuery();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { sidebarStatus, sidebarHandler } = useContext(SidebarContext);
+  const { data: user, isSuccess } = useGetUserQuery("UserInfo");
 
   useEffect(() => {
     if (isSuccess) {
+      console.log("In dashboard success block");
       dispatch(setUserData(user));
     }
-  }, [isSuccess, user, dispatch]);
+  }, [isSuccess, user]);
+
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard/projects");
+    }
+  }, [user]);
 
   return (
     <div className="dashboard">
