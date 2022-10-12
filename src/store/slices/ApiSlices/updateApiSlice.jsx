@@ -23,7 +23,7 @@ export const updateApiSlice = apiSlice.injectEndpoints({
     }),
     editUpdate: builder.mutation({
       query: (projectId, updateId, updateInfo) => ({
-        url: `updates/project/${projectId}/update/${updateId}`,
+        url: `/updates/project/${projectId}/update/${updateId}`,
         method: "PUT",
         body: { ...updateInfo },
       }),
