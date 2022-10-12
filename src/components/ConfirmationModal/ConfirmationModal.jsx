@@ -11,7 +11,6 @@ import "./confirmationModal.css";
 /**
  * Confirmation component to ask user if he/she wants
  *  to proceed a update or delete process
- * @param {*} props
  * @returns Confirmation Modal Component
  */
 const ConfirmationModal = ({
@@ -41,6 +40,14 @@ const ConfirmationModal = ({
       toast.success(item.successMsg);
       navigate(item.redirect);
     }
+
+    if (isError) {
+      handleModalActivation();
+      toast.error(error.data.message);
+    }
+    //eslint-disable-next-line
+  }, [isSuccess, isError]);
+
   return (
     <Modal isModalActive={isModalActive}>
       <aside className="confirmation">
