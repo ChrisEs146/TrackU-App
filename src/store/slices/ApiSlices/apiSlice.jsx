@@ -29,7 +29,6 @@ const privateQuery = async (args, api, extraOptions) => {
       result = await baseQuery(args, api, extraOptions);
     } else {
       if (refreshToken?.error?.status === 401) {
-        refreshToken.error.data.message = "Session Expired";
         api.dispatch(logOut());
       }
       return refreshToken;
@@ -38,9 +37,9 @@ const privateQuery = async (args, api, extraOptions) => {
   return result;
 };
 
-// API slice wih injected endpoints
+// API slice with injected endpoints
 export const apiSlice = createApi({
   baseQuery: privateQuery,
   endpoints: (builder) => ({}),
-  tagTypes: ["Project", "Update", "User"],
+  tagTypes: ["User", "Project"],
 });
