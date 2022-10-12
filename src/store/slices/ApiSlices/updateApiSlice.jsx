@@ -29,6 +29,13 @@ export const updateApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Update"],
     }),
+    deleteUpdate: builder.mutation({
+      query: (projectId, updateId) => ({
+        url: `/updates/project/${projectId}/update/${updateId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Update"],
+    }),
   }),
 });
 
