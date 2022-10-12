@@ -1,6 +1,11 @@
 import { FiAlertTriangle } from "react-icons/fi";
 import { FaRegCheckCircle } from "react-icons/fa";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Modal from "../Modal/Modal";
+import { toast } from "react-toastify";
+import LoadingSpinner from "../Spinner/LoadingSpinner";
+import { useLogOutMutation } from "../../store/slices/ApiSlices/userApiSlice";
 import "./confirmationModal.css";
 
 /**
