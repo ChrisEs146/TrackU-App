@@ -35,6 +35,12 @@ const ConfirmationModal = ({
       navigate(item.redirect);
       return;
     }
+
+    if (isSuccess) {
+      handleModalActivation();
+      toast.success(item.successMsg);
+      navigate(item.redirect);
+    }
   return (
     <Modal isModalActive={isModalActive}>
       <aside className="confirmation">
