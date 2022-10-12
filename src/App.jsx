@@ -38,9 +38,12 @@ const App = () => {
                   path="edit-project/:projectId"
                   element={<DynamicForm type="Project" editMode={true} />}
                 />
-                <Route path="add-update" element={<DynamicForm type="Update" editMode={false} />} />
                 <Route
-                  path="edit-update/:updateId"
+                  path="add-update/:projectId"
+                  element={<DynamicForm type="Update" editMode={false} />}
+                />
+                <Route
+                  path="edit-update/:projectId/:updateId"
                   element={<DynamicForm type="Update" editMode={true} />}
                 />
               </Route>
