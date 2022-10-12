@@ -26,8 +26,8 @@ const Input = (props) => {
   /**
    * Function that sets the focus state.
    */
-  const handleFocus = () => {
-    setFocused(!focused);
+  const handleFocus = (e) => {
+    setFocused(true);
   };
 
   return (
