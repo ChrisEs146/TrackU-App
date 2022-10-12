@@ -14,7 +14,27 @@ import "./confirmationModal.css";
  * @param {*} props
  * @returns Confirmation Modal Component
  */
-const ConfirmationModal = (props) => {
+const ConfirmationModal = ({
+  item,
+  isModalActive,
+  handleModalActivation,
+  submit,
+  isSuccess,
+  isLoading,
+  isError,
+  error,
+}) => {
+  const navigate = useNavigate();
+  const [logOut] = useLogOutMutation();
+
+  useEffect(() => {
+    if (isSuccess && item.type === "user" && item.action === "delete") {
+      handleModalActivation();
+      toast.success(item.successMsg);
+      logOut();
+      navigate(item.redirect);
+      return;
+    }
   return (
     <Modal isModalActive={isModalActive}>
       <aside className="confirmation">
