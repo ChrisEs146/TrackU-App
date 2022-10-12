@@ -32,37 +32,3 @@ export const getShortDate = (date) => {
   return finalDate;
 };
 
-// TEXT RELATED
-/**
- * Returns an object with the necessary information
- * to create a modal confirmation window.
- * @param {string} type Project | Update | User
- * @param {boolean} editMode true | false
- * @param {string} action Confirm | Delete
- * @returns Object with information to create a modal confirmation window.
- */
-export const getModalData = (type, editMode, action = "confirm") => {
-  let message;
-  if (type === "User" && action.toLowerCase() === "confirm") {
-    message =
-      "You are about to update your account. If you want to proceed click confirm, otherwise cancel this operation";
-  } else if (type === "User" && action.toLowerCase() === "delete") {
-    message =
-      "You are about to delete your account. If you want to proceed click delete, otherwise cancel this operation.";
-  } else if ((type === "Project" || type === "Update") && action.toLowerCase() === "confirm") {
-    message = `You are about to ${
-      editMode ? "update this" : "add a new"
-    } ${type.toLowerCase()}. If you want to proceed click confirm, otherwise cancel this operation.`;
-  } else if ((type === "Project" || type === "Update") && action.toLowerCase() === "delete") {
-    message = `You are about to delete this ${type.toLowerCase()}. If you want to proceed click delete, otherwise cancel this operation.`;
-  } else {
-    message = "Invalid description";
-  }
-
-  const modalData = {
-    title: action.toLowerCase() === "confirm" ? "ARE YOU SURE?" : "WARNING!",
-    action: action.toLowerCase(),
-    description: message,
-  };
-  return modalData;
-};
