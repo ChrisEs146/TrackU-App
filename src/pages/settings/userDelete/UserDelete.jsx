@@ -4,9 +4,10 @@ import { FaLock, FaEnvelope } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
 import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
-import "./userDelete.css";
 import { useOutletContext } from "react-router-dom";
-import { getModalData } from "../../../Utils/Functions";
+import { getItemData } from "../../../Utils/ItemData";
+import { useDeleteUserMutation } from "../../../store/slices/ApiSlices/userApiSlice";
+import "./userDelete.css";
 
 /**
  * UserDelete page contains a form that allows users
@@ -17,6 +18,7 @@ import { getModalData } from "../../../Utils/Functions";
 const UserDelete = () => {
   const { userData } = useSelector((state) => state.user);
   const [isConfirmActive, handleConfirmActivation] = useOutletContext();
+  const [deleteUser, { isSuccess, isError, isLoading, error }] = useDeleteUserMutation();
   const [deleteFormData, setDeleteFormData] = useState({
     email: userData.email,
     password: "",
@@ -36,7 +38,7 @@ const UserDelete = () => {
     },
     {
       id: 2,
-      name: "Password",
+      name: "password",
       type: "password",
       label: "Confirm Password",
       icon: <FaLock />,
@@ -47,14 +49,20 @@ const UserDelete = () => {
   ];
 
   // Modal window information
-  const modalData = getModalData("User", false, "Delete");
+  const itemData = getItemData("type3", "user");
 
   /**
    * Handles the changes in the form's inputs.
-   * @param {*} e
    */
   const handleChange = (e) => {
     setDeleteFormData({ ...deleteFormData, [e.target.name]: e.target.value });
+  };
+
+  /**
+   * Handles user delete form submission
+   */
+  const handleSubmit = () => {
+    deleteUser(deleteFormData);
   };
 
   return (
@@ -81,7 +89,12 @@ const UserDelete = () => {
         </form>
       </FormCard>
       <ConfirmationModal
-        modal={modalData}
+        item={itemData}
+        submit={handleSubmit}
+        isLoading={isLoading}
+        isError={isError}
+        error={error}
+        isSuccess={isSuccess}
         isModalActive={isConfirmActive}
         handleModalActivation={handleConfirmActivation}
       />

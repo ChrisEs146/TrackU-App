@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useOutletContext } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
-import { getModalData } from "../../../Utils/Functions";
+import { getItemData } from "../../../Utils/ItemData";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
 import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
@@ -40,16 +40,18 @@ const UserUpdate = () => {
   ];
 
   // Modal window information
-  const modalData = getModalData("User", false, "update");
+  const itemData = getItemData("type2", "user");
 
   /**
    * Handles the changes in the form's input.
-   * @param {*} e
    */
   const handleChange = (e) => {
     setUpdateFormData({ ...updateFormData, [e.target.name]: e.target.value });
   };
 
+  /**
+   * Handles user update form submission.
+   */
   const handleSubmit = () => {
     updateUser(updateFormData);
   };
@@ -78,7 +80,7 @@ const UserUpdate = () => {
         </form>
       </FormCard>
       <ConfirmationModal
-        modal={modalData}
+        item={itemData}
         submit={handleSubmit}
         isSuccess={isSuccess}
         isError={isError}

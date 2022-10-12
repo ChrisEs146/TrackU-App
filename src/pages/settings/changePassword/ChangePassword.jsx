@@ -3,9 +3,10 @@ import { FaLock } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
 import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
-import "./changePassword.css";
 import { useOutletContext } from "react-router-dom";
-import { getModalData } from "../../../Utils/Functions";
+import { getItemData } from "../../../Utils/ItemData";
+import { useUpdatePasswordMutation } from "../../../store/slices/ApiSlices/userApiSlice";
+import "./changePassword.css";
 
 /**
  * Shows form that allows users to change their password
@@ -15,10 +16,11 @@ import { getModalData } from "../../../Utils/Functions";
  */
 const ChangePassword = () => {
   const [isConfirmActive, handleConfirmActivation] = useOutletContext();
+  const [updatePassword, { isSuccess, isError, isLoading, error }] = useUpdatePasswordMutation();
   const [pwdFormData, setPwdFormData] = useState({
     currentPassword: "",
     newPassword: "",
-    confirmNewPassword: "",
+    confirmPassword: "",
   });
 
   // Inputs array
@@ -48,7 +50,7 @@ const ChangePassword = () => {
     },
     {
       id: 3,
-      name: "confirmNewPassword",
+      name: "confirmPassword",
       type: "password",
       label: "Confirm New Password",
       icon: <FaLock />,
@@ -61,13 +63,19 @@ const ChangePassword = () => {
   ];
 
   // Modal window information
-  const modalData = getModalData("User", false, "Confirm");
+  const itemData = getItemData("type2", "user");
   /**
    * Handles the form's input changes
-   * @param {*} e
    */
   const handleChange = (e) => {
     setPwdFormData({ ...pwdFormData, [e.target.name]: e.target.value });
+  };
+
+  /**
+   * Handles user's passwod update form submission.
+   */
+  const handleSubmit = () => {
+    updatePassword(pwdFormData);
   };
 
   return (
@@ -94,7 +102,12 @@ const ChangePassword = () => {
         </form>
       </FormCard>
       <ConfirmationModal
-        modal={modalData}
+        item={itemData}
+        submit={handleSubmit}
+        isSuccess={isSuccess}
+        isLoading={isLoading}
+        isError={isError}
+        error={error}
         isModalActive={isConfirmActive}
         handleModalActivation={handleConfirmActivation}
       />
