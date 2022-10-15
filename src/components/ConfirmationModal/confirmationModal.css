@@ -40,6 +40,10 @@
 }
 
 /* ==Modal Information== */
+.confirmation__title,
+.confirmation__description {
+  color: rgb(26, 26, 26);
+}
 .confirmation__title {
   margin-bottom: 1.5rem;
   text-align: center;
