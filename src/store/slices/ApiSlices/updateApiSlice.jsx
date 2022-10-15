@@ -44,4 +44,5 @@ export const {
   useAddUpdateMutation,
   useGetUpdateQuery,
   useEditUpdateMutation,
+  useDeleteUpdateMutation,
 } = updateApiSlice;
