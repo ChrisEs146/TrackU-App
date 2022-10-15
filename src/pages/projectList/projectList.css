@@ -36,7 +36,6 @@
 }
 
 .projectList__container {
-  justify-content: center;
   flex-direction: column;
   gap: 2rem;
   width: 100%;
