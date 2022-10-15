@@ -14,22 +14,14 @@ import "./dashboard.css";
  */
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { sidebarStatus, sidebarHandler } = useContext(SidebarContext);
   const { data: user, isSuccess } = useGetUserQuery("UserInfo");
 
   useEffect(() => {
     if (isSuccess) {
-      console.log("In dashboard success block");
       dispatch(setUserData(user));
     }
   }, [isSuccess, user]);
-
-  useEffect(() => {
-    if (user) {
-      navigate("/dashboard/projects");
-    }
-  }, [user]);
 
   return (
     <div className="dashboard">
