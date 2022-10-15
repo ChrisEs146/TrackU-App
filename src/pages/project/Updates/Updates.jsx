@@ -9,13 +9,7 @@ import "./updates.css";
  * Shows a list of updates. Each one can be updated or deleted.
  * @returns Updates component
  */
-const Updates = ({ updates }) => {
-  const [isConfirmActive, setIsConfirmActive] = useState(false);
-  const handleConfirmModal = () => setIsConfirmActive(!isConfirmActive);
-
-  //Delete modal info
-  const modalData = getModalData("Update", false, "Delete");
-
+const Updates = ({ updates, projectId }) => {
   return (
     <>
       <div className="updates__container">
