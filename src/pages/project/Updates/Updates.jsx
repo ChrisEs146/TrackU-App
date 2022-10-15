@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import UpdateCard from "../../../components/UpdateCard/UpdateCard";
-import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
 import NotFound from "../../../components/DefaultMessage/NotFound";
-import { getModalData, getShortDate } from "../../../Utils/Functions";
+import { getShortDate } from "../../../Utils/Functions";
 import "./updates.css";
 
 /**
