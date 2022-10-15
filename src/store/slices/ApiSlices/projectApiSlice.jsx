@@ -24,7 +24,7 @@ export const projectApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     updateProject: builder.mutation({
-      query: (projectId, projectData) => ({
+      query: ({ projectId, projectData }) => ({
         url: `/projects/${projectId}`,
         method: "PUT",
         body: { ...projectData },
