@@ -37,11 +37,6 @@ const Updates = ({ updates, projectId }) => {
           )}
         </div>
       </div>
-      <ConfirmationModal
-        modal={modalData}
-        isModalActive={isConfirmActive}
-        handleModalActivation={handleConfirmModal}
-      />
     </>
   );
 };
