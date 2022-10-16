@@ -13,6 +13,9 @@ import "./updateCard.css";
 const UpdateCard = ({ date, title, description, id, projectId }) => {
   const [isOptionsActive, setIsOptionsActive] = useState(false);
   const handleOptionsActive = () => setIsOptionsActive(!isOptionsActive);
+  const [isConfirmActive, setIsConfirmActive] = useState(false);
+  const handleConfirmModal = () => setIsConfirmActive(!isConfirmActive);
+  const itemData = getItemData("type3", "update");
 
   return (
     <>
