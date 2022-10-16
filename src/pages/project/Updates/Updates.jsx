@@ -15,19 +15,23 @@ const Updates = ({ updates, projectId }) => {
       <div className="updates__container">
         <div className="updates__title">
           <h2>Updates</h2>
-          <NavLink title="Add Update" className="updates__btn" to="/dashboard/projects/add-update">
+          <NavLink
+            title="Add Update"
+            className="updates__btn"
+            to={`/dashboard/projects/add-update/${projectId}`}
+          >
             <FaPlus />
             Add Update
           </NavLink>
         </div>
         <div className="updates">
-          {updates.length ? (
+          {updates?.length ? (
             updates?.map((update) => (
               <UpdateCard
                 date={getShortDate(update?.createdAt)}
                 title={update?.title}
                 description={update?.description}
-                handleModalActivation={handleConfirmModal}
+                projectId={projectId}
                 key={update?._id}
                 id={update?._id}
               />
