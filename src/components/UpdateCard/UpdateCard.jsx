@@ -18,6 +18,10 @@ const UpdateCard = ({ date, title, description, id, projectId }) => {
   const itemData = getItemData("type3", "update");
   const [deleteUpdate, { isSuccess, isError, isLoading, error }] = useDeleteUpdateMutation();
 
+  const handleDelete = () => {
+    deleteUpdate({ projectId, updateId: id });
+  };
+
   return (
     <>
       <article className="update">
