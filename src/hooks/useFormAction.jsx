@@ -7,7 +7,7 @@ import {
   useEditUpdateMutation,
 } from "../store/slices/ApiSlices/updateApiSlice";
 
-export const useFormAction = (
+const useFormAction = (
   type,
   editMode,
   options = { projectId: undefined, updateId: undefined, formData: undefined }
@@ -82,7 +82,11 @@ export const useFormAction = (
       },
       edit: {
         action: function () {
-          editUpdate(options.projectId, options.updateId, options.formData);
+          editUpdate({
+            projectId: options.projectId,
+            updateId: options.updateId,
+            updateInfo: options.formData,
+          });
         },
         isSuccess: isEditUpdateSuccess,
         isError: isEditUpdateError,
@@ -94,3 +98,5 @@ export const useFormAction = (
 
   return formActions[type.toLowerCase()][editMode ? "edit" : "add"];
 };
+
+export default useFormAction;
