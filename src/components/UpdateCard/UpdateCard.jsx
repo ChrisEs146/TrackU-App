@@ -16,6 +16,7 @@ const UpdateCard = ({ date, title, description, id, projectId }) => {
   const [isConfirmActive, setIsConfirmActive] = useState(false);
   const handleConfirmModal = () => setIsConfirmActive(!isConfirmActive);
   const itemData = getItemData("type3", "update");
+  const [deleteUpdate, { isSuccess, isError, isLoading, error }] = useDeleteUpdateMutation();
 
   return (
     <>
