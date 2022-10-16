@@ -30,14 +30,17 @@ const UpdateCard = ({ date, title, description, id, projectId }) => {
             isOptionsActive ? "update__options-container active" : "update__options-container"
           }
         >
-          <NavLink className="update__options-link" to={`/dashboard/projects/edit-update/${id}`}>
+          <NavLink
+            className="update__options-link"
+            to={`/dashboard/projects/edit-update/${projectId}/${id}`}
+          >
             <span>Edit</span>
           </NavLink>
           <button
             className="update__options-btn"
             onClick={() => {
               handleOptionsActive();
-              handleModalActivation();
+              handleConfirmModal();
             }}
           >
             Delete
