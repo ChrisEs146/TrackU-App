@@ -40,7 +40,7 @@ const itemTypes = {
       action: "create",
       description:
         "You are about to create a new update. If you want to proceed click confirm, otherwise cancel this operation",
-      redirect: "/dashboard/projects",
+      redirect: "back",
       successMsg: "Update Added",
     },
   },
@@ -60,7 +60,7 @@ const itemTypes = {
       action: "update",
       description:
         "You are about to update this project. If you want to proceed click confirm, otherwise cancel this operation",
-      redirect: "/dashboard/projects",
+      redirect: "back",
       successMsg: "Project Updated",
     },
     update: {
@@ -69,7 +69,7 @@ const itemTypes = {
       action: "update",
       description:
         "You are about to edit this update. If you want to proceed click confirm, otherwise cancel this operation",
-      redirect: "/dashboard/projects",
+      redirect: "back",
       successMsg: "Update Modified",
     },
   },
