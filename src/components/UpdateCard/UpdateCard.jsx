@@ -10,7 +10,7 @@ import "./updateCard.css";
  * Card component that displays the data from an specific project's update.
  * @returns UpdateCard component
  */
-const UpdateCard = ({ date, title, description, id, handleModalActivation }) => {
+const UpdateCard = ({ date, title, description, id, projectId }) => {
   const [isOptionsActive, setIsOptionsActive] = useState(false);
   const handleOptionsActive = () => setIsOptionsActive(!isOptionsActive);
 
