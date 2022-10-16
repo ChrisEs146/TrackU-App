@@ -71,8 +71,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
           const { accessToken } = data;
           dispatch(setUserToken({ accessToken }));
         } catch (error) {
-          console.log("In refresh error block");
-          throw Error(error);
+          console.error(error);
         }
       },
     }),
