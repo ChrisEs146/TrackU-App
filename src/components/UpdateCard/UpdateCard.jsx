@@ -46,6 +46,16 @@ const UpdateCard = ({ date, title, description, id, handleModalActivation }) => 
         <h3 className="update__title">{title}</h3>
         <p className="update__description">{description}</p>
       </article>
+      <ConfirmationModal
+        item={itemData}
+        submit={handleDelete}
+        isSuccess={isSuccess}
+        isError={isError}
+        isLoading={isLoading}
+        error={error}
+        isModalActive={isConfirmActive}
+        handleModalActivation={handleConfirmModal}
+      />
     </>
   );
 };
