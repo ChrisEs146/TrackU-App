@@ -3,7 +3,6 @@ import "./formInput.css";
 
 /**
  * Input field component to be used in the sign up and sign in forms.
- * @param {*} props
  * @returns Custom input field
  */
 const Input = (props) => {

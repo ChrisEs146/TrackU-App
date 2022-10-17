@@ -6,11 +6,11 @@ import "./projectCard.css";
 /**
  * ProjectCard component that shows the date, title,
  * project status and project progres (in percentage).
- * @param {*} project
  * @returns ProjectCard component
  */
 const ProjectCard = ({ project }) => {
   const currentColor = getProgressColor(project.progress);
+
   return (
     <NavLink
       to={`/dashboard/projects/${project._id}`}
