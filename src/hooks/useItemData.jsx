@@ -16,24 +16,26 @@ import { projectApiSlice } from "../store/slices/ApiSlices/projectApiSlice";
  * @returns Null | Object with either a project's or update's data.
  */
 const useItemData = (type, editMode, options = { projectId: undefined, updateId: undefined }) => {
-  const { data: resultProject, isSuccess: resultProjectSuccess } = useGetProjectQuery(
-    options.projectId
-  );
-  const { data: resultUpdate, isSuccess: resultUpdateSuccess } = useGetUpdateQuery({
-    projectId: options.projectId,
-    updateId: options.updateId,
-  });
-
   let itemResult;
+
   if (!editMode) {
     itemResult = null;
   } else if (type === "Project") {
+    const { data: result, isSuccess } = projectApiSlice.endpoints.getProject.useQuery(
+      options.projectId
+    );
+
     itemResult = {
-      ...resultProject,
-      isSuccess: resultProjectSuccess,
+      ...result,
+      isSuccess,
     };
   } else if (type === "Update") {
-    itemResult = { ...resultUpdate, isSuccess: resultUpdateSuccess };
+    const { data: result, isSuccess } = updateApiSlice.endpoints.getUpdate.useQuery({
+      projectId: options.projectId,
+      updateId: options.updateId,
+    });
+
+    itemResult = { ...result, isSuccess };
   }
 
   return itemResult;
