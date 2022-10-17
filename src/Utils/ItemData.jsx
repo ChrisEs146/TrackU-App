@@ -4,11 +4,11 @@
  * redirect the user if the process is successful.
  * Types depend on the action to perform.
  *
- * TYPE1: It's specific for item creation(projects and updates).
+ * **TYPE1**: It's specific for item creation(projects and updates).
  *
- * TYPE2: It's specific for item's update process (user, projects, updates).
+ * **TYPE2**: It's specific for item's update process (user, projects, updates).
  *
- * TYPE3: It's specific for item's deletion (user, projects, updates).
+ * **TYPE3**: It's specific for item's deletion (user, projects, updates).
  * @param {string} type TYPE1 | TYPE2 | TYPE3
  * @param {string} item user | project | update
  * @returns Object with information to create a modal confirmation window.
