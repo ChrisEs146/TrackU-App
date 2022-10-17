@@ -11,13 +11,21 @@ import "./updateCard.css";
  * @returns UpdateCard component
  */
 const UpdateCard = ({ date, title, description, id, projectId }) => {
+  // State and handler to activate and deactivate update options
   const [isOptionsActive, setIsOptionsActive] = useState(false);
   const handleOptionsActive = () => setIsOptionsActive(!isOptionsActive);
+
+  // State and handler to activate and deactivate the confirmation modal
   const [isConfirmActive, setIsConfirmActive] = useState(false);
   const handleConfirmModal = () => setIsConfirmActive(!isConfirmActive);
+
   const itemData = getItemData("type3", "update");
   const [deleteUpdate, { isSuccess, isError, isLoading, error }] = useDeleteUpdateMutation();
 
+  /**
+   * Handler to call the deleteUpdate function
+   * from the useDeleteUpdateMutation hook.
+   */
   const handleDelete = () => {
     deleteUpdate({ projectId, updateId: id });
   };
