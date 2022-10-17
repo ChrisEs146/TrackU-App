@@ -62,7 +62,7 @@ const useFormAction = (
       },
       edit: {
         action: function () {
-          updateProject(options.projectId, options.formData);
+          updateProject({ projectId: options.projectId, projectData: options.formData });
         },
         isSuccess: isUpdateProjectSuccess,
         isError: isUpdateProjectError,
