@@ -7,6 +7,17 @@ import {
   useEditUpdateMutation,
 } from "../store/slices/ApiSlices/updateApiSlice";
 
+/**
+ * Encapsulates the use of the add and update mutations
+ * for the projects and updates. Depending on the type and editmode
+ * it will return an object with an action(function) and the isSuccess, isError,
+ * isLoading and error states.
+ * @param {string} type Project | Update
+ * @param {boolean} editMode
+ * @param {string} options
+ * @returns Object with a function to call an endpoint and the isSuccess, isError,
+ * isLoading and error states.
+ */
 const useFormAction = (
   type,
   editMode,
