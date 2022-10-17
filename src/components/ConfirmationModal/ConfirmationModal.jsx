@@ -27,6 +27,7 @@ const ConfirmationModal = ({
   const [logOut] = useLogOutMutation();
 
   useEffect(() => {
+    // User deletion
     if (isSuccess && item.type === "user" && item.action === "delete") {
       handleModalActivation();
       toast.success(item.successMsg);
@@ -42,12 +43,14 @@ const ConfirmationModal = ({
       return;
     }
 
+    // Process is successful
     if (isSuccess) {
       handleModalActivation();
       toast.success(item.successMsg);
-      navigate(item.redirect);
+      navigate(item.redirect === "back" ? -1 : item.redirect);
     }
 
+    // In case there are errors
     if (isError) {
       handleModalActivation();
       toast.error(error.data.message);
