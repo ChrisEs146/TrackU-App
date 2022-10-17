@@ -98,7 +98,7 @@ const itemTypes = {
       action: "delete",
       description:
         "You are about to delete this update. If you want to proceed click delete, otherwise cancel this operation",
-      redirect: "/dashboard/projects",
+      redirect: "",
       successMsg: "Update Deleted",
     },
   },
