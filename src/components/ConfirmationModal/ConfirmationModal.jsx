@@ -35,6 +35,13 @@ const ConfirmationModal = ({
       return;
     }
 
+    // Update Delete
+    if (isSuccess && item.type === "update" && item.action === "delete") {
+      handleModalActivation();
+      toast.success(item.successMsg);
+      return;
+    }
+
     if (isSuccess) {
       handleModalActivation();
       toast.success(item.successMsg);
