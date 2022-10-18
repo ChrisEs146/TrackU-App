@@ -31,7 +31,9 @@ const ProjectList = () => {
         {isLoading ? (
           <LoadingSpinner />
         ) : !projects.length ? (
-          <NotFound message={"Please, add a project."} />
+          <div className="projectList__notFound-container">
+            <NotFound message={"Please, add a project."} />
+          </div>
         ) : (
           projects?.map((project) => <ProjectCard key={project._id} project={project} />)
         )}
