@@ -26,7 +26,10 @@ const DynamicForm = ({ type, editMode }) => {
     label: "Title",
     errorMsg: "Title should be 4 - 24 characters long",
     placeholder: "Title",
-    pattern: "^[A-Za-z0-9,. ]{4,24}$",
+    pattern: "^[A-Za-z0-9,. ]{4,50}$",
+    minLength: 4,
+    maxLength: 50,
+  };
   };
 
   // Modal window information
