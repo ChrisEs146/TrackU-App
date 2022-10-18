@@ -25,6 +25,16 @@ const Project = () => {
   const { data: project, isLoading, isSuccess, isError } = useGetProjectQuery(projectId);
   const { data: updates } = useGetUpdatesQuery(projectId);
 
+
+  /**
+   * Handler to delete a project using the
+   * deleteProject function from the
+   * useDeleteProjectMutation hook.
+   */
+  const handleDelete = () => {
+    deleteProject(projectId);
+  };
+
   //Setting a status color based on project's progress
   const currentColor = getProgressColor(project?.progress);
   const progressStyles = buildStyles({
