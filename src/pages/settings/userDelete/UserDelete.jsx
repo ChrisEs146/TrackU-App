@@ -4,8 +4,10 @@ import { FaLock, FaEnvelope } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
 import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
-import "./userDelete.css";
 import { useOutletContext } from "react-router-dom";
+import { getItemData } from "../../../Utils/ItemData";
+import { useDeleteUserMutation } from "../../../store/slices/ApiSlices/userApiSlice";
+import "./userDelete.css";
 
 /**
  * UserDelete page contains a form that allows users
@@ -16,6 +18,7 @@ import { useOutletContext } from "react-router-dom";
 const UserDelete = () => {
   const { userData } = useSelector((state) => state.user);
   const [isConfirmActive, handleConfirmActivation] = useOutletContext();
+  const [deleteUser, { isSuccess, isError, isLoading, error }] = useDeleteUserMutation();
   const [deleteFormData, setDeleteFormData] = useState({
     email: userData.email,
     password: "",
@@ -35,29 +38,31 @@ const UserDelete = () => {
     },
     {
       id: 2,
-      name: "Password",
+      name: "password",
       type: "password",
       label: "Confirm Password",
       icon: <FaLock />,
       placeholder: "Confirm Password",
-      pattern: deleteFormData.password,
+      minLength: 8,
+      maxLength: 20,
     },
   ];
 
   // Modal window information
-  const modalData = {
-    title: "WARNING",
-    action: "delete",
-    description:
-      "You are about to delete your account. This is a point of no return, if later on you want your account back, you will have to create a new one.",
-  };
+  const itemData = getItemData("type3", "user");
 
   /**
    * Handles the changes in the form's inputs.
-   * @param {*} e
    */
   const handleChange = (e) => {
     setDeleteFormData({ ...deleteFormData, [e.target.name]: e.target.value });
+  };
+
+  /**
+   * Handles user delete form submission
+   */
+  const handleSubmit = () => {
+    deleteUser(deleteFormData);
   };
 
   return (
@@ -84,9 +89,12 @@ const UserDelete = () => {
         </form>
       </FormCard>
       <ConfirmationModal
-        action={modalData.action}
-        title={modalData.title}
-        description={modalData.description}
+        item={itemData}
+        submit={handleSubmit}
+        isLoading={isLoading}
+        isError={isError}
+        error={error}
+        isSuccess={isSuccess}
         isModalActive={isConfirmActive}
         handleModalActivation={handleConfirmActivation}
       />

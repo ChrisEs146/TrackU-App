@@ -1,8 +1,7 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import UserCard from "../UserCard/UserCard";
-import { logOut } from "../../store/slices/user";
+import { useLogOutMutation } from "../../store/slices/ApiSlices/userApiSlice";
 import {
   FaArrowRight,
   FaSignOutAlt,
@@ -23,9 +22,9 @@ import "./sidebar.css";
  * @returns Sidebar Menu Component
  */
 const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [areSettingsOpen, setAreSettingsOpen] = useState(false);
+  const [logOut, { isSuccess }] = useLogOutMutation();
 
   // Array of sidebar options
   const options = [
@@ -65,18 +64,14 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
     },
   ];
 
+  useEffect(() => {
+    if (isSuccess) navigate("/");
+  }, [isSuccess, navigate]);
+
   /**
    *  Handler to activate and deactivate the settings subnavigation
    */
   const handleSettingsState = () => setAreSettingsOpen(!areSettingsOpen);
-
-  /**
-   * Loggs the user out, and redirects it to the homepage.
-   */
-  const handleLogOut = () => {
-    dispatch(logOut());
-    navigate("/");
-  };
 
   return (
     <div className={isSidebarActive ? "container active" : "container"}>
@@ -138,11 +133,11 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
           <button
             className="sidebar__logout-btn"
             onClick={() => {
-              handleLogOut();
+              logOut();
               handleSidebarState();
             }}
           >
-            <FaSignOutAlt /> Sign Out
+            <FaSignOutAlt /> Log Out
           </button>
         </div>
       </aside>

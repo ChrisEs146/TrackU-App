@@ -3,8 +3,10 @@ import { FaLock } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
 import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
-import "./changePassword.css";
 import { useOutletContext } from "react-router-dom";
+import { getItemData } from "../../../Utils/ItemData";
+import { useUpdatePasswordMutation } from "../../../store/slices/ApiSlices/userApiSlice";
+import "./changePassword.css";
 
 /**
  * Shows form that allows users to change their password
@@ -14,10 +16,11 @@ import { useOutletContext } from "react-router-dom";
  */
 const ChangePassword = () => {
   const [isConfirmActive, handleConfirmActivation] = useOutletContext();
+  const [updatePassword, { isSuccess, isError, isLoading, error }] = useUpdatePasswordMutation();
   const [pwdFormData, setPwdFormData] = useState({
     currentPassword: "",
     newPassword: "",
-    confirmNewPassword: "",
+    confirmPassword: "",
   });
 
   // Inputs array
@@ -28,10 +31,9 @@ const ChangePassword = () => {
       type: "password",
       label: "Current Password",
       icon: <FaLock />,
-      errorMsg:
-        "Password should be 8 - 20 characters. It must include at least 1 letter, 1 number and 1 special character!",
       placeholder: "Password",
-      pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+      minLength: 8,
+      maxLength: 20,
     },
     {
       id: 2,
@@ -40,36 +42,40 @@ const ChangePassword = () => {
       label: "New Password",
       icon: <FaLock />,
       errorMsg:
-        "Password should be 8 - 20 characters. It must include at least 1 letter, 1 number and 1 special character!",
+        "Must be 8 - 20 characters, include at least 1 letter, 1 number and 1 special character.",
       placeholder: "New Password",
       pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+      minLength: 8,
+      maxLength: 20,
     },
     {
       id: 3,
-      name: "confirmNewPassword",
+      name: "confirmPassword",
       type: "password",
       label: "Confirm New Password",
       icon: <FaLock />,
       errorMsg: "Passwords don't match",
       placeholder: "Confirm New Password",
       pattern: pwdFormData.newPassword,
+      minLength: 8,
+      maxLength: 20,
     },
   ];
 
   // Modal window information
-  const modalData = {
-    title: "ARE YOU SURE?",
-    action: "confirm",
-    description:
-      "You are about to change your account's password. If you want to proceed click confirm, otherwise cancel this operation.",
-  };
-
+  const itemData = getItemData("type2", "user");
   /**
    * Handles the form's input changes
-   * @param {*} e
    */
   const handleChange = (e) => {
     setPwdFormData({ ...pwdFormData, [e.target.name]: e.target.value });
+  };
+
+  /**
+   * Handles user's passwod update form submission.
+   */
+  const handleSubmit = () => {
+    updatePassword(pwdFormData);
   };
 
   return (
@@ -96,9 +102,12 @@ const ChangePassword = () => {
         </form>
       </FormCard>
       <ConfirmationModal
-        action={modalData.action}
-        title={modalData.title}
-        description={modalData.description}
+        item={itemData}
+        submit={handleSubmit}
+        isSuccess={isSuccess}
+        isLoading={isLoading}
+        isError={isError}
+        error={error}
         isModalActive={isConfirmActive}
         handleModalActivation={handleConfirmActivation}
       />

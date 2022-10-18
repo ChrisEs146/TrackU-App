@@ -3,19 +3,30 @@ import "./formInput.css";
 
 /**
  * Input field component to be used in the sign up and sign in forms.
- * @param {*} props
  * @returns Custom input field
  */
 const Input = (props) => {
-  const { name, label, errorMsg, type, handleChange, value, placeholder, pattern, icon, readOnly } =
-    props;
+  const {
+    name,
+    label,
+    errorMsg,
+    type,
+    handleChange,
+    value,
+    placeholder,
+    pattern,
+    icon,
+    readOnly,
+    minLength,
+    maxLength,
+  } = props;
   const [focused, setFocused] = useState(false);
 
   /**
    * Function that sets the focus state.
    */
-  const handleFocus = () => {
-    setFocused(!focused);
+  const handleFocus = (e) => {
+    setFocused(true);
   };
 
   return (
@@ -26,6 +37,8 @@ const Input = (props) => {
       </label>
       <input
         readOnly={readOnly}
+        minLength={minLength}
+        maxLength={maxLength}
         required
         type={type}
         name={name}

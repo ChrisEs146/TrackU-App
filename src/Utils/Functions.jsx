@@ -11,6 +11,7 @@ export const getProgressColor = (value) => {
   } else if (value >= 40 && value < 80) {
     return "#3120E0";
   }
+
   return "#c21010";
 };
 
@@ -22,10 +23,12 @@ export const getProgressColor = (value) => {
  * @returns Formatted date in m/d/y
  */
 export const getShortDate = (date) => {
-  const finalDate = date.toLocaleString("default", {
+  const finalDate = new Date(date).toLocaleString("default", {
     month: "2-digit",
     day: "2-digit",
     year: "numeric",
   });
+
   return finalDate;
 };
+

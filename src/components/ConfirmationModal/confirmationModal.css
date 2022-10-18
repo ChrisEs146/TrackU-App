@@ -1,5 +1,9 @@
 /* ==CONFIRMATION COMPONENT STYLES== */
 .confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -7,6 +11,8 @@
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 7px 9px 9px -1px rgba(94, 94, 94, 0.75);
+  min-width: 34rem;
+  min-height: 22rem;
   width: clamp(20rem, 80%, 40rem);
   padding: 2rem;
   z-index: 20;
@@ -19,7 +25,8 @@
   margin-bottom: 2rem;
 }
 
-.confirmation__logo[data-action="confirm"] {
+.confirmation__logo[data-action="update"],
+.confirmation__logo[data-action="create"] {
   color: green;
 }
 .confirmation__logo[data-action="delete"] {
@@ -34,6 +41,10 @@
 }
 
 /* ==Modal Information== */
+.confirmation__title,
+.confirmation__description {
+  color: rgb(26, 26, 26);
+}
 .confirmation__title {
   margin-bottom: 1.5rem;
   text-align: center;
@@ -62,7 +73,8 @@
   cursor: pointer;
 }
 
-.confirmation__action-btn[data-action="confirm"] {
+.confirmation__action-btn[data-action="update"],
+.confirmation__action-btn[data-action="create"] {
   color: #fff;
   background-color: seagreen;
 }

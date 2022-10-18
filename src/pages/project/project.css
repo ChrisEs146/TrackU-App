@@ -3,6 +3,7 @@
 .projectPage {
   height: calc(100vh - 7rem);
   overflow-y: scroll;
+  position: relative;
 }
 
 .projectPage__main-content {
@@ -45,25 +46,68 @@
   gap: 1rem;
 }
 
-.projectPage__edit-btn {
-  justify-content: center;
-  color: #fff;
-  background-color: rgb(51, 190, 81);
-  width: 4.5rem;
-  height: 4.5rem;
+.projectPage__options {
+  display: flex;
+  align-items: center;
+  color: rgb(22, 22, 22);
   border: none;
-  border-radius: 50%;
+  border-radius: 50px;
+  background-color: rgb(199, 199, 199);
+  padding: 1.5rem;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.projectPage__edit-btn:hover {
-  background-color: rgb(17, 110, 37);
+.projectPage__options:hover {
+  color: #fff;
+  background-color: rgb(110, 110, 110);
 }
 
-.projectPage__edit-btn svg {
-  width: 1.8rem;
-  height: 1.8rem;
+/* ==Options Container */
+.projectPage__options-container {
+  display: none;
+}
+
+.projectPage__options-container.active {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: absolute;
+  top: 5rem;
+  right: 4.5rem;
+  color: #fff;
+  background-color: rgb(61, 61, 61);
+  border-radius: 10px;
+  border-top-right-radius: 0px;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem;
+  z-index: 20;
+}
+
+.projectPage__options-btn,
+.projectPage__options-link {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #fff;
+  background-color: transparent;
+  width: 8rem;
+  height: 3rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.projectPage__options-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projectPage__options-btn:hover,
+.projectPage__options-link:hover {
+  background-color: grey;
 }
 
 /* ==Project Info== */
