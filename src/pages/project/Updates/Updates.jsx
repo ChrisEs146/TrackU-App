@@ -37,7 +37,9 @@ const Updates = ({ updates, projectId }) => {
               />
             ))
           ) : (
-            <NotFound message={"Please, add an update."} />
+            <div className="updates__notFound-container">
+              <NotFound message={"Please, add an update."} />
+            </div>
           )}
         </div>
       </div>
