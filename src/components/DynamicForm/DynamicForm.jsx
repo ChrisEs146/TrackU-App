@@ -9,14 +9,25 @@ import "./dynamicForm.css";
 import useFormAction from "../../hooks/useFormAction";
 import { useEffect } from "react";
 
+/**
+ * Handles creation and update functionalities for projects and updates.
+ * It requires a type (Project or Update) and an editMode value,
+ * which could either be true or false.
+ *
+ * @param {string} type Project | Update
+ * @param {boolean} editMode
+ * @returns Dynamic Form component
+ */
 const DynamicForm = ({ type, editMode }) => {
+  // Default data and form state
   const defaultForm = { title: "", description: "", status: "", progress: 0 };
   const [formData, setFormData] = useState(defaultForm);
+
+  // Modal confirmation state
   const [isConfirmationActive, setIsConfirmationActive] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  // Getting projectId and updateId from URL
+  const { projectId, updateId } = useParams();
 
   /**
    * Getting an object with functions and states
@@ -29,6 +40,9 @@ const DynamicForm = ({ type, editMode }) => {
    * the type and editMode provided.
    */
   const itemFormData = useItemData(type, editMode, { projectId, updateId });
+
+  // Data to create the modal confirmation.
+  const itemData = getItemData(editMode ? "type2" : "type1", type);
 
   const formInput = {
     name: "title",
@@ -77,7 +91,7 @@ const DynamicForm = ({ type, editMode }) => {
     <>
       <div className="dynamicForm">
         <div className="dynamicForm__container">
-          <NavLink title="Go Back" className="dynamicForm__back-btn" to="/dashboard/projects">
+          <NavLink title="Go Back" className="dynamicForm__back-btn" to={-1}>
             <BiArrowBack />
           </NavLink>
           <div className="dynamicForm__title">
@@ -142,9 +156,12 @@ const DynamicForm = ({ type, editMode }) => {
         </div>
       </div>
       <ConfirmationModal
-        action={modalData.action}
-        title={modalData.title}
-        description={modalData.description}
+        item={itemData}
+        isSuccess={item.isSuccess}
+        isError={item.isError}
+        isLoading={item.isLoading}
+        error={item.error}
+        submit={handleSubmit}
         isModalActive={isConfirmationActive}
         handleModalActivation={handleConfirmActivation}
       />
