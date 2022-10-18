@@ -25,6 +25,11 @@ const Project = () => {
   const { data: project, isLoading, isSuccess, isError } = useGetProjectQuery(projectId);
   const { data: updates } = useGetUpdatesQuery(projectId);
 
+  // Destructuring deleteProject mutation
+  const [
+    deleteProject,
+    { isLoading: isDeleteProjectLoading, isError, isSuccess: isDeleteProjectSuccess, error },
+  ] = useDeleteProjectMutation();
 
   // Project's options state and handlers
   const [isProjectOptionsActive, setIsProjectOptionsActive] = useState(false);
