@@ -26,6 +26,10 @@ const Project = () => {
   const { data: updates } = useGetUpdatesQuery(projectId);
 
 
+  // modal confirmation state and handlers
+  const [isConfirmActive, setIsConfirmActive] = useState(false);
+  const handleConfirmModal = () => setIsConfirmActive(!isConfirmActive);
+
   // ItemData to create the modal confirmation
   const itemData = getItemData("type3", "project");
 
