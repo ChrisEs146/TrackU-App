@@ -64,6 +64,13 @@ const DynamicForm = ({ type, editMode }) => {
    */
   const handleConfirmActivation = () => setIsConfirmationActive(!isConfirmationActive);
 
+  /**
+   * Handles the execution of the item's action.
+   * It could be addProject, updateProject, addUpdate
+   * or editUpdate.
+   */
+  const handleSubmit = () => {
+    item.action();
   };
 
   return (
