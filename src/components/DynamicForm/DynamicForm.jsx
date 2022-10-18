@@ -18,7 +18,17 @@ const DynamicForm = ({ type, editMode }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleConfirmActivation = () => setIsConfirmationActive(!isConfirmationActive);
+  /**
+   * Getting an object with functions and states
+   * to add or edit a project | update
+   */
+  const item = useFormAction(type, editMode, { projectId, updateId, formData });
+
+  /**
+   * Getting an object with an item data (project or update). Depending on
+   * the type and editMode provided.
+   */
+  const itemFormData = useItemData(type, editMode, { projectId, updateId });
 
   const formInput = {
     name: "title",
