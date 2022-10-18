@@ -1,13 +1,18 @@
 import { NavLink, useParams } from "react-router-dom";
+import { useState } from "react";
 import { CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar";
-import { FaEdit, FaCalendarDay, FaQuestionCircle } from "react-icons/fa";
+import { FaCalendarDay, FaQuestionCircle } from "react-icons/fa";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { getProgressColor } from "../../Utils/Functions";
 import Updates from "./Updates/Updates";
 import { getShortDate } from "../../Utils/Functions";
+import { useDeleteProjectMutation } from "../../store/slices/ApiSlices/projectApiSlice";
 import { useGetProjectQuery } from "../../store/slices/ApiSlices/projectApiSlice";
 import { useGetUpdatesQuery } from "../../store/slices/ApiSlices/updateApiSlice";
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
+import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
+import { getItemData } from "../../Utils/ItemData";
 import "./project.css";
 
 /**
