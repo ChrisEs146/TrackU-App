@@ -6,6 +6,13 @@ export const updateApiSlice = apiSlice.injectEndpoints({
       query: (projectId) => ({
         url: `/updates/${projectId}`,
       }),
+      transformResponse: (response) => {
+        return response.sort((a, b) => {
+          let dateA = new Date(a.createdAt),
+            dateB = new Date(b.createdAt);
+          return dateB - dateA;
+        });
+      },
       providesTags: ["Update"],
     }),
     addUpdate: builder.mutation({
