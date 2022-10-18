@@ -26,6 +26,10 @@ const Project = () => {
   const { data: updates } = useGetUpdatesQuery(projectId);
 
 
+  // Project's options state and handlers
+  const [isProjectOptionsActive, setIsProjectOptionsActive] = useState(false);
+  const handleProjectOptionsActive = () => setIsProjectOptionsActive(!isProjectOptionsActive);
+
   // modal confirmation state and handlers
   const [isConfirmActive, setIsConfirmActive] = useState(false);
   const handleConfirmModal = () => setIsConfirmActive(!isConfirmActive);
