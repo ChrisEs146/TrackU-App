@@ -51,6 +51,12 @@ const DynamicForm = ({ type, editMode }) => {
       });
     }
   }, [itemFormData?.isSuccess]);
+
+  /**
+   * Handles the changes in the form's data.
+   */
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   // Modal window information
