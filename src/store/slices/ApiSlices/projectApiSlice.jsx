@@ -7,7 +7,13 @@ export const projectApiSlice = apiSlice.injectEndpoints({
         url: "/projects",
         keepUnusedDataFor: 10,
       }),
-      providesTags: ["Project"],
+      transformResponse: (response) => {
+        return response.sort((a, b) => {
+          let dateA = new Date(a.createdAt),
+            dateB = new Date(b.createdAt);
+          return dateB - dateA;
+        });
+      },
     }),
     addProject: builder.mutation({
       query: (projectData) => ({
