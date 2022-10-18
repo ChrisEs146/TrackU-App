@@ -59,13 +59,11 @@ const DynamicForm = ({ type, editMode }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Modal window information
-  const modalData = {
-    title: "ARE YOU SURE?",
-    action: "confirm",
-    description: `You are about to ${
-      editMode ? "update this" : "add a new"
-    } ${type.toLowerCase()}. If you want to proceed click confirm, otherwise cancel this operation.`,
+  /**
+   * Handles the state switch in the modal confirmation
+   */
+  const handleConfirmActivation = () => setIsConfirmationActive(!isConfirmationActive);
+
   };
 
   return (
