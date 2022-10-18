@@ -118,6 +118,7 @@ const Form = () => {
         await signup({ ...formData });
         setFormData(initialFormState);
         handleSwitch();
+        toast.success("Account Created");
         navigate("/registration");
       } else {
         const tokenData = await signin({ ...formData }).unwrap();
