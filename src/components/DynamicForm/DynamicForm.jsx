@@ -40,6 +40,17 @@ const DynamicForm = ({ type, editMode }) => {
     minLength: 4,
     maxLength: 50,
   };
+
+  useEffect(() => {
+    if (itemFormData !== null && itemFormData.isSuccess) {
+      setFormData({
+        title: itemFormData.title,
+        description: itemFormData.description,
+        status: itemFormData.status,
+        progress: itemFormData.progress,
+      });
+    }
+  }, [itemFormData?.isSuccess]);
   };
 
   // Modal window information
