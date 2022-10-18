@@ -103,9 +103,7 @@ const Form = () => {
       icon: <FaLock />,
       errorMsg: "Passwords don't match",
       placeholder: "Confirm Password",
-      pattern: formData.password,
-      minLength: 8,
-      maxLength: 20,
+      // pattern: formData.password,
     },
   ];
 
