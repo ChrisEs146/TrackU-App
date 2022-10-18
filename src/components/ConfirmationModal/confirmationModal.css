@@ -11,7 +11,7 @@
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 7px 9px 9px -1px rgba(94, 94, 94, 0.75);
-  min-width: 40rem;
+  min-width: 34rem;
   min-height: 22rem;
   width: clamp(20rem, 80%, 40rem);
   padding: 2rem;
