@@ -26,6 +26,9 @@ const Project = () => {
   const { data: updates } = useGetUpdatesQuery(projectId);
 
 
+  // ItemData to create the modal confirmation
+  const itemData = getItemData("type3", "project");
+
   /**
    * Handler to delete a project using the
    * deleteProject function from the
