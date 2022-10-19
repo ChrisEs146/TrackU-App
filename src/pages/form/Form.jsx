@@ -27,14 +27,6 @@ const Form = () => {
 
   const loading = isSignUp ? signupLoading : signinLoading;
 
-  /**
-   * Handles the switch between the sign in form
-   * and sign up form
-   */
-  const handleSwitch = () => {
-    setIsSignUp((prevState) => !prevState);
-  };
-
   // Initial form state
   const initialFormState = useMemo(
     () => ({
@@ -45,6 +37,15 @@ const Form = () => {
     }),
     []
   );
+
+  /**
+   * Handles the switch between the sign in form
+   * and sign up form
+   */
+  const handleSwitch = () => {
+    setFormData(initialFormState);
+    setIsSignUp((prevState) => !prevState);
+  };
 
   // Form's values
   const [formData, setFormData] = useState(initialFormState);
@@ -167,6 +168,8 @@ const Form = () => {
                 handleChange={handleChange}
                 placeholder="Email"
                 value={formData.email}
+                errorMsg="Must be a valid email."
+                required={true}
               />
               <FormInput
                 name="password"
@@ -177,6 +180,9 @@ const Form = () => {
                 handleChange={handleChange}
                 placeholder="Password"
                 value={formData.password}
+                pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#%^&*])[a-zA-Z0-9!@#%^&*]{8,20}$"
+                errorMsg="Must have 8 - 20 characters. Must include at least 1 letter, 1 number and 1 special character(!@#%^&*)."
+                required={true}
               />
             </>
           )}
