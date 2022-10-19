@@ -45,6 +45,8 @@ const UserDelete = () => {
       placeholder: "Confirm Password",
       minLength: 8,
       maxLength: 20,
+      errorMsg: "Confirm your current password.",
+      required: true,
     },
   ];
 
