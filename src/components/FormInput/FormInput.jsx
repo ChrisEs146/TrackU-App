@@ -6,20 +6,7 @@ import "./formInput.css";
  * @returns Custom input field
  */
 const Input = (props) => {
-  const {
-    name,
-    label,
-    errorMsg,
-    type,
-    handleChange,
-    value,
-    placeholder,
-    pattern,
-    icon,
-    readOnly,
-    minLength,
-    maxLength,
-  } = props;
+  const { label, errorMsg, handleChange, icon, ...inputProps } = props;
   const [focused, setFocused] = useState(false);
 
   /**
@@ -31,25 +18,16 @@ const Input = (props) => {
 
   return (
     <div className="input__container">
-      <label htmlFor={name}>
+      <label htmlFor={inputProps.name}>
         {icon}
         {label}
       </label>
       <input
-        readOnly={readOnly}
-        minLength={minLength}
-        maxLength={maxLength}
-        required
-        type={type}
-        name={name}
-        id={name}
-        value={value}
-        placeholder={placeholder}
-        pattern={pattern}
+        {...inputProps}
         focused={focused.toString()}
         onChange={handleChange}
         onBlur={handleFocus}
-        onFocus={() => name === "confirmPassword" && setFocused(true)}
+        onFocus={() => inputProps.name === "confirmPassword" && setFocused(true)}
       />
       {errorMsg && <span>{errorMsg}</span>}
     </div>
