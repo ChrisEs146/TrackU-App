@@ -34,6 +34,7 @@ const ChangePassword = () => {
       placeholder: "Password",
       minLength: 8,
       maxLength: 20,
+      required: true,
     },
     {
       id: 2,
@@ -42,11 +43,12 @@ const ChangePassword = () => {
       label: "New Password",
       icon: <FaLock />,
       errorMsg:
-        "Must be 8 - 20 characters, include at least 1 letter, 1 number and 1 special character.",
+        "Must be 8 - 20 characters, include at least 1 letter, 1 number and 1 special character(!@#%^&*).",
       placeholder: "New Password",
-      pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+      pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#%^&*])[a-zA-Z0-9!@#%^&*]{8,20}$",
       minLength: 8,
       maxLength: 20,
+      required: true,
     },
     {
       id: 3,
@@ -59,6 +61,7 @@ const ChangePassword = () => {
       pattern: pwdFormData.newPassword,
       minLength: 8,
       maxLength: 20,
+      required: true,
     },
   ];
 
