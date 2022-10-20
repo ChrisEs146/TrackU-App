@@ -110,3 +110,8 @@
 .dynamicForm__btn:hover {
   background-color: rgb(25, 83, 129);
 }
+
+.dynamicForm__btn:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}

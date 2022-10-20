@@ -35,3 +35,8 @@
 .update__form-btn:hover {
   background-color: rgb(5, 82, 184);
 }
+
+.update__form-btn:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
