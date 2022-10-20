@@ -7,6 +7,7 @@ import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
 import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
 import { useUpdateUserMutation } from "../../../store/slices/ApiSlices/userApiSlice";
+import { isInputValid } from "../../../Utils/Functions";
 import "./userUpdate.css";
 
 /**
@@ -23,7 +24,7 @@ const UserUpdate = () => {
     newFullName: userData.fullName,
   });
 
-  // Inputs array
+  // Array Inputs
   const formInputs = [
     {
       id: 1,
@@ -36,6 +37,7 @@ const UserUpdate = () => {
       placeholder: "Full Name",
       pattern: "^[A-Za-z0-9 ]{4,}$",
       minLength: 4,
+      required: true,
     },
   ];
 
@@ -74,7 +76,12 @@ const UserUpdate = () => {
               />
             );
           })}
-          <button className="update__form-btn" type="button" onClick={handleConfirmActivation}>
+          <button
+            className="update__form-btn"
+            type="button"
+            onClick={handleConfirmActivation}
+            disabled={!isInputValid("fullname", updateFormData.newFullName)}
+          >
             Update Name
           </button>
         </form>
