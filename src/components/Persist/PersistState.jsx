@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 /**
  * Wrapper component who's in charge of mantaining the user's state
- * while the refresh token is still valid.
+ * if the refresh token is still valid.
  */
 const PersistState = () => {
   const { userToken } = useSelector((state) => state.user);
