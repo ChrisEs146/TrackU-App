@@ -1,10 +1,11 @@
 import { useContext, useEffect } from "react";
-import { useNavigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useGetUserQuery } from "../../store/slices/ApiSlices/userApiSlice";
 import { setUserData } from "../../store/slices/userSlice";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { SidebarContext } from "../../contexts/SidebarContext";
+import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import "./dashboard.css";
 
 /**
@@ -15,7 +16,7 @@ import "./dashboard.css";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { sidebarStatus, sidebarHandler } = useContext(SidebarContext);
-  const { data: user, isSuccess } = useGetUserQuery("UserInfo");
+  const { data: user, isSuccess, isLoading } = useGetUserQuery("UserInfo");
 
   useEffect(() => {
     if (isSuccess) {
@@ -23,7 +24,9 @@ const Dashboard = () => {
     }
   }, [isSuccess, user]);
 
-  return (
+  return isLoading ? (
+    <LoadingSpinner />
+  ) : (
     <div className="dashboard">
       <Sidebar
         handleSidebarState={sidebarHandler}
