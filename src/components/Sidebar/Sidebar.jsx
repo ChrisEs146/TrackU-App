@@ -65,8 +65,11 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
   ];
 
   useEffect(() => {
-    if (isSuccess) navigate("/");
-  }, [isSuccess, navigate]);
+    if (isSuccess) {
+      navigate("/");
+      return;
+    }
+  }, [isSuccess]);
 
   /**
    *  Handler to activate and deactivate the settings subnavigation
