@@ -71,7 +71,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
           const { accessToken } = data;
           dispatch(setUserToken({ accessToken }));
         } catch (error) {
-          console.log(error);
+          console.log(error.data.message);
         }
       },
     }),
