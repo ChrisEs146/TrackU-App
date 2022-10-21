@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaLock } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
@@ -6,6 +6,7 @@ import ConfirmationModal from "../../../components/ConfirmationModal/Confirmatio
 import { useOutletContext } from "react-router-dom";
 import { getItemData } from "../../../Utils/ItemData";
 import { useUpdatePasswordMutation } from "../../../store/slices/ApiSlices/userApiSlice";
+import { isInputValid } from "../../../Utils/Functions";
 import "./changePassword.css";
 
 /**
@@ -17,13 +18,14 @@ import "./changePassword.css";
 const ChangePassword = () => {
   const [isConfirmActive, handleConfirmActivation] = useOutletContext();
   const [updatePassword, { isSuccess, isError, isLoading, error }] = useUpdatePasswordMutation();
+  const [isBtnDisabled, setIsBtnDisabled] = useState(true);
   const [pwdFormData, setPwdFormData] = useState({
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
   });
 
-  // Inputs array
+  // Array Inputs
   const formInputs = [
     {
       id: 1,
@@ -32,8 +34,10 @@ const ChangePassword = () => {
       label: "Current Password",
       icon: <FaLock />,
       placeholder: "Password",
+      errorMsg: "Confirm Current Password",
       minLength: 8,
       maxLength: 20,
+      required: true,
     },
     {
       id: 2,
@@ -42,11 +46,12 @@ const ChangePassword = () => {
       label: "New Password",
       icon: <FaLock />,
       errorMsg:
-        "Must be 8 - 20 characters, include at least 1 letter, 1 number and 1 special character.",
+        "Must be 8 - 20 characters, include at least 1 letter, 1 number and 1 special character(!@#%^&*).",
       placeholder: "New Password",
-      pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+      pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#%^&*])[a-zA-Z0-9!@#%^&*]{8,20}$",
       minLength: 8,
       maxLength: 20,
+      required: true,
     },
     {
       id: 3,
@@ -59,6 +64,7 @@ const ChangePassword = () => {
       pattern: pwdFormData.newPassword,
       minLength: 8,
       maxLength: 20,
+      required: true,
     },
   ];
 
@@ -78,6 +84,24 @@ const ChangePassword = () => {
     updatePassword(pwdFormData);
   };
 
+  useEffect(() => {
+    const { currentPassword, confirmPassword, newPassword } = pwdFormData;
+    const test1 = isInputValid("password", currentPassword);
+    const test2 = isInputValid("password", confirmPassword);
+    const test3 = isInputValid("password", newPassword);
+
+    if (test1 && test2 && test3) {
+      setIsBtnDisabled(false);
+    } else {
+      setIsBtnDisabled(true);
+    }
+  }, [
+    pwdFormData?.confirmPassword,
+    pwdFormData?.currentPassword,
+    pwdFormData?.newPassword,
+    pwdFormData,
+  ]);
+
   return (
     <>
       <FormCard>
@@ -96,7 +120,12 @@ const ChangePassword = () => {
               />
             );
           })}
-          <button className="changePwd__form-btn" type="button" onClick={handleConfirmActivation}>
+          <button
+            className="changePwd__form-btn"
+            type="button"
+            onClick={handleConfirmActivation}
+            disabled={isBtnDisabled}
+          >
             Change Password
           </button>
         </form>

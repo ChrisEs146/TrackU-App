@@ -7,6 +7,7 @@ import ConfirmationModal from "../../../components/ConfirmationModal/Confirmatio
 import { useOutletContext } from "react-router-dom";
 import { getItemData } from "../../../Utils/ItemData";
 import { useDeleteUserMutation } from "../../../store/slices/ApiSlices/userApiSlice";
+import { isInputValid } from "../../../Utils/Functions";
 import "./userDelete.css";
 
 /**
@@ -24,7 +25,7 @@ const UserDelete = () => {
     password: "",
   });
 
-  // Inputs array
+  // Array Inputs
   const formInputs = [
     {
       id: 1,
@@ -45,6 +46,8 @@ const UserDelete = () => {
       placeholder: "Confirm Password",
       minLength: 8,
       maxLength: 20,
+      errorMsg: "Confirm your current password.",
+      required: true,
     },
   ];
 
@@ -83,7 +86,12 @@ const UserDelete = () => {
               />
             );
           })}
-          <button className="delete__form-btn" type="button" onClick={handleConfirmActivation}>
+          <button
+            className="delete__form-btn"
+            type="button"
+            onClick={handleConfirmActivation}
+            disabled={!isInputValid("password", deleteFormData.password)}
+          >
             Delete Account
           </button>
         </form>

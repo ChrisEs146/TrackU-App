@@ -27,14 +27,6 @@ const Form = () => {
 
   const loading = isSignUp ? signupLoading : signinLoading;
 
-  /**
-   * Handles the switch between the sign in form
-   * and sign up form
-   */
-  const handleSwitch = () => {
-    setIsSignUp((prevState) => !prevState);
-  };
-
   // Initial form state
   const initialFormState = useMemo(
     () => ({
@@ -45,6 +37,15 @@ const Form = () => {
     }),
     []
   );
+
+  /**
+   * Handles the switch between the sign in form
+   * and sign up form
+   */
+  const handleSwitch = () => {
+    setFormData(initialFormState);
+    setIsSignUp((prevState) => !prevState);
+  };
 
   // Form's values
   const [formData, setFormData] = useState(initialFormState);
@@ -67,11 +68,11 @@ const Form = () => {
       type: "text",
       label: "Full Name",
       icon: <FaUserAlt />,
-      errorMsg:
-        "Name should be at least 4 characters long and shouldn't include any special character!",
+      errorMsg: "Must be at least 4 characters long and shouldn't include any special character.",
       placeholder: "Full Name",
       pattern: "^[A-Za-z0-9 ]{4,}$",
       minLength: 4,
+      required: true,
     },
     {
       id: 2,
@@ -79,8 +80,9 @@ const Form = () => {
       type: "email",
       label: "Email Address",
       icon: <FaEnvelope />,
-      errorMsg: "It must be a valid email!",
+      errorMsg: "Must be a valid email.",
       placeholder: "Email",
+      required: true,
     },
     {
       id: 3,
@@ -89,11 +91,12 @@ const Form = () => {
       label: "Password",
       icon: <FaLock />,
       errorMsg:
-        "Password should be 8 - 20 characters. It must include at least 1 letter, 1 number and 1 special character!",
+        "Must have 8 - 20 characters. Must include at least 1 letter, 1 number and 1 special character(!@#%^&*).",
       placeholder: "Password",
-      pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+      pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#%^&*])[a-zA-Z0-9!@#%^&*]{8,20}$",
       minLength: 8,
       maxLength: 20,
+      required: true,
     },
     {
       id: 4,
@@ -103,7 +106,10 @@ const Form = () => {
       icon: <FaLock />,
       errorMsg: "Passwords don't match",
       placeholder: "Confirm Password",
-      // pattern: formData.password,
+      pattern: formData.password,
+      minLength: 8,
+      maxLength: 20,
+      required: true,
     },
   ];
 
@@ -162,6 +168,8 @@ const Form = () => {
                 handleChange={handleChange}
                 placeholder="Email"
                 value={formData.email}
+                errorMsg="Must be a valid email."
+                required={true}
               />
               <FormInput
                 name="password"
@@ -172,6 +180,9 @@ const Form = () => {
                 handleChange={handleChange}
                 placeholder="Password"
                 value={formData.password}
+                pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#%^&*])[a-zA-Z0-9!@#%^&*]{8,20}$"
+                errorMsg="Must have 8 - 20 characters. Must include at least 1 letter, 1 number and 1 special character(!@#%^&*)."
+                required={true}
               />
             </>
           )}

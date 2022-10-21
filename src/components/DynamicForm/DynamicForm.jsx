@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { NavLink, useParams } from "react-router-dom";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import FormInput from "../FormInput/FormInput";
 import { getItemData } from "../../Utils/ItemData";
 import useItemData from "../../hooks/useItemData";
-import "./dynamicForm.css";
 import useFormAction from "../../hooks/useFormAction";
-import { useEffect } from "react";
+import "./dynamicForm.css";
+import { isInputValid } from "../../Utils/Functions";
 
 /**
  * Handles creation and update functionalities for projects and updates.
@@ -22,6 +22,9 @@ const DynamicForm = ({ type, editMode }) => {
   // Default data and form state
   const defaultForm = { title: "", description: "", status: "", progress: 0 };
   const [formData, setFormData] = useState(defaultForm);
+
+  // Form btn state
+  const [isBtnDisabled, setIsBtnDisabled] = useState(true);
 
   // Modal confirmation state
   const [isConfirmationActive, setIsConfirmationActive] = useState(false);
@@ -50,11 +53,13 @@ const DynamicForm = ({ type, editMode }) => {
     label: "Title",
     errorMsg: "Title should be 4 - 24 characters long",
     placeholder: "Title",
-    pattern: "^[A-Za-z0-9,. ]{4,50}$",
+    pattern: "^(?=\\S)[A-Za-z0-9,. ]{4,50}$",
     minLength: 4,
     maxLength: 50,
+    required: true,
   };
 
+  // Refills form on update
   useEffect(() => {
     if (itemFormData !== null && itemFormData.isSuccess) {
       setFormData({
@@ -64,7 +69,19 @@ const DynamicForm = ({ type, editMode }) => {
         progress: itemFormData.progress,
       });
     }
-  }, [itemFormData?.isSuccess]);
+  }, [itemFormData?.isSuccess, itemFormData]);
+
+  /**
+   * Activates / deactivates form's button
+   * if title and description are valid.
+   */
+  useEffect(() => {
+    if (isInputValid("title", formData.title) && formData.description.length >= 4) {
+      setIsBtnDisabled(false);
+    } else {
+      setIsBtnDisabled(true);
+    }
+  }, [formData.title, formData.description]);
 
   /**
    * Handles the changes in the form's data.
@@ -149,7 +166,12 @@ const DynamicForm = ({ type, editMode }) => {
                 minLength="4"
               ></textarea>
             </div>
-            <button className="dynamicForm__btn" type="button" onClick={handleConfirmActivation}>
+            <button
+              className="dynamicForm__btn"
+              type="button"
+              onClick={handleConfirmActivation}
+              disabled={isBtnDisabled}
+            >
               {editMode ? "Edit" : "Add"} {type}
             </button>
           </form>

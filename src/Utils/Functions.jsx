@@ -32,3 +32,26 @@ export const getShortDate = (date) => {
   return finalDate;
 };
 
+// INPUT FORM RELATED
+/**
+ * Test the validity of an input value against a regular
+ * expression.
+ *
+ * **Type**: Could be an email, password or title.
+ *
+ * **InputValue**: Input value to be tested.
+ * @param {string} type Email | Password | Title
+ * @param {string} inputValue Input value to be tested
+ * @returns boolean
+ */
+export const isInputValid = (type, inputValue) => {
+  const validFullName = new RegExp("^(?=\\S)[A-Za-z0-9 ]{4,}$");
+  const validTitle = new RegExp("^(?=\\S)[A-Za-z0-9,. ]{4,50}$");
+  const validPassword = new RegExp(
+    "^(?=\\S)(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#%^&*])[a-zA-Z0-9!@#%^&*]{8,20}$"
+  );
+
+  if (type.toLowerCase() === "fullname") return validFullName.test(inputValue);
+  if (type.toLowerCase() === "password") return validPassword.test(inputValue);
+  if (type.toLowerCase() === "title") return validTitle.test(inputValue);
+};

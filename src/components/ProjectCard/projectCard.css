@@ -71,13 +71,14 @@
 
   .project__info {
     width: 50%;
-    justify-content: space-around;
+    justify-content: left;
+    gap: 3rem;
     margin-bottom: 0;
-    padding-right: 2.5rem;
   }
 
   .project__info h3 {
     order: 2;
+    max-width: 35ch;
   }
 
   .project__status-container {
