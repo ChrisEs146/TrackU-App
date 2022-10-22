@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import { FaLock, FaEnvelope } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
