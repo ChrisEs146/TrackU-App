@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import { getItemData } from "../../../Utils/ItemData";
