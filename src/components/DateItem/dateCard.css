@@ -13,7 +13,7 @@
 .date__month,
 .date__year {
   text-transform: uppercase;
-  letter-spacing: 2;
+  letter-spacing: 0.1rem;
 }
 
 .date__day {
