@@ -16,13 +16,19 @@ import "./userDelete.css";
  * @returns UserDelete page
  */
 const UserDelete = () => {
-  const { userData } = useSelector((state) => state.user);
+  const [isConfirmActive, handleConfirmActivation, user, isSuccess] = useOutletContext();
   const [deleteUser, { isSuccess: isDeleteSuccess, isError, isLoading, error }] =
-  const [deleteUser, { isSuccess, isError, isLoading, error }] = useDeleteUserMutation();
+    useDeleteUserMutation();
   const [deleteFormData, setDeleteFormData] = useState({
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    if (isSuccess) {
+      setDeleteFormData({ email: user?.email, password: "" });
+    }
+  }, [isSuccess]);
 
   // Array Inputs
   const formInputs = [
@@ -101,7 +107,7 @@ const UserDelete = () => {
         isLoading={isLoading}
         isError={isError}
         error={error}
-        isSuccess={isSuccess}
+        isSuccess={isDeleteSuccess}
         isModalActive={isConfirmActive}
         handleModalActivation={handleConfirmActivation}
       />
