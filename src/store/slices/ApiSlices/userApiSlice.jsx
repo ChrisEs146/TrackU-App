@@ -32,9 +32,9 @@ export const userApiSlice = apiSlice.injectEndpoints({
           dispatch(logOut());
           setTimeout(() => {
             dispatch(apiSlice.util.resetApiState());
-          }, 2000);
+          }, 1000);
         } catch (error) {
-          console.error(error);
+          console.log(error);
         }
       },
     }),
@@ -71,7 +71,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
           const { accessToken } = data;
           dispatch(setUserToken({ accessToken }));
         } catch (error) {
-          console.error(error);
+          console.log(error.error.data.message);
         }
       },
     }),

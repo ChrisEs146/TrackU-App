@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import { getItemData } from "../../../Utils/ItemData";
@@ -17,12 +16,18 @@ import "./userUpdate.css";
  * @returns UserUpdate page
  */
 const UserUpdate = () => {
-  const { userData } = useSelector((state) => state.user);
-  const [isConfirmActive, handleConfirmActivation] = useOutletContext();
-  const [updateUser, { isLoading, isSuccess, isError, error }] = useUpdateUserMutation();
+  const [isConfirmActive, handleConfirmActivation, user, isSuccess] = useOutletContext();
+  const [updateUser, { isLoading, isSuccess: isUpdateSuccess, isError, error }] =
+    useUpdateUserMutation();
   const [updateFormData, setUpdateFormData] = useState({
-    newFullName: userData.fullName,
+    newFullName: "",
   });
+
+  useEffect(() => {
+    if (isSuccess) {
+      setUpdateFormData({ newFullName: user?.fullName });
+    }
+  }, [isSuccess]);
 
   // Array Inputs
   const formInputs = [
@@ -89,7 +94,7 @@ const UserUpdate = () => {
       <ConfirmationModal
         item={itemData}
         submit={handleSubmit}
-        isSuccess={isSuccess}
+        isSuccess={isUpdateSuccess}
         isError={isError}
         error={error}
         isLoading={isLoading}

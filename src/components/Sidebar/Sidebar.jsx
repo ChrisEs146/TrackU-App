@@ -65,8 +65,11 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
   ];
 
   useEffect(() => {
-    if (isSuccess) navigate("/");
-  }, [isSuccess, navigate]);
+    if (isSuccess) {
+      navigate("/");
+      return;
+    }
+  }, [isSuccess]);
 
   /**
    *  Handler to activate and deactivate the settings subnavigation
@@ -91,7 +94,14 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
         <ul className="sidebar__options-list">
           {options.map((option) => {
             return (
-              <li className="sidebar__option" key={option.id}>
+              <li
+                className={
+                  option.id === 2 && areSettingsOpen
+                    ? "sidebar__option subActive"
+                    : "sidebar__option"
+                }
+                key={option.id}
+              >
                 <NavLink
                   title={option.title}
                   className="sidebar__option-link"
@@ -110,11 +120,7 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
                       <NavLink
                         title={item.title}
                         key={item.id}
-                        className={
-                          areSettingsOpen
-                            ? "sidebar__option-subnav active"
-                            : "sidebar__option-subnav"
-                        }
+                        className="sidebar__option-subnav"
                         to={item.path}
                         onClick={handleSidebarState}
                       >

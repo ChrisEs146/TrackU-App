@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import UserCard from "../../components/UserCard/UserCard";
+import { useGetUserQuery } from "../../store/slices/ApiSlices/userApiSlice";
 import "./settings.css";
 
 /**
@@ -11,22 +11,23 @@ import "./settings.css";
  * @returns Settings page
  */
 const Settings = () => {
-  const { userData } = useSelector((state) => state.user);
+  const { data: user, isSuccess } = useGetUserQuery();
 
   // Modal windows activation and deactivation state
   const [isConfirmActive, setIsConfirmActive] = useState(false);
 
   // Modal window handlers
   const handleConfirmActivation = () => setIsConfirmActive(!isConfirmActive);
+
   return (
     <section className="settings">
       <h2 className="settings__title">Settings</h2>
       <div className="settings__form-container">
         <div className="settings__user-info">
-          <UserCard fullName={userData.fullName} />
+          <UserCard fullName={user?.fullName} />
         </div>
         <div className="settings__form">
-          <Outlet context={[isConfirmActive, handleConfirmActivation]} />
+          <Outlet context={[isConfirmActive, handleConfirmActivation, user, isSuccess]} />
         </div>
       </div>
     </section>

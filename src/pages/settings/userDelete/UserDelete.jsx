@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import { FaLock, FaEnvelope } from "react-icons/fa";
 import FormInput from "../../../components/FormInput/FormInput";
 import FormCard from "../../../components/FormCard/FormCard";
@@ -17,13 +16,19 @@ import "./userDelete.css";
  * @returns UserDelete page
  */
 const UserDelete = () => {
-  const { userData } = useSelector((state) => state.user);
-  const [isConfirmActive, handleConfirmActivation] = useOutletContext();
-  const [deleteUser, { isSuccess, isError, isLoading, error }] = useDeleteUserMutation();
+  const [isConfirmActive, handleConfirmActivation, user, isSuccess] = useOutletContext();
+  const [deleteUser, { isSuccess: isDeleteSuccess, isError, isLoading, error }] =
+    useDeleteUserMutation();
   const [deleteFormData, setDeleteFormData] = useState({
-    email: userData.email,
+    email: "",
     password: "",
   });
+
+  useEffect(() => {
+    if (isSuccess) {
+      setDeleteFormData({ email: user?.email, password: "" });
+    }
+  }, [isSuccess]);
 
   // Array Inputs
   const formInputs = [
@@ -102,7 +107,7 @@ const UserDelete = () => {
         isLoading={isLoading}
         isError={isError}
         error={error}
-        isSuccess={isSuccess}
+        isSuccess={isDeleteSuccess}
         isModalActive={isConfirmActive}
         handleModalActivation={handleConfirmActivation}
       />
