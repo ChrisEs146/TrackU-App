@@ -17,7 +17,7 @@ import "./userDelete.css";
  */
 const UserDelete = () => {
   const { userData } = useSelector((state) => state.user);
-  const [isConfirmActive, handleConfirmActivation] = useOutletContext();
+  const [deleteUser, { isSuccess: isDeleteSuccess, isError, isLoading, error }] =
   const [deleteUser, { isSuccess, isError, isLoading, error }] = useDeleteUserMutation();
   const [deleteFormData, setDeleteFormData] = useState({
     email: userData.email,
