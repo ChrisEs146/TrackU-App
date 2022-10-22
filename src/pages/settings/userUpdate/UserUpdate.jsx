@@ -17,8 +17,8 @@ import "./userUpdate.css";
  */
 const UserUpdate = () => {
   const { userData } = useSelector((state) => state.user);
-  const [isConfirmActive, handleConfirmActivation] = useOutletContext();
-  const [updateUser, { isLoading, isSuccess, isError, error }] = useUpdateUserMutation();
+  const [updateUser, { isLoading, isSuccess: isUpdateSuccess, isError, error }] =
+    useUpdateUserMutation();
   const [updateFormData, setUpdateFormData] = useState({
     newFullName: "",
   });
