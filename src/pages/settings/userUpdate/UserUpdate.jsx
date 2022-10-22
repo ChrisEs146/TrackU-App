@@ -16,12 +16,18 @@ import "./userUpdate.css";
  * @returns UserUpdate page
  */
 const UserUpdate = () => {
-  const { userData } = useSelector((state) => state.user);
+  const [isConfirmActive, handleConfirmActivation, user, isSuccess] = useOutletContext();
   const [updateUser, { isLoading, isSuccess: isUpdateSuccess, isError, error }] =
     useUpdateUserMutation();
   const [updateFormData, setUpdateFormData] = useState({
     newFullName: "",
   });
+
+  useEffect(() => {
+    if (isSuccess) {
+      setUpdateFormData({ newFullName: user?.fullName });
+    }
+  }, [isSuccess]);
 
   // Array Inputs
   const formInputs = [
@@ -88,7 +94,7 @@ const UserUpdate = () => {
       <ConfirmationModal
         item={itemData}
         submit={handleSubmit}
-        isSuccess={isSuccess}
+        isSuccess={isUpdateSuccess}
         isError={isError}
         error={error}
         isLoading={isLoading}
