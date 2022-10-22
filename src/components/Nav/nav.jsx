@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { useSelector } from "react-redux";
 import { SidebarContext } from "../../contexts/SidebarContext";
 import { FaBars } from "react-icons/fa";
 import logo from "../../images/logo.png";
+import { useSelector } from "react-redux";
 import "./nav.css";
 
 /**
