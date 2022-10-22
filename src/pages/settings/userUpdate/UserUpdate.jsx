@@ -21,7 +21,7 @@ const UserUpdate = () => {
   const [isConfirmActive, handleConfirmActivation] = useOutletContext();
   const [updateUser, { isLoading, isSuccess, isError, error }] = useUpdateUserMutation();
   const [updateFormData, setUpdateFormData] = useState({
-    newFullName: userData.fullName,
+    newFullName: "",
   });
 
   // Array Inputs
