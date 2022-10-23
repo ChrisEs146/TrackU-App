@@ -5,7 +5,6 @@ export const projectApiSlice = apiSlice.injectEndpoints({
     getAllProjects: builder.query({
       query: () => ({
         url: "/projects",
-        keepUnusedDataFor: 10,
       }),
       transformResponse: (response) => {
         return response.sort((a, b) => {
@@ -27,7 +26,6 @@ export const projectApiSlice = apiSlice.injectEndpoints({
     getProject: builder.query({
       query: (projectId) => ({
         url: `/projects/${projectId}`,
-        keepUnusedDataFor: 10,
       }),
       providesTags: ["Project"],
     }),
