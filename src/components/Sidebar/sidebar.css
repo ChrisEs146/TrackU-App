@@ -15,6 +15,7 @@
   background-color: transparent;
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
+  z-index: 3;
 }
 
 /* ==Background== */
@@ -34,7 +35,6 @@
   height: 100vh;
   opacity: 0.5;
   background-color: rgb(39, 39, 39);
-  z-index: 3;
 }
 
 /* ==Sidebar component== */
@@ -47,9 +47,9 @@
   top: 0;
   right: -100%;
   width: 65vw;
+  max-width: 30rem;
   height: 100vh;
   background-color: #16213e;
-  z-index: 5;
   transition: right 0.3s;
 }
 

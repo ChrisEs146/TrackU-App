@@ -12,6 +12,7 @@
   height: 100vh;
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
+  z-index: 15;
 }
 
 /* ==Modal Background== */
@@ -30,4 +31,5 @@
   height: 100vh;
   background-color: rgb(156, 156, 156);
   opacity: 0.5;
+  z-index: 15;
 }

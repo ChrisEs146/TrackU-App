@@ -38,6 +38,7 @@
 }
 
 .projectList__container {
+  position: relative;
   flex-direction: column;
   gap: 2rem;
   width: 100%;

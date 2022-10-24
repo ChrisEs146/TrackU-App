@@ -64,7 +64,11 @@ const Project = () => {
 
   let content;
   if (isLoading) {
-    content = <LoadingSpinner />;
+    content = (
+      <div className="projectPage__spinner-container">
+        <LoadingSpinner />;
+      </div>
+    );
   } else if (isSuccess) {
     content = (
       <>

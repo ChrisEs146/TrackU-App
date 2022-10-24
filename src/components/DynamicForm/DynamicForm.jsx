@@ -69,7 +69,7 @@ const DynamicForm = ({ type, editMode }) => {
         progress: itemFormData.progress,
       });
     }
-  }, [itemFormData?.isSuccess, itemFormData]);
+  }, [itemFormData?.isSuccess]);
 
   /**
    * Activates / deactivates form's button
