@@ -7,7 +7,8 @@
 .projectList__title-container,
 .projectList__add-btn,
 .projectList__container,
-.projectList__notFound-container {
+.projectList__notFound-container,
+.projectList__items {
   display: flex;
   align-items: center;
 }
@@ -37,14 +38,23 @@
   background-color: rgb(5, 84, 150);
 }
 
+.projectList__items,
+.projectList__container {
+  flex-direction: column;
+  width: 100%;
+}
+
 .projectList__container {
   position: relative;
-  flex-direction: column;
-  gap: 2rem;
-  width: 100%;
+  justify-content: space-between;
+  gap: 3rem;
   height: 90%;
   padding: 1rem;
   overflow-y: scroll;
+}
+
+.projectList__items {
+  gap: 2rem;
 }
 
 .projectList__notFound-container {
