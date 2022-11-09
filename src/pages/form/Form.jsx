@@ -24,7 +24,6 @@ const Form = () => {
 
   // State to switch between forms
   const [isSignUp, setIsSignUp] = useState(false);
-
   const loading = isSignUp ? signupLoading : signinLoading;
 
   // Initial form state
@@ -126,11 +125,13 @@ const Form = () => {
         handleSwitch();
         toast.success("Account Created");
         navigate("/registration");
+        return;
       } else {
         const tokenData = await signin({ ...formData }).unwrap();
         dispatch(setUserToken({ ...tokenData }));
         setFormData(initialFormState);
         navigate("/dashboard/projects");
+        return;
       }
     } catch (error) {
       if (!error?.status) {
