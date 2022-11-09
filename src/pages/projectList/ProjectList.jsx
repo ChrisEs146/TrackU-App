@@ -35,7 +35,20 @@ const ProjectList = () => {
             <NotFound message={"Please, add a project."} />
           </div>
         ) : (
-          projects?.map((project) => <ProjectCard key={project._id} project={project} />)
+          <>
+            <div className="projectList__items">
+              {projects?.map((project) => (
+                <ProjectCard key={project._id} project={project} />
+              ))}
+            </div>
+            {data?.length > resultsPerPage && (
+              <Pagination
+                itemsPerPage={resultsPerPage}
+                totalItems={data?.length}
+                setCurrentPage={setCurrentPage}
+              />
+            )}
+          </>
         )}
       </div>
     </div>
