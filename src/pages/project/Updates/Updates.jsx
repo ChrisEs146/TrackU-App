@@ -26,16 +26,27 @@ const Updates = ({ updates, projectId }) => {
         </div>
         <div className="updates">
           {updates?.length ? (
-            updates?.map((update) => (
-              <UpdateCard
-                date={getShortDate(update?.createdAt)}
-                title={update?.title}
-                description={update?.description}
-                projectId={projectId}
-                key={update?._id}
-                id={update?._id}
-              />
-            ))
+            <>
+              <div className="updates__items">
+                {currentUpdates?.map((update) => (
+                  <UpdateCard
+                    date={getShortDate(update?.createdAt)}
+                    title={update?.title}
+                    description={update?.description}
+                    projectId={projectId}
+                    key={update?._id}
+                    id={update?._id}
+                  />
+                ))}
+              </div>
+              {updates?.length > resultsPerPage && (
+                <Pagination
+                  itemsPerPage={resultsPerPage}
+                  totalItems={updates?.length}
+                  setCurrentPage={setCurrentPage}
+                />
+              )}
+            </>
           ) : (
             <div className="updates__notFound-container">
               <NotFound message={"Please, add an update."} />
