@@ -66,7 +66,7 @@ const Project = () => {
   if (isLoading) {
     content = (
       <div className="projectPage__spinner-container">
-        <LoadingSpinner />;
+        <LoadingSpinner />
       </div>
     );
   } else if (isSuccess) {
@@ -119,13 +119,13 @@ const Project = () => {
                 <span className="projectPage__status-label">
                   <FaCalendarDay /> Added:
                 </span>
-                <span>{getShortDate(project?.createdAt)}</span>
+                <span>{` ${getShortDate(project?.createdAt)}`}</span>
               </div>
               <div className="projectPage__status">
                 <span className="projectPage__status-label">
                   <FaQuestionCircle /> Status:
                 </span>
-                <span>{project?.status}</span>
+                <span>{` ${project?.status}`}</span>
               </div>
             </div>
             <div className="projectPage__info">
