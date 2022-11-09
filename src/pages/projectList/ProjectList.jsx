@@ -1,9 +1,11 @@
 import { FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import { useGetAllProjectsQuery } from "../../store/slices/ApiSlices/projectApiSlice";
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import NotFound from "../../components/DefaultMessage/NotFound";
+import Pagination from "../../components/Pagination/Pagination";
 import "./projectList.css";
 
 /**
@@ -13,6 +15,10 @@ import "./projectList.css";
  */
 const ProjectList = () => {
   const { data, isLoading } = useGetAllProjectsQuery();
+  const [currentPage, setCurrentPage] = useState(0);
+  const resultsPerPage = 5;
+  const arrayOffset = currentPage + resultsPerPage;
+  const projects = data?.slice(currentPage, arrayOffset);
 
   return (
     <div className="projectList">
