@@ -12,7 +12,7 @@ import "./projectList.css";
  * @returns ProjectList component
  */
 const ProjectList = () => {
-  const { data: projects, isLoading } = useGetAllProjectsQuery();
+  const { data, isLoading } = useGetAllProjectsQuery();
 
   return (
     <div className="projectList">
@@ -30,7 +30,7 @@ const ProjectList = () => {
       <div className="projectList__container">
         {isLoading ? (
           <LoadingSpinner />
-        ) : !projects.length ? (
+        ) : !data.length ? (
           <div className="projectList__notFound-container">
             <NotFound message={"Please, add a project."} />
           </div>
