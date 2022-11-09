@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import UpdateCard from "../../../components/UpdateCard/UpdateCard";
 import NotFound from "../../../components/DefaultMessage/NotFound";
 import { getShortDate } from "../../../Utils/Functions";
+import Pagination from "../../../components/Pagination/Pagination";
 import "./updates.css";
 
 /**
@@ -10,6 +12,10 @@ import "./updates.css";
  * @returns Updates component
  */
 const Updates = ({ updates, projectId }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const resultsPerPage = 5;
+  const arrayOffset = currentPage + resultsPerPage;
+  const currentUpdates = updates?.slice(currentPage, arrayOffset);
   return (
     <>
       <div className="updates__container">
