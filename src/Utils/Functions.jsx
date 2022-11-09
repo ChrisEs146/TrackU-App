@@ -10,6 +10,8 @@ export const getProgressColor = (value) => {
     return "#3EC70B";
   } else if (value >= 40 && value < 80) {
     return "#3120E0";
+  } else if (value > 0 && value < 40) {
+    return "#FD841F";
   }
 
   return "#c21010";
