@@ -1,9 +1,23 @@
 import ReactPaginate from "react-paginate";
 import "./pagination.css";
 
+/**
+ * Renders a pagination component using the required amount of items
+ * to be displayed per page, total amount of items in the main array, and
+ * a function to update the currentPage.
+ * @param {Number} itemsPerPage  Items required to be displayed per page
+ * @param {Number} totalItems  Total items in the main array
+ * @param {Function} setCurrentPage  Function to update the current page
+ * @returns Pagination component
+ */
 const Pagination = ({ itemsPerPage, totalItems, setCurrentPage }) => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
+  /**
+   * Handles page change in the pagination component by setting
+   * the currentPage to a new offset value.
+   * @param {Number} Selected Selected page in the pagination component
+   */
   const handlePageChange = ({ selected }) => {
     const newOffset = (selected * itemsPerPage) % totalItems;
     setCurrentPage(newOffset);
