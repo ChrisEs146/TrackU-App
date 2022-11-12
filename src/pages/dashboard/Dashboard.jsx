@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useGetUserQuery } from "../../store/slices/ApiSlices/userApiSlice";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { SidebarContext } from "../../contexts/SidebarContext";
@@ -15,14 +15,23 @@ import "./dashboard.css";
  */
 const Dashboard = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { sidebarStatus, sidebarHandler } = useContext(SidebarContext);
   const { data: user, isSuccess, isLoading } = useGetUserQuery();
 
   useEffect(() => {
     if (isSuccess) {
       dispatch(setUserData(user));
+      localStorage.setItem("User", JSON.stringify(user));
     }
   }, [isSuccess]);
+
+  useEffect(() => {
+    let isUser = JSON.parse(localStorage.getItem("User"));
+    if (isUser && isUser !== null) {
+      return navigate("/dashboard/projects");
+    }
+  }, []);
 
   return (
     <div className="dashboard">
