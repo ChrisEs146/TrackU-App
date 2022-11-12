@@ -66,8 +66,9 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      navigate("/");
-      return;
+      localStorage.clear();
+      console.log("Log out success");
+      return navigate("/");
     }
   }, [isSuccess]);
 
