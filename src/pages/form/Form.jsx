@@ -7,6 +7,7 @@ import { useSigninMutation, useSignupMutation } from "../../store/slices/ApiSlic
 import { setUserToken } from "../../store/slices/userSlice";
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import FormInput from "../../components/FormInput/FormInput";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 import "./form.css";
 
 /**
@@ -17,6 +18,7 @@ import "./form.css";
  * @returns Form Component
  */
 const Form = () => {
+  useDocumentTitle("Sign In");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [signup, { isLoading: signupLoading }] = useSignupMutation();
@@ -124,14 +126,12 @@ const Form = () => {
         setFormData(initialFormState);
         handleSwitch();
         toast.success("Account Created");
-        navigate("/registration");
-        return;
+        return navigate("/registration");
       } else {
         const tokenData = await signin({ ...formData }).unwrap();
         dispatch(setUserToken({ ...tokenData }));
         setFormData(initialFormState);
-        navigate("/dashboard/projects");
-        return;
+        return navigate("/dashboard/projects");
       }
     } catch (error) {
       if (!error?.status) {
