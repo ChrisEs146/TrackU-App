@@ -32,8 +32,7 @@ const ConfirmationModal = ({
       handleModalActivation();
       toast.success(item.successMsg);
       logOut();
-      navigate(item.redirect);
-      return;
+      return navigate(item.redirect);
     }
 
     // Update Delete
@@ -47,7 +46,7 @@ const ConfirmationModal = ({
     if (isSuccess) {
       handleModalActivation();
       toast.success(item.successMsg);
-      navigate(item.redirect === "back" ? -1 : item.redirect);
+      return navigate(item.redirect === "back" ? -1 : item.redirect);
     }
 
     // In case there are errors
