@@ -14,6 +14,7 @@ import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
 import { getItemData } from "../../Utils/ItemData";
 import "./project.css";
+import NotFoundPage from "../NotFound/NotFoundPage";
 
 /**
  * Shows a projects information including, date, status, progress,
@@ -25,7 +26,12 @@ const Project = () => {
   const { projectId } = useParams();
 
   // Getting project data and updates data
-  const { data: project, isLoading, isSuccess } = useGetProjectQuery(projectId);
+  const {
+    data: project,
+    isLoading,
+    isSuccess,
+    isError: isProjectError,
+  } = useGetProjectQuery(projectId);
   const { data: updates } = useGetUpdatesQuery(projectId);
 
   // Destructuring deleteProject mutation
@@ -69,6 +75,8 @@ const Project = () => {
         <LoadingSpinner />
       </div>
     );
+  } else if (isProjectError) {
+    content = <NotFoundPage homepage={false} />;
   } else if (isSuccess) {
     content = (
       <>
