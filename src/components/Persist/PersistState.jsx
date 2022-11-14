@@ -47,7 +47,7 @@ const PersistState = ({ logOutState }) => {
   if (isLoading) {
     content = <LoadingSpinner />;
   } else if (isError) {
-    toast.error(error.data.message);
+    toast.error("Session Expired");
     content = <Navigate to="/registration" state={{ from: location }} replace />;
   } else if ((isSuccess && success) || (userToken && isUninitialized)) {
     content = <Outlet />;
