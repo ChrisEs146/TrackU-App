@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import Homepage from "./pages/Homepage/Homepage";
 import Dashboard from "./pages/Dashboard/Dashboard";
@@ -18,15 +19,16 @@ import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
   return (
     <main className="app">
       <Nav />
       <Routes>
         <Route index element={<Homepage />} />
         <Route path="/registration" element={<Form />} />
-        <Route element={<PersistState />}>
+        <Route element={<PersistState logOutState={{ isLoggingOut, setIsLoggingOut }} />}>
           <Route element={<ProtectedRoute />}>
-            <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="/dashboard" element={<Dashboard setIsLoggingOut={setIsLoggingOut} />}>
               <Route index element={<Projects />} />
               <Route path="projects" element={<Projects />}>
                 <Route index element={<ProjectList />} />
