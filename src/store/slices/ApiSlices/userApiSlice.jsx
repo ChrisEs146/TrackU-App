@@ -1,4 +1,4 @@
-import { logOut, setUserToken } from "../userSlice";
+import { setUserToken } from "../userSlice";
 import { apiSlice } from "./apiSlice";
 
 export const userApiSlice = apiSlice.injectEndpoints({
@@ -29,7 +29,6 @@ export const userApiSlice = apiSlice.injectEndpoints({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
-          dispatch(logOut());
           setTimeout(() => {
             dispatch(apiSlice.util.resetApiState());
           }, 1000);
