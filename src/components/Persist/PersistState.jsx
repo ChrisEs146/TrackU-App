@@ -30,7 +30,12 @@ const PersistState = ({ logOutState }) => {
           await logOut();
         }
       };
-      if (!userToken) validateToken();
+
+      if (!userToken && !isLoggingOut) {
+        validateToken();
+      } else if (isLoggingOut) {
+        setIsLoggingOut(false);
+      }
     }
 
     return () => (useEffectExecuted.current = true);
