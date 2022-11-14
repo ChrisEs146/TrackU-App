@@ -71,7 +71,7 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName, setIsLoggingOu
   useEffect(() => {
     if (isSuccess) {
       localStorage.clear();
-      console.log("Log out success");
+      dispatch(logOutReducer());
       return navigate("/");
     }
   }, [isSuccess]);
