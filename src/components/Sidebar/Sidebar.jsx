@@ -66,6 +66,8 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName, setIsLoggingOu
     },
   ];
 
+  const handleLoggingOut = () => setIsLoggingOut(true);
+
   useEffect(() => {
     if (isSuccess) {
       localStorage.clear();
