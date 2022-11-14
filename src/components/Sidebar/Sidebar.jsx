@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import UserCard from "../UserCard/UserCard";
+import { useDispatch } from "react-redux";
+import { logOut as logOutReducer } from "../../store/slices/userSlice";
 import { useLogOutMutation } from "../../store/slices/ApiSlices/userApiSlice";
 import {
   FaArrowRight,
