@@ -26,6 +26,7 @@ const PersistState = ({ logOutState }) => {
           await refresh().unwrap();
           setSuccess(true);
         } catch (error) {
+          localStorage.clear();
           await logOut();
         }
       };
