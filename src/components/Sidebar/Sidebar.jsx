@@ -23,7 +23,7 @@ import "./sidebar.css";
  * also contains the log out button.
  * @returns Sidebar Menu Component
  */
-const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
+const Sidebar = ({ handleSidebarState, isSidebarActive, fullName, setIsLoggingOut }) => {
   const navigate = useNavigate();
   const [areSettingsOpen, setAreSettingsOpen] = useState(false);
   const [logOut, { isSuccess }] = useLogOutMutation();
