@@ -15,7 +15,7 @@ const PersistState = () => {
   const [success, setSuccess] = useState(false);
   const useEffectExecuted = useRef(false);
   const location = useLocation();
-  const [refresh, { isLoading, isSuccess, isError, error, isUninitialized }] = useRefreshMutation();
+  const [refresh, { isLoading, isSuccess, isError, isUninitialized }] = useRefreshMutation();
   const [logOut] = useLogOutMutation();
 
   useEffect(() => {
