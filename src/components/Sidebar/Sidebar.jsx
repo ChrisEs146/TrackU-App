@@ -25,6 +25,7 @@ import "./sidebar.css";
  */
 const Sidebar = ({ handleSidebarState, isSidebarActive, fullName, setIsLoggingOut }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [areSettingsOpen, setAreSettingsOpen] = useState(false);
   const [logOut, { isSuccess }] = useLogOutMutation();
 
@@ -145,6 +146,7 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName, setIsLoggingOu
             className="sidebar__logout-btn"
             onClick={() => {
               logOut();
+              handleLoggingOut();
               handleSidebarState();
             }}
           >
