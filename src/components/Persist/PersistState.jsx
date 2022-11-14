@@ -10,7 +10,8 @@ import { toast } from "react-toastify";
  * Wrapper component who's in charge of mantaining the user's state
  * if the refresh token is still valid.
  */
-const PersistState = () => {
+const PersistState = ({ logOutState }) => {
+  const { isLoggingOut, setIsLoggingOut } = logOutState;
   const { userToken } = useSelector((state) => state.user);
   const [success, setSuccess] = useState(false);
   const useEffectExecuted = useRef(false);
