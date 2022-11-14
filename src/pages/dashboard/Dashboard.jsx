@@ -13,7 +13,7 @@ import "./dashboard.css";
  * and the projects main panel.
  * @returns Dashboard Component
  */
-const Dashboard = () => {
+const Dashboard = ({ setIsLoggingOut }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { sidebarStatus, sidebarHandler } = useContext(SidebarContext);
@@ -43,6 +43,7 @@ const Dashboard = () => {
             handleSidebarState={sidebarHandler}
             isSidebarActive={sidebarStatus}
             fullName={user?.fullName}
+            setIsLoggingOut={setIsLoggingOut}
           />
           <div className="dashboard__projects-container">
             <Outlet />
