@@ -18,7 +18,7 @@ const Nav = () => {
   return (
     <nav className="navigation">
       <div className="navigation__logo">
-        <NavLink to="/">
+        <NavLink title="Go to Homepage" to="/">
           <img src={logo} alt="TrackU logo" title="TrackU" />
           <p>TrackU</p>
         </NavLink>
