@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import UserCard from "../UserCard/UserCard";
 import { useDispatch } from "react-redux";
 import { logOut as logOutReducer } from "../../store/slices/userSlice";
 import { useLogOutMutation } from "../../store/slices/ApiSlices/userApiSlice";
@@ -15,6 +14,9 @@ import {
 } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { AiOutlineUserDelete } from "react-icons/ai";
+import { clearLocalStorage } from "../../Utils/Functions";
+import { SessionContext } from "../../contexts/SessionContext";
+import UserCard from "../UserCard/UserCard";
 import "./sidebar.css";
 
 /**
@@ -23,10 +25,11 @@ import "./sidebar.css";
  * also contains the log out button.
  * @returns Sidebar Menu Component
  */
-const Sidebar = ({ handleSidebarState, isSidebarActive, fullName, setIsLoggingOut }) => {
+const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [areSettingsOpen, setAreSettingsOpen] = useState(false);
+  const { sessionHandler } = useContext(SessionContext);
   const [logOut, { isSuccess }] = useLogOutMutation();
 
   // Array of sidebar options
@@ -67,11 +70,9 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName, setIsLoggingOu
     },
   ];
 
-  const handleLoggingOut = () => setIsLoggingOut(true);
-
   useEffect(() => {
     if (isSuccess) {
-      localStorage.clear();
+      clearLocalStorage();
       dispatch(logOutReducer());
       return navigate("/");
     }
@@ -146,7 +147,7 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName, setIsLoggingOu
             className="sidebar__logout-btn"
             onClick={() => {
               logOut();
-              handleLoggingOut();
+              sessionHandler();
               handleSidebarState();
             }}
           >
