@@ -1,10 +1,11 @@
 import { useContext, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useGetUserQuery } from "../../store/slices/ApiSlices/userApiSlice";
-import Sidebar from "../../components/Sidebar/Sidebar";
 import { SidebarContext } from "../../contexts/SidebarContext";
 import { setUserData } from "../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
+import { addToLocalStorage, getFromLocalStorage } from "../../Utils/Functions";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import "./dashboard.css";
 
@@ -13,7 +14,7 @@ import "./dashboard.css";
  * and the projects main panel.
  * @returns Dashboard Component
  */
-const Dashboard = ({ setIsLoggingOut }) => {
+const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { sidebarStatus, sidebarHandler } = useContext(SidebarContext);
@@ -22,12 +23,12 @@ const Dashboard = ({ setIsLoggingOut }) => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(setUserData(user));
-      localStorage.setItem("User", JSON.stringify(user));
+      addToLocalStorage("User", user);
     }
   }, [isSuccess]);
 
   useEffect(() => {
-    let isUser = JSON.parse(localStorage.getItem("User"));
+    let isUser = getFromLocalStorage("User");
     if (isUser && isUser !== null) {
       return navigate("/dashboard/projects");
     }
@@ -43,7 +44,6 @@ const Dashboard = ({ setIsLoggingOut }) => {
             handleSidebarState={sidebarHandler}
             isSidebarActive={sidebarStatus}
             fullName={user?.fullName}
-            setIsLoggingOut={setIsLoggingOut}
           />
           <div className="dashboard__projects-container">
             <Outlet />
