@@ -57,3 +57,46 @@ export const isInputValid = (type, inputValue) => {
   if (type.toLowerCase() === "password") return validPassword.test(inputValue);
   if (type.toLowerCase() === "title") return validTitle.test(inputValue);
 };
+
+// LOCAL STORAGE RELATED
+
+/**
+ * Adds an object to the localstorage using a name as a key.
+ * @param {string} name
+ * @param {Object} data
+ */
+export const addToLocalStorage = (name, data, isJson = true) => {
+  if (isJson) {
+    localStorage.setItem(name, JSON.stringify(data));
+  } else {
+    localStorage.setItem(name, data);
+  }
+};
+
+/**
+ * Retrives data from the localstorage based on the name.
+ * @param {string} name
+ * @returns data
+ */
+export const getFromLocalStorage = (name, isJson = true) => {
+  if (isJson) {
+    return JSON.parse(localStorage.getItem(name));
+  } else {
+    return localStorage.getItem(name);
+  }
+};
+
+/**
+ * Clears the localstorage
+ */
+export const clearLocalStorage = () => {
+  localStorage.clear();
+};
+
+/**
+ * Removes an item from the locastorage
+ * @param {string} name
+ */
+export const removeFromLocalStorage = (name) => {
+  localStorage.removeItem(name);
+};
