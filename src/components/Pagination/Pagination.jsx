@@ -1,4 +1,5 @@
 import ReactPaginate from "react-paginate";
+import { addToLocalStorage } from "../../Utils/Functions";
 import "./pagination.css";
 
 /**
@@ -10,7 +11,14 @@ import "./pagination.css";
  * @param {Function} setCurrentPage  Function to update the current page
  * @returns Pagination component
  */
-const Pagination = ({ itemsPerPage, totalItems, setCurrentPage }) => {
+const Pagination = ({
+  itemsPerPage,
+  totalItems,
+  currentPage,
+  setCurrentPage,
+  setOffSet,
+  componentKey,
+}) => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   /**
@@ -20,7 +28,10 @@ const Pagination = ({ itemsPerPage, totalItems, setCurrentPage }) => {
    */
   const handlePageChange = ({ selected }) => {
     const newOffset = (selected * itemsPerPage) % totalItems;
-    setCurrentPage(newOffset);
+    setCurrentPage(selected);
+    setOffSet(newOffset);
+    addToLocalStorage(`${componentKey}Page`, selected, false);
+    addToLocalStorage(`${componentKey}Offset`, newOffset, false);
   };
 
   return (
@@ -32,6 +43,7 @@ const Pagination = ({ itemsPerPage, totalItems, setCurrentPage }) => {
       pageCount={totalPages}
       onPageChange={handlePageChange}
       marginPagesDisplayed={0}
+      forcePage={currentPage}
       containerClassName={"pagination__container"}
       previousClassName={"pagination__prev-link"}
       nextClassName={"pagination__next-link"}
