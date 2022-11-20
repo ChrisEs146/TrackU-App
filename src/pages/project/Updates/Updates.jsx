@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import UpdateCard from "../../../components/UpdateCard/UpdateCard";
 import NotFound from "../../../components/DefaultMessage/NotFound";
-import { getShortDate } from "../../../Utils/Functions";
+import { getFromLocalStorage, getShortDate } from "../../../Utils/Functions";
 import Pagination from "../../../components/Pagination/Pagination";
 import "./updates.css";
 
@@ -12,10 +12,13 @@ import "./updates.css";
  * @returns Updates component
  */
 const Updates = ({ updates, projectId }) => {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [offSet, setOffSet] = useState(Number(getFromLocalStorage("UpdateOffset", false)) || 0);
+  const [currentPage, setCurrentPage] = useState(
+    Number(getFromLocalStorage("UpdatePage", false)) || 0
+  );
   const resultsPerPage = 5;
-  const arrayOffset = currentPage + resultsPerPage;
-  const currentUpdates = updates?.slice(currentPage, arrayOffset);
+  const arrayOffset = offSet + resultsPerPage;
+  const currentUpdates = updates?.slice(offSet, arrayOffset);
   return (
     <>
       <div className="updates__container">
@@ -50,6 +53,9 @@ const Updates = ({ updates, projectId }) => {
                   itemsPerPage={resultsPerPage}
                   totalItems={updates?.length}
                   setCurrentPage={setCurrentPage}
+                  setOffSet={setOffSet}
+                  componentKey="Update"
+                  currentPage={currentPage}
                 />
               )}
             </>
