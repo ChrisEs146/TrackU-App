@@ -7,6 +7,7 @@ import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import NotFound from "../../components/DefaultMessage/NotFound";
 import Pagination from "../../components/Pagination/Pagination";
 import "./projectList.css";
+import { getFromLocalStorage } from "../../Utils/Functions";
 
 /**
  * Component that shows a user's project list. If there are no
@@ -15,11 +16,15 @@ import "./projectList.css";
  */
 const ProjectList = () => {
   const { data, isLoading } = useGetAllProjectsQuery();
-  const [currentPage, setCurrentPage] = useState(0);
+  const [offSet, setOffSet] = useState(Number(getFromLocalStorage("ProjectOffset", false)) || 0);
+  const [currentPage, setCurrentPage] = useState(
+    Number(getFromLocalStorage("ProjectPage", false)) || 0
+  );
   const resultsPerPage = 5;
-  const arrayOffset = currentPage + resultsPerPage;
-  const projects = data?.slice(currentPage, arrayOffset);
+  const arrayOffset = offSet + resultsPerPage;
+  const projects = data?.slice(offSet, arrayOffset);
 
+  console.log(`In Projects ${currentPage}`);
   return (
     <div className="projectList">
       <div className="projectList__title-container">
@@ -51,7 +56,10 @@ const ProjectList = () => {
               <Pagination
                 itemsPerPage={resultsPerPage}
                 totalItems={data?.length}
+                setOffSet={setOffSet}
                 setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+                componentKey="Project"
               />
             )}
           </>
