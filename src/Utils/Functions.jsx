@@ -62,8 +62,9 @@ export const isInputValid = (type, inputValue) => {
 
 /**
  * Adds an object to the localstorage using a name as a key.
- * @param {string} name
- * @param {Object} data
+ * @param {string} name key to add data to the local storage
+ * @param {Object} data Data to be added
+ * @param {boolean} isJson Indicates if the data is an object
  */
 export const addToLocalStorage = (name, data, isJson = true) => {
   if (isJson) {
@@ -75,7 +76,8 @@ export const addToLocalStorage = (name, data, isJson = true) => {
 
 /**
  * Retrives data from the localstorage based on the name.
- * @param {string} name
+ * @param {string} name Key to add data to the local storage
+ * @param {boolean} isJson Indicates if the data was an object and requires parsing.
  * @returns data
  */
 export const getFromLocalStorage = (name, isJson = true) => {
@@ -95,7 +97,7 @@ export const clearLocalStorage = () => {
 
 /**
  * Removes an item from the locastorage
- * @param {string} name
+ * @param {string} name Key to retrieve data from the local storage
  */
 export const removeFromLocalStorage = (name) => {
   localStorage.removeItem(name);
