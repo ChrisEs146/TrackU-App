@@ -1,10 +1,11 @@
 import { useContext, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useGetUserQuery } from "../../store/slices/ApiSlices/userApiSlice";
-import Sidebar from "../../components/Sidebar/Sidebar";
 import { SidebarContext } from "../../contexts/SidebarContext";
 import { setUserData } from "../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
+import { addToLocalStorage, getFromLocalStorage } from "../../Utils/Functions";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import "./dashboard.css";
 
@@ -15,14 +16,23 @@ import "./dashboard.css";
  */
 const Dashboard = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { sidebarStatus, sidebarHandler } = useContext(SidebarContext);
   const { data: user, isSuccess, isLoading } = useGetUserQuery();
 
   useEffect(() => {
     if (isSuccess) {
       dispatch(setUserData(user));
+      addToLocalStorage("User", user);
     }
   }, [isSuccess]);
+
+  useEffect(() => {
+    let isUser = getFromLocalStorage("User");
+    if (isUser && isUser !== null) {
+      return navigate("/dashboard/projects");
+    }
+  }, []);
 
   return (
     <div className="dashboard">

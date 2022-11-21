@@ -1,8 +1,9 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import hero from "../../images/hero.svg";
-import "./homepage.css";
 import { useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import hero from "../../images/hero.svg";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
+import "./homepage.css";
+import { getFromLocalStorage } from "../../Utils/Functions";
 
 /**
  * Homepage allows users to sign in or sign up to have
@@ -10,14 +11,15 @@ import { useEffect } from "react";
  * @returns Homepage Component
  */
 const Homepage = () => {
-  const { userData } = useSelector((state) => state.user);
+  useDocumentTitle("Home");
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userData) {
-      navigate("/dashboard/projects");
+    let isUser = getFromLocalStorage("User");
+    if (isUser && isUser !== null) {
+      return navigate("/dashboard/projects");
     }
-  }, [userData, navigate]);
+  }, []);
 
   return (
     <header className="homepage">

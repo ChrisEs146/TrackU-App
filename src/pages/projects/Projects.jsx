@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 import "./projects.css";
 
 /**
@@ -7,6 +8,7 @@ import "./projects.css";
  * @returns Projects page component
  */
 const Projects = () => {
+  useDocumentTitle("Projects");
   return (
     <section className="projects">
       <Outlet />

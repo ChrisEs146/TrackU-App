@@ -14,6 +14,7 @@ import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
 import { getItemData } from "../../Utils/ItemData";
 import "./project.css";
+import NotFoundPage from "../NotFound/NotFoundPage";
 
 /**
  * Shows a projects information including, date, status, progress,
@@ -25,7 +26,12 @@ const Project = () => {
   const { projectId } = useParams();
 
   // Getting project data and updates data
-  const { data: project, isLoading, isSuccess } = useGetProjectQuery(projectId);
+  const {
+    data: project,
+    isLoading,
+    isSuccess,
+    isError: isProjectError,
+  } = useGetProjectQuery(projectId);
   const { data: updates } = useGetUpdatesQuery(projectId);
 
   // Destructuring deleteProject mutation
@@ -66,9 +72,11 @@ const Project = () => {
   if (isLoading) {
     content = (
       <div className="projectPage__spinner-container">
-        <LoadingSpinner />;
+        <LoadingSpinner />
       </div>
     );
+  } else if (isProjectError) {
+    content = <NotFoundPage homepage={false} />;
   } else if (isSuccess) {
     content = (
       <>
@@ -119,13 +127,13 @@ const Project = () => {
                 <span className="projectPage__status-label">
                   <FaCalendarDay /> Added:
                 </span>
-                <span>{getShortDate(project?.createdAt)}</span>
+                <span>{` ${getShortDate(project?.createdAt)}`}</span>
               </div>
               <div className="projectPage__status">
                 <span className="projectPage__status-label">
                   <FaQuestionCircle /> Status:
                 </span>
-                <span>{project?.status}</span>
+                <span>{` ${project?.status}`}</span>
               </div>
             </div>
             <div className="projectPage__info">

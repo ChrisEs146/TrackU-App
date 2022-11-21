@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import UpdateCard from "../../../components/UpdateCard/UpdateCard";
 import NotFound from "../../../components/DefaultMessage/NotFound";
-import { getShortDate } from "../../../Utils/Functions";
+import { getFromLocalStorage, getShortDate } from "../../../Utils/Functions";
+import Pagination from "../../../components/Pagination/Pagination";
 import "./updates.css";
 
 /**
@@ -10,6 +12,13 @@ import "./updates.css";
  * @returns Updates component
  */
 const Updates = ({ updates, projectId }) => {
+  const [offSet, setOffSet] = useState(Number(getFromLocalStorage("UpdateOffset", false)) || 0);
+  const [currentPage, setCurrentPage] = useState(
+    Number(getFromLocalStorage("UpdatePage", false)) || 0
+  );
+  const resultsPerPage = 5;
+  const arrayOffset = offSet + resultsPerPage;
+  const currentUpdates = updates?.slice(offSet, arrayOffset);
   return (
     <>
       <div className="updates__container">
@@ -26,16 +35,30 @@ const Updates = ({ updates, projectId }) => {
         </div>
         <div className="updates">
           {updates?.length ? (
-            updates?.map((update) => (
-              <UpdateCard
-                date={getShortDate(update?.createdAt)}
-                title={update?.title}
-                description={update?.description}
-                projectId={projectId}
-                key={update?._id}
-                id={update?._id}
-              />
-            ))
+            <>
+              <div className="updates__items">
+                {currentUpdates?.map((update) => (
+                  <UpdateCard
+                    date={getShortDate(update?.createdAt)}
+                    title={update?.title}
+                    description={update?.description}
+                    projectId={projectId}
+                    key={update?._id}
+                    id={update?._id}
+                  />
+                ))}
+              </div>
+              {updates?.length > resultsPerPage && (
+                <Pagination
+                  itemsPerPage={resultsPerPage}
+                  totalItems={updates?.length}
+                  setCurrentPage={setCurrentPage}
+                  setOffSet={setOffSet}
+                  componentKey="Update"
+                  currentPage={currentPage}
+                />
+              )}
+            </>
           ) : (
             <div className="updates__notFound-container">
               <NotFound message={"Please, add an update."} />

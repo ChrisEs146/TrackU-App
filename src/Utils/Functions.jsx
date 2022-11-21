@@ -10,6 +10,8 @@ export const getProgressColor = (value) => {
     return "#3EC70B";
   } else if (value >= 40 && value < 80) {
     return "#3120E0";
+  } else if (value > 0 && value < 40) {
+    return "#FD841F";
   }
 
   return "#c21010";
@@ -54,4 +56,49 @@ export const isInputValid = (type, inputValue) => {
   if (type.toLowerCase() === "fullname") return validFullName.test(inputValue);
   if (type.toLowerCase() === "password") return validPassword.test(inputValue);
   if (type.toLowerCase() === "title") return validTitle.test(inputValue);
+};
+
+// LOCAL STORAGE RELATED
+
+/**
+ * Adds an object to the localstorage using a name as a key.
+ * @param {string} name key to add data to the local storage
+ * @param {Object} data Data to be added
+ * @param {boolean} isJson Indicates if the data is an object
+ */
+export const addToLocalStorage = (name, data, isJson = true) => {
+  if (isJson) {
+    localStorage.setItem(name, JSON.stringify(data));
+  } else {
+    localStorage.setItem(name, data);
+  }
+};
+
+/**
+ * Retrives data from the localstorage based on the name.
+ * @param {string} name Key to add data to the local storage
+ * @param {boolean} isJson Indicates if the data was an object and requires parsing.
+ * @returns data
+ */
+export const getFromLocalStorage = (name, isJson = true) => {
+  if (isJson) {
+    return JSON.parse(localStorage.getItem(name));
+  } else {
+    return localStorage.getItem(name);
+  }
+};
+
+/**
+ * Clears the localstorage
+ */
+export const clearLocalStorage = () => {
+  localStorage.clear();
+};
+
+/**
+ * Removes an item from the locastorage
+ * @param {string} name Key to retrieve data from the local storage
+ */
+export const removeFromLocalStorage = (name) => {
+  localStorage.removeItem(name);
 };

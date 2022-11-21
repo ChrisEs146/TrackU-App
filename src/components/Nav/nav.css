@@ -10,9 +10,10 @@
 }
 
 /* ==Navigation logo== */
-.navigation__logo {
+.navigation__logo a {
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .navigation__logo img {

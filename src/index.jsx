@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/index";
 import { BrowserRouter } from "react-router-dom";
 import { SidebarProvider } from "./contexts/SidebarContext";
+import { SessionProvider } from "./contexts/SessionContext";
 import App from "./App";
 import "./app.css";
 
@@ -12,9 +13,11 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <SidebarProvider>
-          <App />
-        </SidebarProvider>
+        <SessionProvider>
+          <SidebarProvider>
+            <App />
+          </SidebarProvider>
+        </SessionProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

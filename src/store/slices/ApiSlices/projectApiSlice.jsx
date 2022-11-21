@@ -35,7 +35,7 @@ export const projectApiSlice = apiSlice.injectEndpoints({
         method: "PUT",
         body: { ...projectData },
       }),
-      invalidatesTags: ["Project"],
+      invalidatesTags: ["Project", "Projects"],
     }),
     deleteProject: builder.mutation({
       query: (projectId) => ({

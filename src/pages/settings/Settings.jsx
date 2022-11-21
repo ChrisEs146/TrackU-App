@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import UserCard from "../../components/UserCard/UserCard";
 import { useGetUserQuery } from "../../store/slices/ApiSlices/userApiSlice";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 import "./settings.css";
 
 /**
@@ -11,6 +12,7 @@ import "./settings.css";
  * @returns Settings page
  */
 const Settings = () => {
+  useDocumentTitle("Settings");
   const { data: user, isSuccess } = useGetUserQuery();
 
   // Modal windows activation and deactivation state
