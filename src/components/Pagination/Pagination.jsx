@@ -8,7 +8,10 @@ import "./pagination.css";
  * a function to update the currentPage.
  * @param {Number} itemsPerPage  Items required to be displayed per page
  * @param {Number} totalItems  Total items in the main array
+ * @param {Number} currentPage  Current page value
  * @param {Function} setCurrentPage  Function to update the current page
+ * @param {Function} setOffset  Function to update the offset value
+ * @param {string} componetKey  Key to add value to the local storage
  * @returns Pagination component
  */
 const Pagination = ({
