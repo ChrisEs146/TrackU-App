@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import "./formInput.css";
 
 /**
@@ -6,7 +7,7 @@ import "./formInput.css";
  * @returns Custom input field
  */
 const Input = (props) => {
-  const { label, errorMsg, handleChange, icon, ...inputProps } = props;
+  const { label, errorMsg, handleChange, icon, type, ...inputProps } = props;
   const [focused, setFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -25,14 +26,20 @@ const Input = (props) => {
         {icon}
         {label}
       </label>
-      <input
-        {...inputProps}
-        focused={focused.toString()}
-        onChange={handleChange}
-        onBlur={handleFocus}
-        onFocus={() => inputProps.name === "confirmPassword" && setFocused(true)}
-      />
-      {errorMsg && <span>{errorMsg}</span>}
+      <div className="input__inner-container" data-type={type}>
+        <input
+          {...inputProps}
+          type={type === "password" && showPassword ? "text" : type}
+          focused={focused.toString()}
+          onChange={handleChange}
+          onBlur={handleFocus}
+          onFocus={() => inputProps.name === "confirmPassword" && setFocused(true)}
+        />
+        <button className="input__password-toggle" type="button" onClick={handlePasswordToggle}>
+          {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+        </button>
+        {errorMsg && <span>{errorMsg}</span>}
+      </div>
     </div>
   );
 };
