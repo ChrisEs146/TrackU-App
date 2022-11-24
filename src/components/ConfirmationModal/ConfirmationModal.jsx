@@ -35,14 +35,14 @@ const ConfirmationModal = ({
       return navigate(item.redirect);
     }
 
-    // Update Delete
+    // Update Deletion
     if (isSuccess && item.type === "update" && item.action === "delete") {
       handleModalActivation();
       toast.success(item.successMsg);
       return;
     }
 
-    // Process is successful
+    // Project deletion
     if (isSuccess) {
       handleModalActivation();
       toast.success(item.successMsg);
