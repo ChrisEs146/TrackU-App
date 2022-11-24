@@ -8,6 +8,7 @@ import "./formInput.css";
 const Input = (props) => {
   const { label, errorMsg, handleChange, icon, ...inputProps } = props;
   const [focused, setFocused] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   /**
    * Function that sets the focus state.
@@ -15,6 +16,8 @@ const Input = (props) => {
   const handleFocus = (e) => {
     setFocused(true);
   };
+
+  const handlePasswordToggle = () => setShowPassword(!showPassword);
 
   return (
     <div className="input__container">
