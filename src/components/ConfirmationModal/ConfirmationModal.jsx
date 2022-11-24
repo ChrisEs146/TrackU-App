@@ -6,6 +6,7 @@ import Modal from "../Modal/Modal";
 import { toast } from "react-toastify";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 import { useLogOutMutation } from "../../store/slices/ApiSlices/userApiSlice";
+import { clearLocalStorage } from "../../Utils/Functions";
 import "./confirmationModal.css";
 
 /**
@@ -32,17 +33,18 @@ const ConfirmationModal = ({
       handleModalActivation();
       toast.success(item.successMsg);
       logOut();
+      clearLocalStorage();
       return navigate(item.redirect);
     }
 
-    // Update Delete
+    // Update Deletion
     if (isSuccess && item.type === "update" && item.action === "delete") {
       handleModalActivation();
       toast.success(item.successMsg);
       return;
     }
 
-    // Process is successful
+    // Project deletion
     if (isSuccess) {
       handleModalActivation();
       toast.success(item.successMsg);

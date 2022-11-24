@@ -38,3 +38,30 @@
 .input__container input:read-only {
   cursor: not-allowed;
 }
+
+.input__password-toggle {
+  display: none;
+}
+
+.input__inner-container[data-type="password"] {
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+  align-items: center;
+}
+
+.input__inner-container[data-type="password"] button {
+  display: block;
+  grid-column: 2 /-1;
+  /* width: 10%; */
+  height: 3.5rem;
+  color: white;
+  background-color: rgba(12, 91, 180, 0.932);
+  border: none;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.input__inner-container[data-type="password"] span {
+  grid-column: 1 / -1;
+}

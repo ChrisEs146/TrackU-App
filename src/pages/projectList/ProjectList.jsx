@@ -24,7 +24,6 @@ const ProjectList = () => {
   const arrayOffset = offSet + resultsPerPage;
   const projects = data?.slice(offSet, arrayOffset);
 
-  console.log(`In Projects ${currentPage}`);
   return (
     <div className="projectList">
       <div className="projectList__title-container">

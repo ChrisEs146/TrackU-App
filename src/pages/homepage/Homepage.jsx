@@ -19,6 +19,7 @@ const Homepage = () => {
     if (isUser && isUser !== null) {
       return navigate("/dashboard/projects");
     }
+    // eslint-disable-next-line
   }, []);
 
   return (

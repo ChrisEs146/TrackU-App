@@ -25,6 +25,7 @@ const Dashboard = () => {
       dispatch(setUserData(user));
       addToLocalStorage("User", user);
     }
+    // eslint-disable-next-line
   }, [isSuccess]);
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const Dashboard = () => {
     if (isUser && isUser !== null) {
       return navigate("/dashboard/projects");
     }
+    // eslint-disable-next-line
   }, []);
 
   return (
