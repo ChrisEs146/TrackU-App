@@ -76,6 +76,7 @@ const Sidebar = ({ handleSidebarState, isSidebarActive, fullName }) => {
       dispatch(logOutReducer());
       return navigate("/");
     }
+    // eslint-disable-next-line
   }, [isSuccess]);
 
   /**
