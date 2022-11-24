@@ -6,7 +6,6 @@ import { useEffect } from "react";
  */
 const useDocumentTitle = (updateTitle) => {
   useEffect(() => {
-    const defaultTitle = document.title;
     document.title = `TrackU - ${updateTitle}`;
   }, [updateTitle]);
 };
