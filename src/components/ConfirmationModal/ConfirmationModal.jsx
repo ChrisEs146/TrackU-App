@@ -6,6 +6,7 @@ import Modal from "../Modal/Modal";
 import { toast } from "react-toastify";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 import { useLogOutMutation } from "../../store/slices/ApiSlices/userApiSlice";
+import { clearLocalStorage } from "../../Utils/Functions";
 import "./confirmationModal.css";
 
 /**
@@ -32,6 +33,7 @@ const ConfirmationModal = ({
       handleModalActivation();
       toast.success(item.successMsg);
       logOut();
+      clearLocalStorage();
       return navigate(item.redirect);
     }
 
