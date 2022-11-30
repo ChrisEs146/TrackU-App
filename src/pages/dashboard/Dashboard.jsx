@@ -16,7 +16,6 @@ import "./dashboard.css";
  */
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { sidebarStatus, sidebarHandler } = useContext(SidebarContext);
   const { data: user, isSuccess, isLoading } = useGetUserQuery();
 
