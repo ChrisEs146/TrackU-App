@@ -6,19 +6,16 @@ import NotFound from "../../../components/DefaultMessage/NotFound";
 import { getFromLocalStorage, getShortDate } from "../../../Utils/Functions";
 import Pagination from "../../../components/Pagination/Pagination";
 import "./updates.css";
+import usePaginate from "../../../hooks/usePaginate";
 
 /**
  * Shows a list of updates. Each one can be updated or deleted.
  * @returns Updates component
  */
 const Updates = ({ updates, projectId }) => {
-  const [offSet, setOffSet] = useState(Number(getFromLocalStorage("UpdateOffset", false)) || 0);
-  const [currentPage, setCurrentPage] = useState(
-    Number(getFromLocalStorage("UpdatePage", false)) || 0
-  );
+  const [currentPage, setCurrentPage] = useState(Number(getFromLocalStorage("UpdatePage")) || 0);
   const resultsPerPage = 5;
-  const arrayOffset = offSet + resultsPerPage;
-  const currentUpdates = updates?.slice(offSet, arrayOffset);
+  const [pageCount, page, currentUpdates] = usePaginate(updates, resultsPerPage, currentPage);
   return (
     <>
       <div className="updates__container">
@@ -50,12 +47,10 @@ const Updates = ({ updates, projectId }) => {
               </div>
               {updates?.length > resultsPerPage && (
                 <Pagination
-                  itemsPerPage={resultsPerPage}
-                  totalItems={updates?.length}
+                  currentPage={page}
+                  pageCount={pageCount}
+                  componentKey={"Update"}
                   setCurrentPage={setCurrentPage}
-                  setOffSet={setOffSet}
-                  componentKey="Update"
-                  currentPage={currentPage}
                 />
               )}
             </>
