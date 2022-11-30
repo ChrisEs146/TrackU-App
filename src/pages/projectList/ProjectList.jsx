@@ -6,8 +6,9 @@ import { useGetAllProjectsQuery } from "../../store/slices/ApiSlices/projectApiS
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import NotFound from "../../components/DefaultMessage/NotFound";
 import Pagination from "../../components/Pagination/Pagination";
-import "./projectList.css";
 import { getFromLocalStorage } from "../../Utils/Functions";
+import usePaginate from "../../hooks/usePaginate";
+import "./projectList.css";
 
 /**
  * Component that shows a user's project list. If there are no
@@ -16,13 +17,9 @@ import { getFromLocalStorage } from "../../Utils/Functions";
  */
 const ProjectList = () => {
   const { data, isLoading } = useGetAllProjectsQuery();
-  const [offSet, setOffSet] = useState(Number(getFromLocalStorage("ProjectOffset", false)) || 0);
-  const [currentPage, setCurrentPage] = useState(
-    Number(getFromLocalStorage("ProjectPage", false)) || 0
-  );
+  const [currentPage, setCurrentPage] = useState(Number(getFromLocalStorage("ProjectPage")) || 0);
   const resultsPerPage = 5;
-  const arrayOffset = offSet + resultsPerPage;
-  const projects = data?.slice(offSet, arrayOffset);
+  const [pageCount, page, projects] = usePaginate(data, resultsPerPage, currentPage);
 
   return (
     <div className="projectList">
@@ -53,12 +50,10 @@ const ProjectList = () => {
             </div>
             {data?.length > resultsPerPage && (
               <Pagination
-                itemsPerPage={resultsPerPage}
-                totalItems={data?.length}
-                setOffSet={setOffSet}
+                currentPage={page}
+                pageCount={pageCount}
+                componentKey={"Project"}
                 setCurrentPage={setCurrentPage}
-                currentPage={currentPage}
-                componentKey="Project"
               />
             )}
           </>
