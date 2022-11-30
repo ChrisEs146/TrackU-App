@@ -27,14 +27,6 @@ const Dashboard = () => {
     // eslint-disable-next-line
   }, [isSuccess]);
 
-  useEffect(() => {
-    let isUser = getFromLocalStorage("User");
-    if (isUser && isUser !== null) {
-      return navigate("/dashboard/projects");
-    }
-    // eslint-disable-next-line
-  }, []);
-
   return (
     <div className="dashboard">
       {isLoading ? (
