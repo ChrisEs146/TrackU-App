@@ -1,10 +1,10 @@
 import { useContext, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useGetUserQuery } from "../../store/slices/ApiSlices/userApiSlice";
 import { SidebarContext } from "../../contexts/SidebarContext";
 import { setUserData } from "../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
-import { addToLocalStorage, getFromLocalStorage } from "../../Utils/Functions";
+import { addToLocalStorage } from "../../Utils/Functions";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import "./dashboard.css";
