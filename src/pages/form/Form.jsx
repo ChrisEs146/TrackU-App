@@ -122,7 +122,7 @@ const Form = () => {
 
     try {
       if (isSignUp) {
-        await signup({ ...formData });
+        await signup({ ...formData }).unwrap();
         setFormData(initialFormState);
         handleSwitch();
         toast.success("Account Created");
