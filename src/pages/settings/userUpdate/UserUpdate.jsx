@@ -27,6 +27,8 @@ const UserUpdate = () => {
     if (isSuccess) {
       setUpdateFormData({ newFullName: user?.fullName });
     }
+
+    //eslint-disable-next-line
   }, [isSuccess]);
 
   // Array Inputs

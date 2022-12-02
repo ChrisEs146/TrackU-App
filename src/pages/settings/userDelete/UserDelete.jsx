@@ -28,6 +28,8 @@ const UserDelete = () => {
     if (isSuccess) {
       setDeleteFormData({ email: user?.email, password: "" });
     }
+
+    //eslint-disable-next-line
   }, [isSuccess]);
 
   // Array Inputs
