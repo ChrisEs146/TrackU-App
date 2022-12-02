@@ -69,6 +69,7 @@ const DynamicForm = ({ type, editMode }) => {
         progress: itemFormData.progress,
       });
     }
+    //eslint-disable-next-line
   }, [itemFormData?.isSuccess]);
 
   /**
