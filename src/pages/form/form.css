@@ -1,22 +1,22 @@
 /* Form styles */
 
 .registration {
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: calc(100% - 7rem);
   background-image: url("../../images/bg.svg");
   background-position: center;
   background-size: cover;
+  overflow-y: scroll;
 }
 
 .registration__container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: clamp(30rem, 50%, 42rem);
   height: fit-content;
   background-color: rgb(238, 238, 238);
   padding: 2rem;
+  margin: 1rem 0;
   border-radius: 4px;
 }
 
