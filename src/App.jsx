@@ -1,20 +1,20 @@
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import Homepage from "./pages/Homepage/Homepage";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import Form from "./pages/Form/Form";
+import Homepage from "./pages/homepage/Homepage";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Form from "./pages/form/Form";
 import Nav from "./components/Nav/nav";
-import Settings from "./pages/Settings/Settings";
-import UserUpdate from "./pages/Settings/userUpdate/UserUpdate";
-import UserDelete from "./pages/Settings/userDelete/UserDelete";
-import ChangePassword from "./pages/Settings/changePassword/ChangePassword";
-import Projects from "./pages/Projects/Projects";
-import Project from "./pages/Project/Project";
+import Settings from "./pages/settings/Settings";
+import UserUpdate from "./pages/settings/userUpdate/UserUpdate";
+import UserDelete from "./pages/settings/userDelete/UserDelete";
+import ChangePassword from "./pages/settings/changePassword/ChangePassword";
+import Projects from "./pages/projects/Projects";
+import Project from "./pages/project/Project";
 import ProtectedRoute from "./components/Route/ProtectedRoute";
-import ProjectList from "./pages/ProjectList/ProjectList";
+import ProjectList from "./pages/projectList/ProjectList";
 import DynamicForm from "./components/DynamicForm/DynamicForm";
 import PersistState from "./components/Persist/PersistState";
-import NotFoundPage from "./pages/NotFound/NotFoundPage";
+import NotFoundPage from "./pages/notFound/NotFoundPage";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
