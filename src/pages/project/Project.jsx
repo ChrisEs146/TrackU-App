@@ -14,7 +14,7 @@ import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
 import { getItemData } from "../../Utils/ItemData";
 import "./project.css";
-import NotFoundPage from "../notFound/NotFoundPage";
+import NotFoundPage from "../notFoundPage/NotFoundPage";
 
 /**
  * Shows a projects information including, date, status, progress,
