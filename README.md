@@ -7,7 +7,7 @@
 - **Blue**: Progress is between 41 and 80.
 - **Green**: Progress is between 81 and 100.
 
-The app is fully responsive and was created using **Reactjs**, **CSS** and the **[TrackU API](LinkGoesHere)** as the backend. Feel free to check the **[Live-Demo](LinkGoesHere)**.
+The app is fully responsive and was created using **Reactjs**, **CSS** and the **[TrackU API](https://tracku-api.cyclic.app/api-docs/)** as the backend. Feel free to check the **[Live-Demo](https://tracku-app.netlify.app/)**.
 
 ### Sections
 
