@@ -6,7 +6,7 @@ const { REACT_APP_BASE_URL } = process.env;
 
 // Base Query
 const baseQuery = fetchBaseQuery({
-  baseUrl: REACT_APP_BASE_URL,
+  baseUrl: "https://tracku-api.cyclic.app",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().user.userToken;
