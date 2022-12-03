@@ -14,7 +14,7 @@ import ProtectedRoute from "./components/Route/ProtectedRoute";
 import ProjectList from "./pages/projectList/ProjectList";
 import DynamicForm from "./components/DynamicForm/DynamicForm";
 import PersistState from "./components/Persist/PersistState";
-import NotFoundPage from "./pages/notFound/NotFoundPage";
+import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
