@@ -22,9 +22,10 @@
 }
 
 .input__container span {
+  display: none;
   font-size: 1.3rem;
   color: red;
-  display: none;
+  margin-top: 0.5rem;
 }
 
 .input__container input:invalid[focused="true"] ~ span {
