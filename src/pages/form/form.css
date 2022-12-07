@@ -56,3 +56,9 @@
 .registration__switch:hover {
   border-bottom: 2px solid rgb(98, 89, 223);
 }
+
+@media (min-width: 900px) {
+  .registration {
+    align-items: center;
+  }
+}
