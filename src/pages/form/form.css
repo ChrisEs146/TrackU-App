@@ -3,8 +3,8 @@
 .registration {
   display: flex;
   justify-content: center;
-  width: 100%;
-  height: calc(100% - 7rem);
+  width: 100vw;
+  height: calc(100vh - 7rem);
   background-image: url("../../images/bg.svg");
   background-position: center;
   background-size: cover;
