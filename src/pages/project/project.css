@@ -1,7 +1,7 @@
 /* PROJECT PAGE STYLES */
 
 .projectPage {
-  height: calc(100vh - 7rem);
+  height: calc(100vh - 10%);
   overflow-y: scroll;
 }
 
