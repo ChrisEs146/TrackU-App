@@ -1,6 +1,6 @@
 /* Homepage Styles */
 .homepage {
-  height: calc(100vh - 7rem);
+  height: 90%;
   max-width: 130rem;
   margin: 0 auto;
   overflow-y: scroll;
