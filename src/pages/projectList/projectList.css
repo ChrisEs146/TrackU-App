@@ -41,7 +41,6 @@
 }
 
 .projectList__container {
-  position: relative;
   justify-content: space-between;
   gap: 3rem;
   height: 90%;
