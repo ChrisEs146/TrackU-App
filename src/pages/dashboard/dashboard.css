@@ -1,12 +1,12 @@
 /* DASHBOARD STYLES */
 .dashboard {
-  width: 100vw;
-  height: calc(100vh - 7rem);
+  width: 100%;
+  height: 90vh;
 }
 
 .dashboard__projects-container {
   width: 100%;
-  height: 100%;
+  height: 90vh;
 }
 
 @media (min-width: 800px) {

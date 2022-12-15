@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
-import "./projects.css";
 
 /**
  * Projects page component that displays a list
@@ -10,9 +9,9 @@ import "./projects.css";
 const Projects = () => {
   useDocumentTitle("Projects");
   return (
-    <section className="projects">
+    <>
       <Outlet />
-    </section>
+    </>
   );
 };
 

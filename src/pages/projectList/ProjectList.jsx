@@ -22,7 +22,7 @@ const ProjectList = () => {
   const [pageCount, page, projects] = usePaginate(data, resultsPerPage, currentPage);
 
   return (
-    <div className="projectList">
+    <>
       <div className="projectList__title-container">
         <h2>Projects</h2>
         <NavLink
@@ -39,7 +39,7 @@ const ProjectList = () => {
           <LoadingSpinner />
         ) : !data.length ? (
           <div className="projectList__notFound-container">
-            <NotFound message={"Please, add a project."} />
+            <NotFound message={"Add a project."} />
           </div>
         ) : (
           <>
@@ -59,7 +59,7 @@ const ProjectList = () => {
           </>
         )}
       </div>
-    </div>
+    </>
   );
 };
 
