@@ -40,7 +40,9 @@
   width: 100%;
 }
 
+/* Position relative is used to center spinner */
 .projectList__container {
+  position: relative;
   justify-content: space-between;
   gap: 3rem;
   height: 90%;
