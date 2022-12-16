@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 import { useLogOutMutation } from "../../store/slices/ApiSlices/userApiSlice";
 import { clearLocalStorage } from "../../Utils/Functions";
+import { logOut as logOutReducer } from "../../store/slices/userSlice";
+import { useDispatch } from "react-redux";
 import "./confirmationModal.css";
 
 /**
@@ -26,6 +28,7 @@ const ConfirmationModal = ({
 }) => {
   const navigate = useNavigate();
   const [logOut] = useLogOutMutation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // User deletion
@@ -34,6 +37,7 @@ const ConfirmationModal = ({
       toast.success(item.successMsg);
       logOut();
       clearLocalStorage();
+      dispatch(logOutReducer());
       return navigate(item.redirect);
     }
 

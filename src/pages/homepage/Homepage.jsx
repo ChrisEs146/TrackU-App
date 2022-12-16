@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import hero from "../../images/hero.svg";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import "./homepage.css";
@@ -31,9 +31,6 @@ const Homepage = () => {
             <span>TrackU</span> gives you an environment where you can create and keep your personal
             projects updated until completion. Makes your management process easier.
           </p>
-          <NavLink className="homepage__btn" to="/registration">
-            Start Now
-          </NavLink>
         </div>
         <div className="homepage__image-container">
           <img
